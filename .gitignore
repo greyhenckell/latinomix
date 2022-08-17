@@ -25,9 +25,23 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+flow-typed
+yarn.lock
+javascript/**/migrations/
+typescript/**/migrations/
+misc/**/migrations/
+databases/**/migrations/
+experimental/**/*.db
+package-lock.json
 # local env files
 .env*.local
 
+*tmp.db
+dist/
+
+*.tsbuildinfo
+.prisma
+.pnpm-store
 # vercel
 .vercel
 
