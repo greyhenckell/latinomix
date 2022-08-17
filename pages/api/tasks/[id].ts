@@ -5,7 +5,6 @@ import { prisma } from "utils/database";
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { method, query, body } = req;
 
-  console.log(query);
   switch (method) {
     case "GET":
       try {

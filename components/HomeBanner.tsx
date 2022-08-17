@@ -26,12 +26,13 @@ function HomeBanner() {
             </Text>
           </Heading>
           <Text color={"gray.500"} maxW={"3xl"}>
-            Latinomix dance classes are all this! You'll enjoy dancing to Latin
-            rhythms, have fun and stay fit. In a happy and energetic LATINOMIX
-            dance lesson, you will learn about different Latin dances in short
-            steps (e.g., salsa, samba, bachata, merengue). The goal is to dance
-            at least 2 to 3 different dance styles / dancing lessons, and thus
-            learn a variety of different Latin dances, with a good feeling..
+            Latinomix dance classes are all this! You will enjoy dancing to
+            Latin rhythms, have fun and stay fit. In a happy and energetic
+            LATINOMIX dance lesson, you will learn about different Latin dances
+            in short steps (e.g., salsa, samba, bachata, merengue). The goal is
+            to dance at least 2 to 3 different dance styles / dancing lessons,
+            and thus learn a variety of different Latin dances, with a good
+            feeling..
           </Text>
           <Stack spacing={6} direction={"row"}>
             <Button
