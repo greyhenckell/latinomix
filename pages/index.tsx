@@ -1,6 +1,8 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Stack, StackDivider, useColorModeValue } from "@chakra-ui/react";
+import About from "components/About";
 import Header from "components/Header";
 import HomeBanner from "components/HomeBanner";
+import News from "components/News";
 
 import Head from "next/head";
 import React from "react";
@@ -14,7 +16,18 @@ const Home = () => {
       <main>
         <Header></Header>
         <section>
-          <HomeBanner></HomeBanner>
+          <Stack
+            spacing={3}
+            divider={
+              <StackDivider
+                borderColor={useColorModeValue("gray.400", "gray.900")}
+              />
+            }
+          >
+            <HomeBanner></HomeBanner>
+            <News></News>
+            <About></About>
+          </Stack>
         </section>
       </main>
     </>
