@@ -16,7 +16,7 @@ function Header() {
   const linkHoverColor = useColorModeValue("gray.800", "white");
   return (
     <>
-      <Flex w="100%" align="center" fontSize={{ base: 20, md: 24, sm: 12 }}>
+      <Flex align="center" fontSize={{ base: 20, md: 24, sm: 12 }}>
         <Heading ml="4" size="auto" fontWeight="semibold" color="cyan.400">
           LatinoMix
         </Heading>

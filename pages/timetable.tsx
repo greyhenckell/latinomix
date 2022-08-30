@@ -2,12 +2,10 @@ import React from "react";
 
 import {
   Box,
-  Center,
   Text,
   Stack,
   List,
   ListItem,
-  ListIcon,
   Button,
   useColorModeValue,
   Icon,
@@ -15,6 +13,8 @@ import {
   Link,
   Spacer,
   Flex,
+  VStack,
+  ListIcon,
 } from "@chakra-ui/react";
 
 import { FaHome } from "react-icons/fa";
@@ -35,30 +35,56 @@ interface NavItem {
   services: Array<Services>;
 }
 
-interface PriceItem {
+interface PriceItemProps {
   type: string;
   label: string;
   price: number;
+  offer: boolean;
 }
 
-const PRICE_ITEMS: Array<PriceItem> = [
+const PRICE_ITEMS: Array<PriceItemProps> = [
   {
     type: "Single",
     label: "T1",
     price: 15.0,
+    offer: false,
   },
   {
     type: "Casual - 10 times",
     label: "T10",
     price: 120.0,
-  },
-  {
-    type: "Usual - 30 times",
-    label: "T30",
-    price: 300.0,
+    offer: true,
   },
 ];
 
+const PriceItemTier = ({
+  type,
+  label,
+  price,
+  offer = false,
+}: PriceItemProps) => {
+  const colorTextLight = offer ? "white" : "whiteAlpha.500";
+  const bgColorLight = offer ? "purple.400" : "gray.700";
+  const discount = offer ? "(SALE)" : "";
+
+  const colorTextDark = offer ? "white" : "purple.500";
+  const bgColorDark = offer ? "purple.400" : "gray.300";
+  return (
+    <ListItem maxW={"200px"} color="whiteAlpha.500" p={2}>
+      {label} ({type})
+      <Text
+        color={useColorModeValue(colorTextLight, colorTextDark)}
+        bgColor={useColorModeValue(bgColorLight, bgColorDark)}
+        fontSize={"sm"}
+        fontWeight={500}
+        rounded={"full"}
+      >
+        € {price}
+        {".00"} {discount}
+      </Text>
+    </ListItem>
+  );
+};
 const NAV_ITEMS: Array<NavItem> = [
   {
     day: "Tuesday",
@@ -95,7 +121,7 @@ const NAV_ITEMS: Array<NavItem> = [
     address: "Keskipäivänkuja 4, Espoo",
     services: [
       {
-        service: "LatinoMix-Flow",
+        service: "LatinoMix-EasyDance",
 
         time: "16:00-17:00",
       },
@@ -107,6 +133,22 @@ const NAV_ITEMS: Array<NavItem> = [
     ],
   },
 ];
+
+import { ReactNode } from "react";
+function PriceWrapper({ children }: { children: ReactNode }) {
+  return (
+    <Box
+      mb={4}
+      shadow="base"
+      borderWidth="1px"
+      alignSelf={{ base: "center", lg: "flex-start" }}
+      borderColor={useColorModeValue("gray.200", "gray.500")}
+      borderRadius={"xl"}
+    >
+      {children}
+    </Box>
+  );
+}
 
 function timetable() {
   return (
@@ -134,103 +176,87 @@ function timetable() {
           </Box>
         </Stack>
         <Spacer></Spacer>
-        <Box w="sm" bg="gray.700" p={3}>
-          <Heading as="h4" size="md" color="green.500">
+        <Box
+          alignItems="center"
+          justifyContent="center"
+          w="full"
+          bg="gray.700"
+          p={3}
+        >
+          <Heading mt={8} as="h4" size="md" color="green.500">
             Prices
           </Heading>
           <List>
             {PRICE_ITEMS.map((pitem) => (
-              <ListItem color="whiteAlpha.500" key={pitem.type} p={2}>
-                {pitem.label} ({pitem.type})
-                <Text color="white" fontWeight="600">
-                  € {pitem.price}
-                </Text>
-              </ListItem>
+              <PriceItemTier
+                key={pitem.type}
+                type={pitem.type}
+                label={pitem.label}
+                price={pitem.price}
+                offer={pitem.offer}
+              ></PriceItemTier>
             ))}
           </List>
         </Box>
       </Flex>
-      <Center py={6}>
-        {NAV_ITEMS.map((navItem) => (
-          <Box
-            key={navItem.day}
-            maxW={"330px"}
-            w={"full"}
-            bg={useColorModeValue("white", "gray.800")}
-            boxShadow={"2xl"}
-            rounded={"md"}
-            overflow={"hidden"}
-            ml="3"
-          >
-            <Stack
-              textAlign={"center"}
-              p={6}
-              color={useColorModeValue("gray.800", "white")}
-              align={"center"}
-            >
+      <Stack
+        direction={{ base: "column", md: "row" }}
+        textAlign="center"
+        justify="center"
+        spacing={{ base: 4, lg: 10 }}
+        py={10}
+      >
+        {NAV_ITEMS.map((item) => (
+          <PriceWrapper key={item.day}>
+            <Box py={4} px={12}>
               <Text
+                p={2}
+                color={"green.500"}
+                rounded={"full"}
                 fontSize={"sm"}
                 fontWeight={500}
                 bg={useColorModeValue("green.50", "green.900")}
-                p={2}
-                px={3}
-                color={"green.500"}
-                rounded={"full"}
               >
-                {navItem.day}
+                {item.day}
               </Text>
-              {navItem.services.map((serv) => (
+              {item.services.map((serv) => (
                 <Stack
                   key={serv.service}
                   align={"flex-start'"}
                   justify={"center"}
                 >
-                  <Text p={2} w="full" fontSize={"0.5xl"} fontWeight={200}>
+                  <Text p={2} fontSize={"1xl"} fontWeight={600}>
                     {serv.service}
                   </Text>
 
                   <Text color={"gray.500"}>{serv.time}</Text>
                 </Stack>
               ))}
-            </Stack>
-
-            <Box
-              alignItems="center"
-              bg={useColorModeValue("gray.50", "gray.900")}
-              px={6}
-              py={10}
+            </Box>
+            <VStack
+              bg={useColorModeValue("gray.50", "gray.700")}
+              py={4}
+              borderBottomRadius={"xl"}
             >
-              <List spacing={3}>
-                <ListItem p={4}>
-                  <Icon mr={4} as={FaHome} color="green.400" />
-                  {navItem.place}
+              <List spacing={3} textAlign="start" px={12}>
+                <ListItem>
+                  <ListIcon as={FaHome} color="green.500" />
+                  {item.place}
                 </ListItem>
-                <ListItem p={4}>
-                  <Icon mr={4} as={MdPlace} color="green.400" />
-                  {navItem.address}
+                <ListItem>
+                  <ListIcon as={MdPlace} color="green.500" />
+                  {item.address}
                 </ListItem>
               </List>
-
-              <Button
-                mt={10}
-                w={"full"}
-                bg={"green.400"}
-                color={"white"}
-                rounded={"xl"}
-                boxShadow={"0 5px 20px 0px rgb(72 187 120 / 43%)"}
-                _hover={{
-                  bg: "green.500",
-                }}
-                _focus={{
-                  bg: "green.500",
-                }}
-              >
-                Ready2Dance!
-              </Button>
-            </Box>
-          </Box>
+              <Box w="80%" pt={7}>
+                <Button w="full" colorScheme="red" variant="outline">
+                  Join!
+                </Button>
+              </Box>
+            </VStack>
+          </PriceWrapper>
         ))}
-      </Center>
+      </Stack>
     </>
   );
 }
