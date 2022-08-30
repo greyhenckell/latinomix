@@ -1,5 +1,13 @@
-import { Flex, Stack, StackDivider, useColorModeValue } from "@chakra-ui/react";
+import {
+  Container,
+  Flex,
+  Stack,
+  StackDivider,
+  useColorModeValue,
+  VStack,
+} from "@chakra-ui/react";
 import About from "components/About";
+import Footer from "components/Footer";
 import Header from "components/Header";
 import HomeBanner from "components/HomeBanner";
 import News from "components/News";
@@ -13,23 +21,15 @@ const Home = () => {
       <Head>
         <title>LatinoMix</title>
       </Head>
-      <main>
-        <Header></Header>
-        <section>
-          <Stack
-            spacing={3}
-            divider={
-              <StackDivider
-                borderColor={useColorModeValue("gray.400", "gray.900")}
-              />
-            }
-          >
-            <HomeBanner></HomeBanner>
-            <News></News>
-            <About></About>
+      <Flex p="6" w="full">
+        <VStack w="full" id="vstack" spacing="2">
+          <Stack w="100%">
+            <Header></Header>
           </Stack>
-        </section>
-      </main>
+          <HomeBanner></HomeBanner>
+          <News></News>
+        </VStack>
+      </Flex>
     </>
   );
 };

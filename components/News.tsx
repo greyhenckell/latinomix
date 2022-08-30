@@ -14,8 +14,8 @@ import {
 
 function News() {
   return (
-    <Container id="news" maxW={"5xl"} py={12}>
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+    <Container id="news" py={8}>
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
         <Stack
           spacing={4}
           divider={

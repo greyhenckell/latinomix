@@ -2,14 +2,14 @@ import React from "react";
 import { ReactElement } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { AppProps } from "next/app";
-import Layout from "components/Layout";
+
+import Footer from "components/Footer";
 
 function App({ Component, pageProps }: AppProps): ReactElement {
   return (
     <ChakraProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Component {...pageProps} />
+      <Footer></Footer>
     </ChakraProvider>
   );
 }

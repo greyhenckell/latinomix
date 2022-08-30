@@ -7,7 +7,7 @@ type Props = {
 
 const Layout = ({ children, ...props }: Props) => {
   return (
-    <Flex direction="column" maxW={"100%"} m="0 auto" p={6} {...props}>
+    <Flex pos="fixed" fontSize={["sm", "md", "lg"]} {...props}>
       {children}
     </Flex>
   );
