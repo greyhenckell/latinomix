@@ -91,11 +91,11 @@ const NAV_ITEMS: Array<NavItem> = [
   {
     day: "Tuesday",
     city: "Kirkkonummi",
-    place: "Keskustan lähellä",
+    place: "Kirkkonummen Palvelukeskus",
     address: "Rajakuja 3, Kirkkonummi",
     services: [
       {
-        service: "LatinoMix-Fitness",
+        service: "LatinoMix-Dance",
 
         time: "18:00-19:00",
       },
@@ -109,7 +109,7 @@ const NAV_ITEMS: Array<NavItem> = [
     address: "Keskipäivänkuja 4, Espoo",
     services: [
       {
-        service: "LatinoMix-Fitness",
+        service: "LatinoMix-Dance",
 
         time: "18:00-19:00",
       },
@@ -128,7 +128,7 @@ const NAV_ITEMS: Array<NavItem> = [
         time: "16:00-17:00",
       },
       {
-        service: "LatinoMix-Fitness",
+        service: "LatinoMix-Dance",
 
         time: "17:00-18:00",
       },

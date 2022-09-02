@@ -8,15 +8,10 @@ import {
   Stack,
   StackDivider,
   Icon,
+  Divider,
 } from "@chakra-ui/react";
 
-import {
-  IoAnalyticsSharp,
-  IoLogoBitcoin,
-  IoSearchSharp,
-} from "react-icons/io5";
-
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 
 import { FaHome } from "react-icons/fa";
 import { MdPlace } from "react-icons/md";
@@ -51,10 +46,10 @@ const NEWS_ITEMS: Array<NewsItem> = [
     place: "Estrada Tanssi",
     address: "Läkkisepänkuja 2, 02650 Espoo",
     price: "0.00",
-    dresscode: "Pink shirt",
+    dresscode: "Pink/Black LM shirt",
     class: "LatinoMix-Dance",
     description: "12:15 - 13:00",
-    img: "imgs/estrada.png",
+    img: "imgs/estrada2.jpeg",
   },
 
   {
@@ -98,7 +93,7 @@ export default function SplitWithImage() {
           key={newsitem.id}
           columns={{ base: 1, md: 2 }}
           spacing={10}
-          mt={8}
+          mt={10}
         >
           <Stack spacing={4}>
             <Text

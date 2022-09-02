@@ -48,7 +48,7 @@ const NAV_ITEMS: Array<NavItem> = [
     day: "Wednesday",
     city: "Espoo",
     place: "Perkkaan Koulu",
-    address: "Majurinkatu 8, Kirkkonummi",
+    address: "Majurinkatu 8 , Espoo",
     services: [
       {
         service: "LatinoMix-Kids",
