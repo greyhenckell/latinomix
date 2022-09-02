@@ -6,7 +6,6 @@ import {
   Stack,
   List,
   ListItem,
-  useColorModeValue,
   VStack,
   ListIcon,
 } from "@chakra-ui/react";
@@ -22,7 +21,7 @@ function PriceWrapper({ children }: { children: ReactNode }) {
       shadow="base"
       borderWidth="1px"
       alignSelf={{ base: "center", lg: "flex-start" }}
-      borderColor={useColorModeValue("gray.200", "gray.500")}
+      borderColor={"gray.200"}
       borderRadius={"xl"}
     >
       {children}
@@ -78,7 +77,7 @@ function KidsSchedule() {
               rounded={"full"}
               fontSize={"sm"}
               fontWeight={500}
-              bg={useColorModeValue("green.50", "green.900")}
+              bg={"green.50"}
             >
               {item.day}
             </Text>
@@ -96,11 +95,7 @@ function KidsSchedule() {
               </Stack>
             ))}
           </Box>
-          <VStack
-            bg={useColorModeValue("gray.50", "gray.700")}
-            py={4}
-            borderBottomRadius={"xl"}
-          >
+          <VStack bg={"gray.50"} py={4} borderBottomRadius={"xl"}>
             <List spacing={3} textAlign="start" px={12}>
               <ListItem>
                 <ListIcon as={FaHome} color="green.500" />
