@@ -105,8 +105,18 @@ function Services() {
         <Stack spacing={0} align={"center"}>
           <Heading>Our Main Services</Heading>
           <Text>
-            Beside Latinomix fitness we are working hard to provide customized
-            service for you, being adaptable for different dance levels.
+            Beside Latinomix Dance, we are working hard to provide customized
+            service for you, being adaptable for different dance levels. In
+            Latinomix dance classes, you can enjoy the Latin rhythms, have fun
+            and stay fit! During the LATINOMIX dance classes you will learn
+            about different Latin dances in short steps (e.g., salsa, samba,
+            bachata, merengue). The goal is to dance at least 2 to 3 different
+            dance styles / dancing lessons, and thus learn a variety of
+            different Latin dances, with a good feeling. LATINOMIX dance classes
+            are organized for children, youngsters and adults. The children’s
+            group consists of 6-13 year olds. Young people and adults can
+            participate from the age of 13. No preregistration is required for
+            the dance classes.
           </Text>
         </Stack>
         <Stack
@@ -125,29 +135,36 @@ function Services() {
                 fun
               </TestimonialText>
             </TestimonialContent>
-            <TestimonialAvatar
+            {/*<TestimonialAvatar
               src={
                 "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
               }
               name={""}
               title={""}
-            />
+            />*/}
           </Testimonial>
           <Testimonial>
             <TestimonialContent>
               <TestimonialHeading>LatinoMix-Kids</TestimonialHeading>
               <TestimonialText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor
-                neque sed imperdiet nibh lectus feugiat nunc sem.
+                Latinomix dance classes teach different Latin dance styles such
+                as salsa, bachata, reggueton, samba etc. The latest Finnish hits
+                also find their place in dance classes. There are also rhythmic
+                exercises in play through games and games, so that Latin rhythms
+                become familiar. It is good to have comfortable, elastic
+                sportswear and slippers or indoor shoes that allow you to
+                workout for an hour. Of course, you can also dance barefoot. The
+                dance lesson takes 45 minutes. The payment includes group
+                accident insurance.
               </TestimonialText>
             </TestimonialContent>
-            <TestimonialAvatar
+            {/*<TestimonialAvatar
               src={
                 "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
               }
               name={"Jorge Pacheco"}
               title={"Founder at LatinoMIx"}
-            />
+            />*/}
           </Testimonial>
           <Testimonial>
             <TestimonialContent>
@@ -156,13 +173,13 @@ function Services() {
                 from Basic to Medium level in couple dance
               </TestimonialText>
             </TestimonialContent>
-            <TestimonialAvatar
+            {/*<TestimonialAvatar
               src={
                 "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
               }
               name={""}
               title={""}
-            />
+            />*/}
           </Testimonial>
           <Testimonial>
             <TestimonialContent>
@@ -174,13 +191,13 @@ function Services() {
                 beginning to up. Easy fun and quick to learn.
               </TestimonialText>
             </TestimonialContent>
-            <TestimonialAvatar
+            {/*<TestimonialAvatar
               src={
                 "https://images.unsplash.com/photo-1586297135537-94bc9ba060aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
               }
               name={""}
               title={""}
-            />
+            />*/}
           </Testimonial>
         </Stack>
       </Container>

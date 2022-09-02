@@ -19,15 +19,16 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>LatinoMixTanssi</title>
+        <title>Classes | LatinoMixTanssi | Espoo</title>
+        <meta
+          name="keywords"
+          content="dance | espoo | latinomix | latin style"
+        />
         <meta
           name="description"
-          content="Latinomix-tanssitunnit ovat kaikkea tätä! Saat nauttia lattarirytmeistä, pitää hauskaa ja samalla kuntoilla "
+          content="Do you need extra energy boost, Latinomix-tanssitunnit ovat kaikkea tätä! Saat nauttia lattarirytmeistä, pitää hauskaa ja samalla kuntoilla "
         />
-        <meta
-          property="og:title"
-          content="Latinomix tanssi espoo LatinoMix dance"
-        />
+        <meta property="og:title" content="Latinomix tanssi|LatinoMix dance" />
         <meta
           property="og:description"
           content="Come to dance! salsa reggaeton bachata merengue samba, no dance level required with Latinomix"
