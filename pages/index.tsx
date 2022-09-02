@@ -19,10 +19,10 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>LatinoMixTanssi</title>
+        <title>Classes | LatinoMixTanssi | Espoo</title>
         <meta
           name="description"
-          content="Latinomix-tanssitunnit ovat kaikkea tätä! Saat nauttia lattarirytmeistä, pitää hauskaa ja samalla kuntoilla "
+          content="Do you need extra energy boost, Latinomix-tanssitunnit ovat kaikkea tätä! Saat nauttia lattarirytmeistä, pitää hauskaa ja samalla kuntoilla "
         />
         <meta
           property="og:title"

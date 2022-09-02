@@ -106,7 +106,17 @@ function Services() {
           <Heading>Our Main Services</Heading>
           <Text>
             Beside Latinomix Dance, we are working hard to provide customized
-            service for you, being adaptable for different dance levels.
+            service for you, being adaptable for different dance levels. In
+            Latinomix dance classes, you can enjoy the Latin rhythms, have fun
+            and stay fit! During the LATINOMIX dance classes you will learn
+            about different Latin dances in short steps (e.g., salsa, samba,
+            bachata, merengue). The goal is to dance at least 2 to 3 different
+            dance styles / dancing lessons, and thus learn a variety of
+            different Latin dances, with a good feeling. LATINOMIX dance classes
+            are organized for children, youngsters and adults. The children’s
+            group consists of 6-13 year olds. Young people and adults can
+            participate from the age of 13. No preregistration is required for
+            the dance classes.
           </Text>
         </Stack>
         <Stack
