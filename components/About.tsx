@@ -27,7 +27,7 @@ function About() {
             w={{ sm: "100%", md: "540px" }}
             height={{ sm: "476px", md: "20rem" }}
             direction={{ base: "column", md: "row" }}
-            bg={useColorModeValue("white", "gray.900")}
+            bg={"white"}
             boxShadow={"2xl"}
             padding={4}
           >
@@ -57,11 +57,7 @@ function About() {
                 {" "}
                 @latinomixtanssi{" "}
               </Text>{" "}
-              <Text
-                textAlign={"center"}
-                color={useColorModeValue("gray.700", "gray.400")}
-                px={3}
-              >
+              <Text textAlign={"center"} color={"gray.700"} px={3}>
                 {" "}
                 Dancer, musician, PM for work or{" "}
                 <Link
@@ -82,39 +78,19 @@ function About() {
                 mt={6}
               >
                 {" "}
-                <Badge
-                  px={2}
-                  py={1}
-                  bg={useColorModeValue("gray.50", "gray.800")}
-                  fontWeight={"400"}
-                >
+                <Badge px={2} py={1} bg={"gray.50"} fontWeight={"400"}>
                   {" "}
                   #Salsa{" "}
                 </Badge>{" "}
-                <Badge
-                  px={2}
-                  py={1}
-                  bg={useColorModeValue("gray.50", "gray.800")}
-                  fontWeight={"400"}
-                >
+                <Badge px={2} py={1} bg={"gray.50"} fontWeight={"400"}>
                   {" "}
                   #Bachata{" "}
                 </Badge>{" "}
-                <Badge
-                  px={2}
-                  py={1}
-                  bg={useColorModeValue("gray.50", "gray.800")}
-                  fontWeight={"400"}
-                >
+                <Badge px={2} py={1} bg={"gray.50"} fontWeight={"400"}>
                   {" "}
                   #Merengue{" "}
                 </Badge>{" "}
-                <Badge
-                  px={2}
-                  py={1}
-                  bg={useColorModeValue("gray.50", "gray.800")}
-                  fontWeight={"400"}
-                >
+                <Badge px={2} py={1} bg={"gray.50"} fontWeight={"400"}>
                   {" "}
                   #Samba and +{" "}
                 </Badge>{" "}
