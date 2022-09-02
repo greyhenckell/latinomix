@@ -15,6 +15,7 @@ import {
   Flex,
   VStack,
   ListIcon,
+  Divider,
 } from "@chakra-ui/react";
 
 import { FaHome } from "react-icons/fa";
@@ -64,11 +65,12 @@ const PriceItemTier = ({
   offer = false,
 }: PriceItemProps) => {
   const colorTextLight = offer ? "white" : "whiteAlpha.500";
-  const bgColorLight = offer ? "purple.400" : "gray.700";
+  const bgColorLight = offer ? "yellow.700" : "gray.700";
   const discount = offer ? "(SALE)" : "";
+  const FontWeight = offer ? 700 : 500;
 
-  const colorTextDark = offer ? "white" : "purple.500";
-  const bgColorDark = offer ? "purple.400" : "gray.300";
+  const colorTextDark = offer ? "white" : "yellow.500";
+  const bgColorDark = offer ? "yellow.400" : "gray.300";
   return (
     <ListItem maxW={"200px"} color="whiteAlpha.500" p={2}>
       {label} ({type})
@@ -76,7 +78,7 @@ const PriceItemTier = ({
         color={useColorModeValue(colorTextLight, colorTextDark)}
         bgColor={useColorModeValue(bgColorLight, bgColorDark)}
         fontSize={"sm"}
-        fontWeight={500}
+        fontWeight={FontWeight}
         rounded={"full"}
       >
         € {price}
@@ -135,6 +137,7 @@ const NAV_ITEMS: Array<NavItem> = [
 ];
 
 import { ReactNode } from "react";
+import KidsSchedule from "components/KidsSchedule";
 function PriceWrapper({ children }: { children: ReactNode }) {
   return (
     <Box
@@ -153,7 +156,7 @@ function PriceWrapper({ children }: { children: ReactNode }) {
 function timetable() {
   return (
     <>
-      <Flex w="100%">
+      <Flex w="100%" m={2}>
         <Stack w="full" p={10} bg={"gray.700"} justify={{ lg: "center" }}>
           <Link href="/" color="orange.200" fontSize={20} alignItems="center">
             <Icon as={FiArrowLeftCircle} w={6} h={6} mr={2} />
@@ -171,11 +174,11 @@ function timetable() {
               Schedule 2022/2023
             </Text>
             <Heading color={"white"} fontSize={{ base: "2xl", md: "3xl" }}>
-              LatinoMix - Adults
+              LatinoMix - Classes
             </Heading>
           </Box>
         </Stack>
-        <Spacer></Spacer>
+
         <Box
           alignItems="center"
           justifyContent="center"
@@ -248,15 +251,18 @@ function timetable() {
                   {item.address}
                 </ListItem>
               </List>
-              <Box w="80%" pt={7}>
+              {/*<Box w="80%" pt={7}>
                 <Button w="full" colorScheme="red" variant="outline">
                   Join!
                 </Button>
-              </Box>
+              </Box>*/}
             </VStack>
           </PriceWrapper>
         ))}
       </Stack>
+      {/* add kids component*/}
+      <Divider orientation="horizontal" />
+      <KidsSchedule></KidsSchedule>
     </>
   );
 }

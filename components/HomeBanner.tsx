@@ -43,7 +43,7 @@ function HomeBanner() {
             bg={"orange.400"}
             _hover={{ bg: "orange.500" }}
           >
-            Go Dance!
+            More Info!
           </Button>
         </Link>
       </Stack>

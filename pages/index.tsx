@@ -19,7 +19,21 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>LatinoMix</title>
+        <title>LatinoMixTanssi</title>
+        <meta
+          name="description"
+          content="Latinomix-tanssitunnit ovat kaikkea tätä! Saat nauttia lattarirytmeistä, pitää hauskaa ja samalla kuntoilla "
+        />
+        <meta
+          property="og:title"
+          content="Latinomix tanssi espoo LatinoMix dance"
+        />
+        <meta
+          property="og:description"
+          content="Come to dance! salsa reggaeton bachata merengue samba, no dance level required with Latinomix"
+        />
+        <meta property="og:url" content="https://latinomixtanssi.com/" />
+        <meta property="og:type" content="website" />
       </Head>
       <Flex p="6" w="full">
         <VStack w="full" id="vstack" spacing="2">

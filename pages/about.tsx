@@ -1,12 +1,15 @@
-import { Heading, Text } from "@chakra-ui/react";
+import { Divider, Heading, Text } from "@chakra-ui/react";
+import About from "components/About";
+import Services from "components/Services";
 import React from "react";
 
 function about() {
   return (
-    <Heading>
-      About
-      <Text size="sm">working on it!</Text>
-    </Heading>
+    <>
+      <Services></Services>
+      <Divider orientation="horizontal" />
+      <About></About>
+    </>
   );
 }
 

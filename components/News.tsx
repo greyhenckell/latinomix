@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Container,
   SimpleGrid,
@@ -12,70 +11,148 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-function News() {
+import {
+  IoAnalyticsSharp,
+  IoLogoBitcoin,
+  IoSearchSharp,
+} from "react-icons/io5";
+
+import { ReactElement } from "react";
+
+import { FaHome } from "react-icons/fa";
+import { MdPlace } from "react-icons/md";
+import { BiCloset, BiEuro } from "react-icons/bi";
+
+interface FeatureProps {
+  text: string;
+  iconBg: string;
+  icon?: ReactElement;
+}
+
+interface NewsItem {
+  id: number;
+  day: string;
+  city: string;
+  place: string;
+  event_name: String;
+  address: string;
+  price: string;
+  dresscode: string;
+  class: string;
+  description: string;
+  img: string;
+}
+
+const NEWS_ITEMS: Array<NewsItem> = [
+  {
+    id: 1,
+    day: "Saturday",
+    city: "Leppavaaran",
+    event_name: "Raitikarnevaali",
+    place: "Estrada Tanssi",
+    address: "Läkkisepänkuja 2, 02650 Espoo",
+    price: "0.00",
+    dresscode: "Pink shirt",
+    class: "LatinoMix-Dance",
+    description: "Welcome to LatinoMix show  in Leppavaara",
+    img: "imgs/estrada.png",
+  },
+
+  {
+    id: 2,
+    day: "Sunday",
+    city: "Espoo",
+    event_name: "Summer Closing Fiesta",
+    place: "Cafe Merenneito,Matinkylä Uimaranta",
+    address: "",
+    price: "2 tickes / 20 eur",
+    dresscode: "party",
+    class: "LatinoMix-Dance",
+    description: "",
+    img: "imgs/merenneito.jpeg",
+  },
+];
+
+const Feature = ({ text, icon, iconBg }: FeatureProps) => {
   return (
-    <Container id="news" py={8}>
-      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
-        <Stack
-          spacing={4}
-          divider={
-            <StackDivider
-              borderColor={useColorModeValue("gray.100", "gray.700")}
-            />
-          }
+    <Stack direction={"row"} align={"center"}>
+      <Flex
+        w={8}
+        h={8}
+        align={"center"}
+        justify={"center"}
+        rounded={"full"}
+        bg={iconBg}
+      >
+        {icon}
+      </Flex>
+      <Text fontWeight={600}>{text}</Text>
+    </Stack>
+  );
+};
+
+export default function SplitWithImage() {
+  return (
+    <Container maxW={"5xl"} py={12} id="news">
+      {NEWS_ITEMS.map((newsitem) => (
+        <SimpleGrid
+          key={newsitem.id}
+          columns={{ base: 1, md: 2 }}
+          spacing={10}
+          mt={8}
         >
-          <Text
-            textTransform={"uppercase"}
-            color={"blue.400"}
-            fontWeight={600}
-            fontSize={"sm"}
-            bg={useColorModeValue("blue.50", "blue.900")}
-            p={2}
-            alignSelf={"flex-start"}
-            rounded={"md"}
-          >
-            Coming Soon!
-          </Text>
-          <Stack>
-            <Heading>Raittikarnevaaleille Leppavaaran</Heading>
-            <Text color={"gray.500"} fontSize={"lg"}>
-              Welcome to LatinoMix show at Estrada-Dance school in Leppavaara
+          <Stack spacing={4}>
+            <Text
+              textTransform={"uppercase"}
+              color={"blue.400"}
+              fontWeight={600}
+              fontSize={"sm"}
+              bg={useColorModeValue("blue.50", "blue.900")}
+              p={2}
+              alignSelf={"flex-start"}
+              rounded={"md"}
+            >
+              {newsitem.class}
             </Text>
-
-            <Stack>
-              <Flex
-                w={8}
-                h={8}
-                align={"center"}
-                justify={"center"}
-                rounded={"full"}
-              ></Flex>
-              <Text fontWeight={600}>place: Leppavaara</Text>
-              <Text fontWeight={600}>datetime: 2022-09-03 12:00</Text>
+            <Heading>{newsitem.event_name}</Heading>
+            <Text color={"gray.500"} fontSize={"lg"}>
+              {newsitem.description}
+            </Text>
+            <Stack
+              spacing={4}
+              divider={
+                <StackDivider
+                  borderColor={useColorModeValue("gray.100", "gray.700")}
+                />
+              }
+            >
+              <Feature
+                icon={<Icon as={FaHome} color={"yellow.500"} w={5} h={5} />}
+                iconBg={useColorModeValue("yellow.100", "yellow.900")}
+                text={newsitem.place}
+              />
+              <Feature
+                icon={<Icon as={BiCloset} color={"green.500"} w={5} h={5} />}
+                iconBg={useColorModeValue("green.100", "green.900")}
+                text={newsitem.dresscode}
+              />
+              <Feature
+                icon={<Icon as={BiEuro} color={"purple.500"} w={5} h={5} />}
+                iconBg={useColorModeValue("purple.100", "purple.900")}
+                text={newsitem.price}
+              />
             </Stack>
           </Stack>
-          <Stack>
-            <Heading>Master Class - Zumba</Heading>
-            <Text color={"gray.500"} fontSize={"lg"}>
-              Welcome to Fiesta Summer 2022
-            </Text>
-
-            <Stack>
-              <Flex
-                w={8}
-                h={8}
-                align={"center"}
-                justify={"center"}
-                rounded={"full"}
-              ></Flex>
-              <Text fontWeight={600}>place: Kivenlahti</Text>
-              <Text fontWeight={600}>datetime: 2022-08-27 15:00</Text>
-            </Stack>
-          </Stack>
-        </Stack>
-      </SimpleGrid>
+          <Flex>
+            <Image
+              rounded={"md"}
+              alt={"feature image"}
+              src={newsitem.img}
+              objectFit={"cover"}
+            />
+          </Flex>
+        </SimpleGrid>
+      ))}
     </Container>
   );
 }
-
-export default News;

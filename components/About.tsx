@@ -17,7 +17,7 @@ import {
 function About() {
   return (
     <>
-      <Stack>
+      <Stack p={4}>
         <Center>
           {" "}
           <Stack
@@ -64,7 +64,12 @@ function About() {
               >
                 {" "}
                 Dancer, musician, PM for work or{" "}
-                <Link href={"#"} color={"blue.400"}>
+                <Link
+                  href="https://www.instagram.com/latinomixtanssi/"
+                  isExternal
+                  color={"blue.200"}
+                  fontWeight={600}
+                >
                   {" "}
                   Follow{" "}
                 </Link>{" "}
@@ -125,7 +130,7 @@ function About() {
                 {" "}
                 <Flex padding={2} alignItems={"center"}>
                   <Link
-                    href="https://www.instagram.com/latinomixtanssi/"
+                    href="https://www.facebook.com/groups/1106771543020827"
                     isExternal
                   >
                     <Button
