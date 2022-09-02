@@ -75,8 +75,8 @@ const PriceItemTier = ({
     <ListItem maxW={"200px"} color="whiteAlpha.500" p={2}>
       {label} ({type})
       <Text
-        color={useColorModeValue(colorTextLight, colorTextDark)}
-        bgColor={useColorModeValue(bgColorLight, bgColorDark)}
+        color={colorTextLight}
+        bgColor={bgColorLight}
         fontSize={"sm"}
         fontWeight={FontWeight}
         rounded={"full"}
@@ -91,8 +91,8 @@ const NAV_ITEMS: Array<NavItem> = [
   {
     day: "Tuesday",
     city: "Kirkkonummi",
-    place: "Palvelukeskus SportHall",
-    address: "Kaenkuja 3, Kirkkonummi",
+    place: "Keskustan lähellä",
+    address: "Rajakuja 3, Kirkkonummi",
     services: [
       {
         service: "LatinoMix-Fitness",
@@ -145,7 +145,7 @@ function PriceWrapper({ children }: { children: ReactNode }) {
       shadow="base"
       borderWidth="1px"
       alignSelf={{ base: "center", lg: "flex-start" }}
-      borderColor={useColorModeValue("gray.200", "gray.500")}
+      borderColor={"gray.200"}
       borderRadius={"xl"}
     >
       {children}
@@ -218,7 +218,7 @@ function timetable() {
                 rounded={"full"}
                 fontSize={"sm"}
                 fontWeight={500}
-                bg={useColorModeValue("green.50", "green.900")}
+                bg={"green.50"}
               >
                 {item.day}
               </Text>
@@ -236,11 +236,7 @@ function timetable() {
                 </Stack>
               ))}
             </Box>
-            <VStack
-              bg={useColorModeValue("gray.50", "gray.700")}
-              py={4}
-              borderBottomRadius={"xl"}
-            >
+            <VStack bg={"gray.50"} py={4} borderBottomRadius={"xl"}>
               <List spacing={3} textAlign="start" px={12}>
                 <ListItem>
                   <ListIcon as={FaHome} color="green.500" />

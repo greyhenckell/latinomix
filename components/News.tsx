@@ -54,7 +54,7 @@ const NEWS_ITEMS: Array<NewsItem> = [
     price: "0.00",
     dresscode: "Pink shirt",
     class: "LatinoMix-Dance",
-    description: "Welcome to LatinoMix show  in Leppavaara",
+    description: "12:15 - 13:00",
     img: "imgs/estrada.png",
   },
 
@@ -68,7 +68,7 @@ const NEWS_ITEMS: Array<NewsItem> = [
     price: "2 tickes / 20 eur",
     dresscode: "party",
     class: "LatinoMix-Dance",
-    description: "",
+    description: "16:00-18:00",
     img: "imgs/merenneito.jpeg",
   },
 ];
@@ -107,7 +107,7 @@ export default function SplitWithImage() {
               color={"blue.400"}
               fontWeight={600}
               fontSize={"sm"}
-              bg={useColorModeValue("blue.50", "blue.900")}
+              bg={"blue.50"}
               p={2}
               alignSelf={"flex-start"}
               rounded={"md"}
@@ -120,25 +120,21 @@ export default function SplitWithImage() {
             </Text>
             <Stack
               spacing={4}
-              divider={
-                <StackDivider
-                  borderColor={useColorModeValue("gray.100", "gray.700")}
-                />
-              }
+              divider={<StackDivider borderColor={"gray.100"} />}
             >
               <Feature
                 icon={<Icon as={FaHome} color={"yellow.500"} w={5} h={5} />}
-                iconBg={useColorModeValue("yellow.100", "yellow.900")}
+                iconBg={"yellow.100"}
                 text={newsitem.place}
               />
               <Feature
                 icon={<Icon as={BiCloset} color={"green.500"} w={5} h={5} />}
-                iconBg={useColorModeValue("green.100", "green.900")}
+                iconBg={"green.100"}
                 text={newsitem.dresscode}
               />
               <Feature
                 icon={<Icon as={BiEuro} color={"purple.500"} w={5} h={5} />}
-                iconBg={useColorModeValue("purple.100", "purple.900")}
+                iconBg={"purple.100"}
                 text={newsitem.price}
               />
             </Stack>
