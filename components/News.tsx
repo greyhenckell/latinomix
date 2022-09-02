@@ -8,7 +8,6 @@ import {
   Stack,
   StackDivider,
   Icon,
-  useColorModeValue,
 } from "@chakra-ui/react";
 
 import {

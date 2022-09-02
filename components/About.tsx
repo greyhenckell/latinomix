@@ -10,8 +10,6 @@ import {
   Link,
   Stack,
   Text,
-  useColorModeValue,
-  StackDivider,
 } from "@chakra-ui/react";
 
 function About() {

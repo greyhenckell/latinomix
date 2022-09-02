@@ -6,7 +6,6 @@ import {
   Box,
   Link,
   Heading,
-  useColorModeValue,
   useDisclosure,
   HStack,
 } from "@chakra-ui/react";
@@ -33,7 +32,7 @@ const NavLink = ({ children, path }: { children: ReactNode; path: string }) => (
     rounded={"md"}
     _hover={{
       textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
+      bg: "gray.200",
     }}
     href={path}
   >
@@ -42,14 +41,14 @@ const NavLink = ({ children, path }: { children: ReactNode; path: string }) => (
 );
 
 function Header() {
-  const linkColor = useColorModeValue("gray.600", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.800", "white");
+  const linkColor = "gray.600";
+  const linkHoverColor = "gray.800";
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Box bg={"gray.100"} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
