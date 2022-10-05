@@ -136,9 +136,10 @@ function AdultsSchedule() {
                   </Text>
 
                   <Text
-                    color={"gray.100"}
-                    fontWeight={400}
-                    bgGradient={"linear(to-b, gray.600, transparent)"}
+                    color={"green.200"}
+                    fontWeight={600}
+                    fontSize={"1xl"}
+                    bgGradient={"linear(to-b, blackAlpha.900, transparent)"}
                   >
                     {serv.time}
                   </Text>
