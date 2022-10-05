@@ -1,7 +1,7 @@
 import {
   Container,
   Flex,
-  Stack,
+  Box,
   StackDivider,
   useColorModeValue,
   VStack,
@@ -10,6 +10,7 @@ import About from "components/About";
 import Footer from "components/Footer";
 import Header from "components/Header";
 import HomeBanner from "components/HomeBanner";
+
 import News from "components/News";
 
 import Head from "next/head";
@@ -36,15 +37,24 @@ const Home = () => {
         <meta property="og:url" content="https://latinomixtanssi.com/" />
         <meta property="og:type" content="website" />
       </Head>
-      <Flex p="6" w="full">
-        <VStack w="full" id="vstack" spacing="2">
-          <Stack w="100%">
-            <Header></Header>
-          </Stack>
+
+      <VStack
+        w="full"
+        id="vstack"
+        divider={<StackDivider borderColor="gray.200" />}
+        spacing={6}
+        //align="stretch"
+        p={4}
+        //bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
+      >
+        <Box>
+          <Header></Header>
           <HomeBanner></HomeBanner>
-          <News></News>
-        </VStack>
-      </Flex>
+        </Box>
+        <Box h="40px">
+          <Footer></Footer>
+        </Box>
+      </VStack>
     </>
   );
 };
