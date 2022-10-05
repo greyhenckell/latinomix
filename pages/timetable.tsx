@@ -129,7 +129,7 @@ function timetable() {
           <List>
             <ListItem color={"gray.400"}>Cash: on-site</ListItem>
             <ListItem color={"orange.500"}>MobilePay: +358 44 3732360</ListItem>
-            <ListItem color={"orange.500"}>ref: LM \"your_name\" </ListItem>
+            <ListItem color={"orange.500"}>ref: LM your_name </ListItem>
           </List>
         </Box>
       </Flex>
