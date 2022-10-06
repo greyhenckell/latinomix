@@ -1,7 +1,7 @@
 import {
   Button,
   Container,
-  Flex,
+  Box,
   Heading,
   Image,
   Link,
@@ -9,6 +9,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+
+import AdultsSchedule from "components/AdultsSchedule";
 
 function HomeBanner() {
   return (
@@ -18,15 +20,36 @@ function HomeBanner() {
       textAlign={"center"}
       align={"center"}
       spacing={{ base: 6 }}
+      //direction={"row"}
       p={{ base: 8, md: 12 }}
+      backgroundImage={"url(imgs/bgimage.jpeg)"}
+      backgroundSize={"cover"}
+      backgroundPosition={"center center"}
+
+      //h={"100vh"}
     >
-      <Heading>
+      <Heading
+        fontWeight={800}
+        color={"gray.900"}
+        bgGradient={"linear(to-b, whiteAlpha.900, transparent)"}
+      >
         Dance with LatinoMix{" "}
-        <Text as={"span"} color={"green.400"}>
+        <Text
+          as={"span"}
+          color={"green.600"}
+          bgGradient={"linear(to-b, whiteAlpha.900, transparent)"}
+        >
           is easy
         </Text>
       </Heading>
-      <Text color={"gray.500"} maxW={"6xl"}>
+      <Text
+        color={"gray.200"}
+        maxW={"6xl"}
+        as="em"
+        fontSize={"1xl"}
+        fontWeight={600}
+        bgGradient={"linear(to-b, blackAlpha.600, transparent)"}
+      >
         Latinomix dance classes are all this! You will enjoy dancing to Latin
         rhythms, have fun and stay fit. In a happy and energetic LATINOMIX dance
         lesson, you will learn about different Latin dances in short steps
@@ -35,6 +58,9 @@ function HomeBanner() {
         of different Latin dances, with a good feeling..
       </Text>
       <Stack spacing={6} direction={"row"}>
+        <AdultsSchedule></AdultsSchedule>
+      </Stack>
+      <Stack spacing={2} direction={"row"}>
         <Link href="/timetable">
           <Button
             rounded={"full"}
@@ -47,13 +73,14 @@ function HomeBanner() {
           </Button>
         </Link>
       </Stack>
-      <Flex align="center">
+
+      {/*<Flex align="center">
         <Image
           height={{ sm: "24rem", lg: "28rem" }}
           mt={{ base: 12, sm: 16 }}
           src="imgs/homepage.jpeg"
-        />
-      </Flex>
+  />
+      </Flex>*/}
     </Stack>
   );
 }
