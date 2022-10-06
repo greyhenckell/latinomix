@@ -43,16 +43,13 @@ const Home = () => {
         id="vstack"
         divider={<StackDivider borderColor="gray.200" />}
         spacing={6}
-        //align="stretch"
+        align="stretch"
         p={4}
         //bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
       >
         <Box>
           <Header></Header>
           <HomeBanner></HomeBanner>
-        </Box>
-        <Box h="40px">
-          <Footer></Footer>
         </Box>
       </VStack>
     </>

@@ -9,6 +9,7 @@ function App({ Component, pageProps }: AppProps): ReactElement {
   return (
     <ChakraProvider>
       <Component {...pageProps} />
+      <Footer></Footer>
     </ChakraProvider>
   );
 }
