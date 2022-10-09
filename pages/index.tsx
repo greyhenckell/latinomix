@@ -1,17 +1,8 @@
-import {
-  Container,
-  Flex,
-  Box,
-  StackDivider,
-  useColorModeValue,
-  VStack,
-} from "@chakra-ui/react";
+import { Container, Flex, Box, StackDivider, VStack } from "@chakra-ui/react";
 import About from "components/About";
-import Footer from "components/Footer";
+
 import Header from "components/Header";
 import HomeBanner from "components/HomeBanner";
-
-import News from "components/News";
 
 import Head from "next/head";
 import React from "react";
