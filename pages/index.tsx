@@ -16,6 +16,8 @@ import News from "components/News";
 import Head from "next/head";
 import React from "react";
 
+import Script from "next/script";
+
 const Home = () => {
   return (
     <>
@@ -36,6 +38,20 @@ const Home = () => {
         />
         <meta property="og:url" content="https://latinomixtanssi.com/" />
         <meta property="og:type" content="website" />
+
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+        `}
+        </Script>
       </Head>
 
       <VStack
