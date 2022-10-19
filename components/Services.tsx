@@ -2,16 +2,18 @@ import {
   Avatar,
   Box,
   chakra,
-  Container,
+  Link,
   Flex,
   Icon,
   SimpleGrid,
   useColorModeValue,
 } from "@chakra-ui/react";
 
+import { FiArrowLeftCircle } from "react-icons/fi";
+
 const testimonials = [
   {
-    name: "LM-Dance",
+    name: "Fitness Class",
     role: "fitness| variety| coreo| energetic |  60min",
     content:
       "In Latinomix dance classes, you can enjoy the Latin rhythms, have fun \
@@ -22,29 +24,31 @@ const testimonials = [
     avatar: "imgs/lm_fitness.jpeg",
   },
   {
-    name: "LM-EasyDance",
+    name: "EasyDance Class",
     role: "coreo| low intensity| focus",
     content:
-      "Focus on the steps, coreo and flow, a lot of repetitions are included , you will enjoy more next time with more \
-      energy and intensity",
+      "In the class, basic steps are practiced, e.g. salsa, merengue, bachata, reggaeton, samba and chachacha \
+      focus on the  coreo-steps and flow. We start from the very beginning and do a lot of repetitions in a great mood and energy ,\
+      welcome to have fun",
     avatar: "imgs/lm_easydance.jpeg",
   },
   {
-    name: "LM-Couple",
-    role: "bachata| salsa| couple| beginner",
+    name: "Couple Class",
+    role: "Bachata| Salsa| beginner",
     content:
-      "From 0 to middle level, you will able to enjoy the dance in couple , ",
+      "Salsa and Bachata in couple, easy quick and fun way to learn, from very beginners to up, \
+      or improve your dance style ",
     avatar: "imgs/lm_pari.jpg",
   },
   {
-    name: "LM-Private",
+    name: "Private Class",
     role: "bacherlor parties | company-wellness | customize",
     content:
       "Book me when you want ,send me a direct message by any social network",
     avatar: "imgs/lm_kids.jpg",
   },
   {
-    name: "LM-Kids",
+    name: "LatinoMix- Kids",
     role: "kids | easy coreos | 45min",
     content:
       " The latest Finnish hits\
@@ -157,6 +161,12 @@ export default function GridBlurredBackdrop() {
       direction={"column"}
       width={"full"}
     >
+      <Box p={4}>
+        <Link href="/" color="orange.400" fontSize={15} alignItems="center">
+          <Icon as={FiArrowLeftCircle} w={6} h={6} mr={2} />
+          HomePage
+        </Link>
+      </Box>
       <Box width={{ base: "full", sm: "lg", lg: "xl" }} margin={"auto"}>
         <chakra.h3
           fontFamily={"Work Sans"}
@@ -174,7 +184,7 @@ export default function GridBlurredBackdrop() {
           fontWeight={"bold"}
           color={useColorModeValue("gray.700", "gray.50")}
         >
-          Check our main services
+          Check our main Services
         </chakra.h1>
         <chakra.h2
           margin={"auto"}

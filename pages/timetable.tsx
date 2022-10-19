@@ -3,7 +3,6 @@ import React from "react";
 import {
   Box,
   Text,
-  Stack,
   List,
   chakra,
   ListItem,
@@ -16,12 +15,9 @@ import {
   Flex,
   GridItem,
   Image,
-  Button,
   Divider,
-  useBreakpointValue,
 } from "@chakra-ui/react";
 
-import {} from "@chakra-ui/react";
 import { FiArrowLeftCircle } from "react-icons/fi";
 
 interface PriceItemProps {
@@ -103,7 +99,7 @@ function timetable() {
           <GridItem colSpan={1}>
             <VStack alignItems="flex-start" spacing="20px">
               <chakra.h2 fontSize="3xl" fontWeight="700">
-                LatinoMix - Schedule 2022/2023
+                LatinoMix - schedule 2022/2023
               </chakra.h2>
               <Heading mt={1} as="h1" size="sm" color="green.500">
                 Prices
@@ -132,12 +128,12 @@ function timetable() {
             </VStack>
           </GridItem>
           <GridItem>
-            <Flex align="center">
+            <Flex align="center" p={2}>
               <Box objectFit="cover" alignContent="center">
                 <Image
-                  src="imgs/bg_schedule.jpeg"
+                  src="imgs/lm_timetable.jpeg"
                   boxSize="300px"
-                  borderRadius="full"
+                  //borderRadius="50%"
                 ></Image>
               </Box>
             </Flex>

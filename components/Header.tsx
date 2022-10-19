@@ -20,7 +20,7 @@ interface LinkProps {
 }
 
 const Links: Array<LinkProps> = [
-  { name: "News", path: "#news" },
+  { name: "News", path: "/news" },
   { name: "Schedule&Prices", path: "/timetable" },
   { name: "About Us", path: "/about" },
 ];
