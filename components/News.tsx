@@ -40,16 +40,16 @@ interface NewsItem {
 const NEWS_ITEMS: Array<NewsItem> = [
   {
     id: 1,
-    day: "Saturday",
+    day: "Sunday",
     city: "Espoo",
-    event_name: "Halloween MasterClass",
-    place: "Opinmaen Koulu",
-    address: "Lillhemtintie 1, 02250 Espoo",
-    price: "20.00",
-    dresscode: "RED",
+    event_name: "Pikkujoulut ft. La sexta Flecha",
+    place: "Matinkylän Pirtti",
+    address: "Keskipäivänkuja 4, Espoo",
+    price: "20.00 / 2 Liput",
+    dresscode: "Smart Casual",
     class: "LatinoMix-Fitness",
-    description: "15:00 - 17:00",
-    img: "imgs/lm_hallo.jpeg",
+    description: "16:00 -  ",
+    img: "imgs/lm_joulu.jpeg",
   },
 ];
 
