@@ -33,6 +33,7 @@ function About() {
             <Flex flex={1} bg="blue.200">
               {" "}
               <Image
+                alt="about latinomix"
                 objectFit="cover"
                 boxSize="100%"
                 src={"imgs/about.jpeg"}

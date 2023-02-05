@@ -26,6 +26,7 @@ function Unauth() {
         overflow={"hidden"}
       >
         <Image
+          alt="login latinomix"
           h={"120px"}
           w={"full"}
           src={

@@ -4,16 +4,10 @@ import {
   Box,
   Text,
   List,
-  chakra,
   ListItem,
   Icon,
   Heading,
   Link,
-  VStack,
-  Grid,
-  Container,
-  Flex,
-  GridItem,
   Image,
   Divider,
 } from "@chakra-ui/react";
@@ -98,7 +92,7 @@ export const getServerSideProps = async () => {
   };
 };
 
-function timetable({ journals, tickets }: Props) {
+function Timetable({ journals, tickets }: Props) {
   const router = useRouter();
   const refreshData = () => {
     router.replace(router.asPath);
@@ -127,4 +121,4 @@ function timetable({ journals, tickets }: Props) {
   );
 }
 
-export default timetable;
+export default Timetable;
