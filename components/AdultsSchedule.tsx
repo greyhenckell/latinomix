@@ -1,7 +1,6 @@
 import React from "react";
 
 import {
-  Flex,
   Box,
   List,
   Text,
@@ -13,20 +12,6 @@ import {
 
 import { FaHome } from "react-icons/fa";
 import { MdPlace } from "react-icons/md";
-
-interface Services {
-  service: string;
-
-  time: string;
-}
-
-interface NavItem {
-  day: string;
-  place: string;
-  address: string;
-  city: string;
-  services: Array<Services>;
-}
 
 import { ReactNode } from "react";
 import { Journal } from "typing";

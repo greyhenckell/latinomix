@@ -1,9 +1,8 @@
-import { Container, Flex, Box, StackDivider, VStack } from "@chakra-ui/react";
-import About from "components/About";
-import EditService from "components/EditService";
+import { Box, StackDivider, VStack } from "@chakra-ui/react";
 
 import Header from "components/Header";
 import HomeBanner from "components/HomeBanner";
+import prisma from "lib/prisma";
 
 import Head from "next/head";
 import React from "react";
@@ -14,9 +13,7 @@ interface Props {
 }
 
 export const getServerSideProps = async () => {
-  const [journals] = await Promise.all([
-    fetch("http://localhost:3000/api/services").then((res) => res.json()),
-  ]);
+  const journals = await prisma.workDay.findMany();
 
   return {
     props: {

@@ -75,6 +75,8 @@ import KidsSchedule from "components/KidsSchedule";
 import { Journal, Ticket } from "typing";
 import TicketPage from "components/modules/Tickets/TicketPage";
 
+import prisma from "lib/prisma";
+
 import { useRouter } from "next/router";
 
 interface Props {
@@ -84,8 +86,8 @@ interface Props {
 
 export const getServerSideProps = async () => {
   const [journals, tickets] = await Promise.all([
-    fetch("http://localhost:3000/api/services").then((res) => res.json()),
-    fetch("http://localhost:3000/api/tickets").then((res) => res.json()),
+    prisma.workDay.findMany(),
+    prisma.ticket.findMany(),
   ]);
 
   return {

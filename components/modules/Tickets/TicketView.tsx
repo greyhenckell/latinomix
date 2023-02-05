@@ -55,7 +55,7 @@ function TicketView({ ticket, refreshData }: Props) {
 
   async function deleteTicket(id: string) {
     try {
-      fetch(`http://localhost:3000/api/tickets/${id}`, {
+      fetch(`/api/tickets/${id}`, {
         headers: {
           "Content-Type": "application/json",
         },

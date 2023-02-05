@@ -47,7 +47,7 @@ function TicketPage({ tickets, refreshData }: Props) {
           lineHeight={1.1}
           fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
         >
-          Ready to get Dance ?
+          Ready to Dance ?
           <Text
             as={"span"}
             bgGradient="linear(to-r, red.400,pink.400)"
