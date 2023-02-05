@@ -28,55 +28,6 @@ interface NavItem {
   services: Array<Services>;
 }
 
-const NAV_ITEMS: Array<NavItem> = [
-  {
-    day: "Tuesday",
-    city: "Kirkkonummi",
-    place: "Kirkkonummen Palvelukeskus",
-    address: "Rajakuja 3, Kirkkonummi",
-    services: [
-      {
-        service: "LatinoMix-Dance",
-
-        time: "18:00-19:00",
-      },
-    ],
-  },
-
-  {
-    day: "Thursday",
-    city: "Espoo",
-    place: "Matinkylän Pirtti",
-    address: "Keskipäivänkuja 4, Espoo",
-    services: [
-      {
-        service: "LatinoMix-Dance",
-
-        time: "18:00-19:00",
-      },
-    ],
-  },
-
-  {
-    day: "Sunday",
-    city: "Espoo",
-    place: "Matinkylän Pirtti",
-    address: "Keskipäivänkuja 4, Espoo",
-    services: [
-      {
-        service: "LatinoMix-EasyDance",
-
-        time: "16:00-17:00",
-      },
-      {
-        service: "LatinoMix-Dance",
-
-        time: "17:00-18:00",
-      },
-    ],
-  },
-];
-
 import { ReactNode } from "react";
 import { Journal } from "typing";
 function PriceWrapper({ children }: { children: ReactNode }) {

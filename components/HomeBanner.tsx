@@ -34,17 +34,18 @@ function HomeBanner({ journals }: Props) {
       //h={"100vh"}
     >
       <Heading
-        fontWeight={800}
-        color={"gray.900"}
+        fontWeight={400}
+        color={"gray.600"}
         bgGradient={"linear(to-b, whiteAlpha.900, transparent)"}
       >
-        Dance with LatinoMix{" "}
+        Looking for Energy,Power and Flow?
         <Text
+          fontWeight={800}
           as={"span"}
-          color={"green.600"}
+          color={"gray.900"}
           bgGradient={"linear(to-b, whiteAlpha.900, transparent)"}
         >
-          is easy
+          {"  "} LatinoMix
         </Text>
       </Heading>
       <Text

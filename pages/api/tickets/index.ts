@@ -8,11 +8,18 @@ export default async function handler(
 ) {
   const ticket = req.body;
 
-  const result = await prisma.ticket.create({
-    data: {
-      ...ticket,
-    },
-  });
+  if (req.method === "POST") {
+    const result = await prisma.ticket.create({
+      data: {
+        ...ticket,
+      },
+    });
 
-  return res.status(200).json(result);
+    return res.status(200).json(result);
+  }
+
+  if (req.method === "GET") {
+    const tickets = await prisma.ticket.findMany();
+    return res.json(tickets);
+  }
 }

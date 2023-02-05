@@ -18,13 +18,19 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  Text,
+  Input,
+  VStack,
+  StackDivider,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
 import { ReactNode } from "react";
 import { Ticket, User } from "typing";
-import TicketsList from "./modules/tickets/TicketsList";
+import TicketsList from "./modules/Tickets/TicketsList";
 
-const Links = ["Dashboard", "Projects", "Team"];
+import { useForm } from "react-hook-form";
+
+const Links = ["Tickets", "Services", "News"];
 
 const NavLink = ({ children }: { children: ReactNode }) => (
   <Link
@@ -51,6 +57,37 @@ interface Props {
 function EditService({ name, image, tickets, refreshData }: Props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  //submit ticket
+  const onSubmit = async (data: any) => {
+    try {
+      const body = {
+        name: data.ticketName,
+        description: data.ticketDescription,
+        price: parseFloat(data.ticketPrice),
+        discount: parseFloat(data.ticketDiscount),
+        finalprice:
+          parseFloat(data.ticketPrice) *
+          (1 - parseFloat(data.ticketDiscount) / 100),
+      };
+      await fetch("/api/tickets", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      refreshData();
+      reset();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
@@ -63,7 +100,6 @@ function EditService({ name, image, tickets, refreshData }: Props) {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box>Welcome {name}</Box>
             <HStack
               as={"nav"}
               spacing={4}
@@ -75,15 +111,7 @@ function EditService({ name, image, tickets, refreshData }: Props) {
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
-            <Button
-              variant={"solid"}
-              colorScheme={"teal"}
-              size={"sm"}
-              mr={4}
-              leftIcon={<AddIcon />}
-            >
-              Action
-            </Button>
+            <Box mr={4}>Welcome {name}</Box>
             <Menu>
               <MenuButton
                 as={Button}
@@ -115,10 +143,63 @@ function EditService({ name, image, tickets, refreshData }: Props) {
         ) : null}
       </Box>
 
-      <Box p={4}>
-        Ticket List
-        <TicketsList tickets={tickets} refreshData={refreshData}></TicketsList>
-      </Box>
+      <VStack
+        align="stretch"
+        p={6}
+        spacing={4}
+        divider={<StackDivider borderColor="black" />}
+      >
+        <Box id="add_ticket" width="md">
+          <Text fontSize="md" as="b" p={2}>
+            New Tickets
+          </Text>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Stack spacing={2}>
+              <Input
+                placeholder="name"
+                type="text"
+                {...register("ticketName", { required: true })}
+              />
+              <Input
+                placeholder="description"
+                type="text"
+                {...register("ticketDescription")}
+              />
+              <Input
+                placeholder="price"
+                type="number"
+                {...register("ticketPrice", { required: true })}
+              />
+              <Input
+                placeholder="discount"
+                type="number"
+                {...register("ticketDiscount", { required: true })}
+              />
+            </Stack>
+            <Flex py={2}>
+              <Button
+                py={1}
+                variant={"solid"}
+                colorScheme={"teal"}
+                size={"sm"}
+                mr={4}
+                type="submit"
+                role="submit"
+                leftIcon={<AddIcon />}
+              >
+                Add
+              </Button>
+            </Flex>
+          </form>
+        </Box>
+
+        <Box p={8} width="md">
+          <TicketsList
+            tickets={tickets}
+            refreshData={refreshData}
+          ></TicketsList>
+        </Box>
+      </VStack>
     </>
   );
 }

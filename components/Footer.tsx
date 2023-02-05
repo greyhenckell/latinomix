@@ -27,7 +27,7 @@ function Footer() {
         </Text>
       </Flex>
       <Text pt={6} fontSize={"sm"} textAlign={"center"}>
-        © 2022 LatinoMix. All rights reserved
+        © 2023 LatinoMix. All rights reserved
       </Text>
     </Box>
   );

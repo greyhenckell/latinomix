@@ -11,17 +11,12 @@ import { Ticket, User } from "typing";
 import prisma from "../../../lib/prisma";
 import { useRouter } from "next/router";
 
-interface Props {
-  user?: User;
-}
-
 interface TicketProps {
   tickets: Ticket[];
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const tickets = await prisma.ticket.findMany();
-  console.log("home admin", tickets);
 
   return {
     props: {

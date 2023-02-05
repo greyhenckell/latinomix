@@ -72,100 +72,48 @@ const PriceItemTier = ({
 
 import AdultsSchedule from "components/AdultsSchedule";
 import KidsSchedule from "components/KidsSchedule";
-import { Journal } from "typing";
+import { Journal, Ticket } from "typing";
+import TicketPage from "components/modules/Tickets/TicketPage";
+
+import { useRouter } from "next/router";
 
 interface Props {
   journals: Journal[];
+  tickets: Ticket[];
 }
 
 export const getServerSideProps = async () => {
-  const [journals] = await Promise.all([
+  const [journals, tickets] = await Promise.all([
     fetch("http://localhost:3000/api/services").then((res) => res.json()),
+    fetch("http://localhost:3000/api/tickets").then((res) => res.json()),
   ]);
 
   return {
     props: {
       journals: journals,
+      tickets: tickets,
     },
   };
 };
 
-function timetable({ journals }: Props) {
+function timetable({ journals, tickets }: Props) {
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   return (
     <>
       <Box p={4}>
-        <Link href="/" color="orange.400" fontSize={15} alignItems="center">
+        <Link href="/" color="gray.800" fontSize={15} alignItems="center">
           <Icon as={FiArrowLeftCircle} w={6} h={6} mr={2} />
           HomePage
         </Link>
       </Box>
-      <Box
-        as={Container}
-        maxW="7xl"
-        p={4}
-        bgGradient={"linear(to-b, blackAlpha.400, transparent 50%)"}
-      >
-        <Grid
-          templateColumns={{
-            base: "repeat(1, 1fr)",
-            sm: "repeat(2, 1fr)",
-            md: "repeat(2, 1fr)",
-          }}
-          gap={4}
-        >
-          <GridItem colSpan={1}>
-            <VStack alignItems="flex-start" spacing="20px">
-              <chakra.h2 fontSize="3xl" fontWeight="700">
-                LatinoMix - schedule 2022/2023
-              </chakra.h2>
-              <Heading mt={1} as="h1" size="sm" color="green.500">
-                Prices
-              </Heading>
-              <List>
-                {PRICE_ITEMS.map((pitem) => (
-                  <PriceItemTier
-                    key={pitem.type}
-                    type={pitem.type}
-                    label={pitem.label}
-                    price={pitem.price}
-                    offer={pitem.offer}
-                  ></PriceItemTier>
-                ))}
-              </List>
-              <Heading mt={2} as="h1" size="sm" color="green.500">
-                Payment Methods:
-              </Heading>
-              <List>
-                <ListItem color={"gray.400"}>Cash: on-site</ListItem>
-                <ListItem color={"orange.500"}>
-                  MobilePay: +358 44 3732360
-                </ListItem>
-                <ListItem color={"orange.500"}>ref: LM name </ListItem>
-              </List>
-            </VStack>
-          </GridItem>
-          <GridItem>
-            <Flex align="center" p={2}>
-              <Box objectFit="cover" alignContent="center">
-                <Image
-                  src="imgs/lm_timetable.jpeg"
-                  boxSize="300px"
-                  //borderRadius="50%"
-                ></Image>
-              </Box>
-            </Flex>
-          </GridItem>
-        </Grid>
-        <Divider mt={12} mb={12} />
-        <Grid
-          templateColumns={{
-            base: "repeat(1, 1fr)",
-            sm: "repeat(2, 1fr)",
-            md: "repeat(4, 1fr)",
-          }}
-          gap={{ base: "8", sm: "12", md: "16" }}
-        ></Grid>
-      </Box>
+
+      <TicketPage tickets={tickets} refreshData={refreshData}></TicketPage>
+
+      <Divider orientation="horizontal" p={2} />
 
       <Box p={4}>
         <AdultsSchedule journals={journals}></AdultsSchedule>

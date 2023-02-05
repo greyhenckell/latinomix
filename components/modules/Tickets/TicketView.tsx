@@ -72,9 +72,10 @@ function TicketView({ ticket, refreshData }: Props) {
     <>
       {ticketState === "view" && (
         <div>
-          <Text> {ticket.name}</Text>
-          <Text>{ticket.description}</Text>
-          <Text>{ticket.price}</Text>
+          <Text py={1}> {ticket.name}</Text>
+          <Text py={1}>{ticket.price}</Text>
+          <Text py={1}>{ticket.discount}%</Text>
+          <Text py={1}>{ticket.finalprice}</Text>
           <button
             className="icon-button"
             onClick={() => setTicketState("edit")}
