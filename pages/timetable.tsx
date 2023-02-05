@@ -105,9 +105,9 @@ function timetable({ journals, tickets }: Props) {
   };
 
   return (
-    <>
+    <div>
       <Box p={4}>
-        <Link href="/" color="gray.800" fontSize={15} alignItems="center">
+        <Link href="/" color="orange.400" fontSize={15} alignItems="center">
           <Icon as={FiArrowLeftCircle} w={6} h={6} mr={2} />
           HomePage
         </Link>
@@ -123,7 +123,7 @@ function timetable({ journals, tickets }: Props) {
         <Divider orientation="horizontal" />
         <KidsSchedule></KidsSchedule>
       </Box>
-    </>
+    </div>
   );
 }
 

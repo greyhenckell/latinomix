@@ -5,9 +5,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
-module.exports = {
-  eslint: {
-    dirs: ["components", "modules"],
-  },
-};
