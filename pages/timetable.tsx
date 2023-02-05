@@ -72,8 +72,25 @@ const PriceItemTier = ({
 
 import AdultsSchedule from "components/AdultsSchedule";
 import KidsSchedule from "components/KidsSchedule";
+import { Journal } from "typing";
 
-function timetable() {
+interface Props {
+  journals: Journal[];
+}
+
+export const getServerSideProps = async () => {
+  const [journals] = await Promise.all([
+    fetch("http://localhost:3000/api/services").then((res) => res.json()),
+  ]);
+
+  return {
+    props: {
+      journals: journals,
+    },
+  };
+};
+
+function timetable({ journals }: Props) {
   return (
     <>
       <Box p={4}>
@@ -151,7 +168,7 @@ function timetable() {
       </Box>
 
       <Box p={4}>
-        <AdultsSchedule></AdultsSchedule>
+        <AdultsSchedule journals={journals}></AdultsSchedule>
         {/* add kids component*/}
         <Divider orientation="horizontal" />
         <KidsSchedule></KidsSchedule>

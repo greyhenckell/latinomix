@@ -3,6 +3,8 @@ import { ReactElement } from "react";
 import { ChakraProvider, theme } from "@chakra-ui/react";
 import { AppProps } from "next/app";
 
+import { SessionProvider } from "next-auth/react";
+
 import Footer from "components/Footer";
 
 import { useEffect } from "react";
@@ -10,7 +12,10 @@ import { useRouter } from "next/router";
 import Script from "next/script";
 import * as gtag from "../lib/gtag";
 
-function App({ Component, pageProps }: AppProps): ReactElement {
+function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps): ReactElement {
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url: string) => {
@@ -45,8 +50,10 @@ function App({ Component, pageProps }: AppProps): ReactElement {
       />
 
       <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
-        <Footer></Footer>
+        <SessionProvider session={session}>
+          <Component {...pageProps} />
+          <Footer></Footer>
+        </SessionProvider>
       </ChakraProvider>
     </>
   );

@@ -29,12 +29,14 @@ flow-typed
 yarn.lock
 javascript/**/migrations/
 typescript/**/migrations/
+prisma/**/migrations/
 misc/**/migrations/
 databases/**/migrations/
 experimental/**/*.db
 package-lock.json
 # local env files
 .env*.local
+.env*
 
 *tmp.db
 dist/
@@ -48,3 +50,6 @@ dist/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+#prettier
+.prettier*

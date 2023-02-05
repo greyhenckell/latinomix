@@ -1,17 +1,35 @@
 import { Container, Flex, Box, StackDivider, VStack } from "@chakra-ui/react";
 import About from "components/About";
+import EditService from "components/EditService";
 
 import Header from "components/Header";
 import HomeBanner from "components/HomeBanner";
 
 import Head from "next/head";
 import React from "react";
+import { Journal } from "typing";
 
-const Home = () => {
+interface Props {
+  journals: Journal[];
+}
+
+export const getServerSideProps = async () => {
+  const [journals] = await Promise.all([
+    fetch("http://localhost:3000/api/services").then((res) => res.json()),
+  ]);
+
+  return {
+    props: {
+      journals: journals,
+    },
+  };
+};
+
+const Home = ({ journals }: Props) => {
   return (
     <>
       <Head>
-        <title>Classes | LatinoMixTanssi | Espoo</title>
+        <title>LatinoMixTanssi-Espoo</title>
         <meta
           name="keywords"
           content="dance | espoo | latinomix | latin style"
@@ -40,7 +58,7 @@ const Home = () => {
       >
         <Box>
           <Header></Header>
-          <HomeBanner></HomeBanner>
+          <HomeBanner journals={journals} />
         </Box>
       </VStack>
     </>

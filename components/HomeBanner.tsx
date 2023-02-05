@@ -11,8 +11,13 @@ import {
 import React from "react";
 
 import AdultsSchedule from "components/AdultsSchedule";
+import { Journal } from "typing";
 
-function HomeBanner() {
+interface Props {
+  journals: Journal[];
+}
+
+function HomeBanner({ journals }: Props) {
   return (
     <Stack
       w="full"
@@ -58,7 +63,7 @@ function HomeBanner() {
         of different Latin dances, with a good feeling..
       </Text>
       <Stack spacing={6} direction={"row"}>
-        <AdultsSchedule></AdultsSchedule>
+        <AdultsSchedule journals={journals} />
       </Stack>
       <Stack spacing={2} direction={"row"}>
         <Link href="/timetable">

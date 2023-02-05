@@ -1,18 +1,29 @@
-import { NextApiHandler } from "next";
 import NextAuth from "next-auth";
-
-import FacebookProvider from "next-auth/providers/facebook";
 import GoogleProvider from "next-auth/providers/google";
+import FacebookProvider from "next-auth/providers/facebook";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import prisma from "../../../lib/prisma";
 
-import Adapters from "next-auth/adapters";
-//const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options);
-
-/*const options = {
-    providers: [
-        FacebookProvider({
-            clientId:process.env.NEXTAUTH_URL,
-            clientSecret:process.env.NEXTAUTH_URL
-        })
-    ]
+interface Provider {
+  cllientId: string;
 }
-export default authHandler;*/
+
+export default NextAuth({
+  session: {
+    strategy: "jwt",
+  },
+  adapter: PrismaAdapter(prisma),
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
+    FacebookProvider({
+      clientId: process.env.FACEBOOK_CLIENT_ID as string,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET as string,
+    }),
+  ],
+  pages: {
+    signIn: "/admin/login",
+  },
+});

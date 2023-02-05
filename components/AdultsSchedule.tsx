@@ -78,6 +78,7 @@ const NAV_ITEMS: Array<NavItem> = [
 ];
 
 import { ReactNode } from "react";
+import { Journal } from "typing";
 function PriceWrapper({ children }: { children: ReactNode }) {
   return (
     <Box
@@ -93,7 +94,11 @@ function PriceWrapper({ children }: { children: ReactNode }) {
   );
 }
 
-function AdultsSchedule() {
+interface Props {
+  journals: Journal[];
+}
+
+function AdultsSchedule({ journals }: Props) {
   return (
     <Box>
       <Stack
@@ -103,11 +108,11 @@ function AdultsSchedule() {
         spacing={{ base: 4, lg: 10 }}
         py={10}
       >
-        {NAV_ITEMS.map((item) => (
-          <PriceWrapper key={item.day}>
+        {journals.map((item) => (
+          <PriceWrapper key={item.id}>
             <Box
               py={4}
-              px={12}
+              px={6}
               //bgGradient={"linear(to-b, blackAlpha.600, transparent)"}
             >
               <Text
@@ -120,19 +125,20 @@ function AdultsSchedule() {
               >
                 {item.day}
               </Text>
-              {item.services.map((serv) => (
+              {item.detailservice.map((serv) => (
                 <Stack
-                  key={serv.service}
+                  key={serv.name}
+                  py={2}
                   align={"flex-start'"}
                   justify={"center"}
                 >
                   <Text
-                    p={2}
-                    fontSize={"1xl"}
+                    py={2}
+                    fontSize={"2xl"}
                     fontWeight={600}
                     bgGradient={"linear(to-b, whiteAlpha.900, transparent)"}
                   >
-                    {serv.service}
+                    {serv.name}
                   </Text>
 
                   <Text
@@ -141,28 +147,28 @@ function AdultsSchedule() {
                     fontSize={"1xl"}
                     bgGradient={"linear(to-b, blackAlpha.900, transparent)"}
                   >
-                    {serv.time}
+                    {serv.start} -- {serv.end}
                   </Text>
-                </Stack>
-              ))}
-            </Box>
-            <VStack bg={"gray.50"} py={4} borderBottomRadius={"xl"}>
-              <List spacing={3} textAlign="start" px={12}>
-                <ListItem>
-                  <ListIcon as={FaHome} color="green.500" />
-                  {item.place}
-                </ListItem>
-                <ListItem>
-                  <ListIcon as={MdPlace} color="green.500" />
-                  {item.address}
-                </ListItem>
-              </List>
-              {/*<Box w="80%" pt={7}>
+                  <VStack bg={"gray.50"} py={2} borderBottomRadius={"xl"}>
+                    <List textAlign="start" px={2} fontSize={"sm"}>
+                      <ListItem>
+                        <ListIcon as={FaHome} color="green.500" />
+                        {serv.place}
+                      </ListItem>
+                      <ListItem>
+                        <ListIcon as={MdPlace} color="green.500" />
+                        {serv.address}
+                      </ListItem>
+                    </List>
+                    {/*<Box w="80%" pt={7}>
                 <Button w="full" colorScheme="red" variant="outline">
                   Join!
                 </Button>
               </Box>*/}
-            </VStack>
+                  </VStack>
+                </Stack>
+              ))}
+            </Box>
           </PriceWrapper>
         ))}
       </Stack>
