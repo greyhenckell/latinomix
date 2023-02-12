@@ -2,69 +2,17 @@ import React from "react";
 
 import {
   Box,
-  Text,
-  List,
-  ListItem,
   Icon,
-  Heading,
-  Link,
-  Image,
+  IconProps,
+  VStack,
   Divider,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 
 import { FiArrowLeftCircle } from "react-icons/fi";
 
-interface PriceItemProps {
-  type: string;
-  label: string;
-  price: number;
-  offer: boolean;
-}
-
-const PRICE_ITEMS: Array<PriceItemProps> = [
-  {
-    type: "Single",
-    label: "T1",
-    price: 15.0,
-    offer: false,
-  },
-  {
-    type: "Casual - x10",
-    label: "T10",
-    price: 120.0,
-    offer: true,
-  },
-];
-
-const PriceItemTier = ({
-  type,
-  label,
-  price,
-  offer = false,
-}: PriceItemProps) => {
-  const colorTextLight = offer ? "white" : "black";
-  const bgColorLight = offer ? "orange.600" : "gray.200";
-  const discount = offer ? "(SALE)" : "";
-  const FontWeight = offer ? 700 : 400;
-
-  return (
-    <ListItem maxW={"200px"} p={2}>
-      {label} ({type})
-      <Text
-        color={colorTextLight}
-        bgColor={bgColorLight}
-        fontSize={"sm"}
-        fontWeight={FontWeight}
-        rounded={"full"}
-      >
-        € {price}
-        {".00"} {discount}
-      </Text>
-    </ListItem>
-  );
-};
-
 import AdultsSchedule from "components/AdultsSchedule";
+import Header from "components/Header";
 import KidsSchedule from "components/KidsSchedule";
 import { Journal, Ticket } from "typing";
 import TicketPage from "components/modules/Tickets/TicketPage";
@@ -92,6 +40,28 @@ export const getServerSideProps = async () => {
   };
 };
 
+export const Blur = (props: IconProps) => {
+  return (
+    <Icon
+      width={useBreakpointValue({ base: "100%", md: "40vw", lg: "30vw" })}
+      zIndex={useBreakpointValue({ base: -1, md: -1, lg: 0 })}
+      height="770px"
+      viewBox="0 0 528 560"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <circle cx="71" cy="61" r="111" fill="#F56565" />
+      <circle cx="244" cy="106" r="139" fill="#ED64A6" />
+      <circle cy="291" r="139" fill="#ED64A6" />
+      <circle cx="80.5" cy="189.5" r="101.5" fill="#ED8936" />
+      <circle cx="196.5" cy="317.5" r="101.5" fill="#ECC94B" />
+      <circle cx="70.5" cy="458.5" r="101.5" fill="#48BB78" />
+      <circle cx="426.5" cy="-0.5" r="101.5" fill="#4299E1" />
+    </Icon>
+  );
+};
+
 function Timetable({ journals, tickets }: Props) {
   const router = useRouter();
   const refreshData = () => {
@@ -100,23 +70,26 @@ function Timetable({ journals, tickets }: Props) {
 
   return (
     <div>
-      <Box p={4}>
-        <Link href="/" color="orange.400" fontSize={15} alignItems="center">
-          <Icon as={FiArrowLeftCircle} w={6} h={6} mr={2} />
-          HomePage
-        </Link>
-      </Box>
+      <Header Links={[{ name: "homepage", path: "/" }]}></Header>
+      <VStack py={6}>
+        <TicketPage tickets={tickets}></TicketPage>
 
-      <TicketPage tickets={tickets} refreshData={refreshData}></TicketPage>
+        <Blur
+          position={"absolute"}
+          top={10}
+          left={-70}
+          style={{ filter: "blur(70px)" }}
+        />
 
-      <Divider orientation="horizontal" p={2} />
+        <Divider orientation="horizontal" p={2} />
 
-      <Box p={4}>
-        <AdultsSchedule journals={journals}></AdultsSchedule>
-        {/* add kids component*/}
-        <Divider orientation="horizontal" />
-        <KidsSchedule></KidsSchedule>
-      </Box>
+        <Box p={4}>
+          <AdultsSchedule journals={journals}></AdultsSchedule>
+          {/* add kids component*/}
+          <Divider orientation="horizontal" />
+          <KidsSchedule></KidsSchedule>
+        </Box>
+      </VStack>
     </div>
   );
 }

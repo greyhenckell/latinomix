@@ -6,7 +6,7 @@ interface Props {
   refreshData: () => void;
 }
 
-import { Box, Button, Input, Text } from "@chakra-ui/react";
+import { Box, Button, Checkbox, Input, Text } from "@chakra-ui/react";
 import { CheckIcon, CloseIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -22,6 +22,7 @@ function TicketView({ ticket, refreshData }: Props) {
         name: data.ticketName,
         description: data.ticketDescription,
         price: parseFloat(data.ticketPrice),
+        offer: data.ticketOffer,
       };
       await fetch(`/api/tickets/${ticket.id}`, {
         method: "PUT",
@@ -46,6 +47,7 @@ function TicketView({ ticket, refreshData }: Props) {
     setFocus("ticketName");
     setFocus("ticketDescription");
     setFocus("ticketPrice");
+    setFocus("ticketOffer");
   }, [setFocus, ticketState]);
 
   const cancelEdit = () => {
@@ -109,6 +111,7 @@ function TicketView({ ticket, refreshData }: Props) {
                   defaultValue={ticket.price}
                   {...register("ticketPrice")}
                 ></Input>
+                <Checkbox {...register("ticketOffer")}>Offer</Checkbox>
               </div>
               <Button type="submit" role="submit">
                 <CheckIcon name="Check" />

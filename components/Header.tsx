@@ -11,28 +11,26 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { IconButton } from "@chakra-ui/button";
-import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 
-interface LinkProps {
+interface Ilink {
   name: string;
   path: string;
 }
 
-const Links: Array<LinkProps> = [
-  { name: "News", path: "/news" },
-  { name: "Schedule&Prices", path: "/timetable" },
-  { name: "About Us", path: "/about" },
-];
+interface LinkProps {
+  Links: Ilink[];
+}
 
 const NavLink = ({ children, path }: { children: ReactNode; path: string }) => (
   <Link
-    px={2}
+    px={4}
     py={1}
     rounded={"md"}
     _hover={{
       textDecoration: "none",
-      bg: "gray.200",
+      bg: "gray.400",
     }}
     href={path}
   >
@@ -40,7 +38,7 @@ const NavLink = ({ children, path }: { children: ReactNode; path: string }) => (
   </Link>
 );
 
-function Header() {
+function Header({ Links }: LinkProps) {
   const linkColor = "gray.600";
   const linkHoverColor = "gray.800";
 

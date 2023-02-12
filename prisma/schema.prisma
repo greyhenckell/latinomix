@@ -34,6 +34,7 @@ model Ticket {
   price Float
   discount Float
   finalprice Float
+  offer Boolean?
 }
 
 model User {

@@ -23,4 +23,5 @@ export interface Ticket {
   price: number;
   discount: number;
   finalprice: number;
+  offer: boolean;
 }

@@ -20,6 +20,9 @@ export default async function handler(
 
   if (req.method === "GET") {
     const tickets = await prisma.ticket.findMany();
-    return res.json(tickets);
+    if (tickets) {
+      return res.json(tickets);
+    }
+    console.log("not tickets");
   }
 }

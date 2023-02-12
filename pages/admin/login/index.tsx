@@ -2,22 +2,32 @@ import React from "react";
 
 import type { GetServerSideProps } from "next";
 
-import { useSession, getSession } from "next-auth/react";
+import { useSession, getSession, signOut } from "next-auth/react";
 
 import Unauth from "components/Unauth";
-import EditService from "components/EditService";
+import TicketEdit from "components/modules/Tickets/TicketEdit";
 import { Ticket, User } from "typing";
 
 import prisma from "../../../lib/prisma";
 import { useRouter } from "next/router";
 
+import { useColorModeValue, Link, Stack, Box } from "@chakra-ui/react";
+
+import { ReactNode } from "react";
+import Header from "components/Header";
+
 interface TicketProps {
   tickets: Ticket[];
 }
 
+const Links = [
+  { name: "Tickets", path: "#tickets" },
+  { name: "Services", path: "#services" },
+  { name: "News", path: "#news" },
+];
+
 export const getServerSideProps: GetServerSideProps = async () => {
   const tickets = await prisma.ticket.findMany();
-
   return {
     props: {
       tickets,
@@ -40,7 +50,7 @@ function Login({ tickets }: TicketProps) {
   if (status === "unauthenticated") {
     return (
       <div>
-        <p>Welcome to edit LatinoMix</p>
+        <p>Login to edit LatinoMix</p>
         <Unauth></Unauth>
       </div>
     );
@@ -48,14 +58,14 @@ function Login({ tickets }: TicketProps) {
 
   if (session) {
     const name = session.user?.name || null;
-    const image = session.user?.image || undefined;
+    const imgProfile = session.user?.image || undefined;
     return (
-      <EditService
-        name={name}
-        image={image}
-        tickets={tickets}
-        refreshData={refreshData}
-      />
+      <Stack>
+        <Header Links={Links}></Header>
+        <Box id="tickets">
+          <TicketEdit tickets={tickets} refreshData={refreshData} />
+        </Box>
+      </Stack>
     );
   }
 }

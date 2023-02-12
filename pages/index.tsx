@@ -22,6 +22,12 @@ export const getServerSideProps = async () => {
   };
 };
 
+const Links = [
+  { name: "News", path: "/news" },
+  { name: "Schedule&Prices", path: "/timetable" },
+  { name: "About Us", path: "/about" },
+];
+
 const Home = ({ journals }: Props) => {
   return (
     <>
@@ -54,7 +60,7 @@ const Home = ({ journals }: Props) => {
         //bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
       >
         <Box>
-          <Header></Header>
+          <Header Links={Links}></Header>
           <HomeBanner journals={journals} />
         </Box>
       </VStack>
