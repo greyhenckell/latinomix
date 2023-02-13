@@ -14,7 +14,7 @@ import {
 import { AddIcon } from "@chakra-ui/icons";
 
 import { Ticket } from "typing";
-import TicketsList from "./TicketsList";
+//import TicketsList from "./TicketsList";
 
 import { useForm } from "react-hook-form";
 
@@ -23,7 +23,7 @@ interface Props {
   refreshData: () => void;
 }
 
-function TicketEdit({ tickets, refreshData }: Props) {
+function ServiceEdit({ tickets, refreshData }: Props) {
   const {
     register,
     handleSubmit,
@@ -67,7 +67,7 @@ function TicketEdit({ tickets, refreshData }: Props) {
       >
         <Box id="add_ticket" width="md">
           <Text fontSize="md" as="b" p={2}>
-            New Tickets
+            New Services
           </Text>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={2}>
@@ -111,16 +111,9 @@ function TicketEdit({ tickets, refreshData }: Props) {
             </Flex>
           </form>
         </Box>
-
-        <Box p={8} width="md">
-          <TicketsList
-            tickets={tickets}
-            refreshData={refreshData}
-          ></TicketsList>
-        </Box>
       </VStack>
     </>
   );
 }
 
-export default TicketEdit;
+export default ServiceEdit;

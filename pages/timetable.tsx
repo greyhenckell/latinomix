@@ -45,8 +45,8 @@ export const Blur = (props: IconProps) => {
     <Icon
       width={useBreakpointValue({ base: "100%", md: "40vw", lg: "30vw" })}
       zIndex={useBreakpointValue({ base: -1, md: -1, lg: 0 })}
-      height="770px"
-      viewBox="0 0 528 560"
+      height="1270px"
+      viewBox="0 0 728 360"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}

@@ -15,6 +15,7 @@ import { useColorModeValue, Link, Stack, Box } from "@chakra-ui/react";
 
 import { ReactNode } from "react";
 import Header from "components/Header";
+import ServiceEdit from "components/modules/Services/ServiceEdit";
 
 interface TicketProps {
   tickets: Ticket[];
@@ -64,6 +65,12 @@ function Login({ tickets }: TicketProps) {
         <Header Links={Links}></Header>
         <Box id="tickets">
           <TicketEdit tickets={tickets} refreshData={refreshData} />
+        </Box>
+        <Box id="services">
+          <ServiceEdit
+            tickets={tickets}
+            refreshData={refreshData}
+          ></ServiceEdit>
         </Box>
       </Stack>
     );

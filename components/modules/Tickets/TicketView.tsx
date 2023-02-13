@@ -6,7 +6,7 @@ interface Props {
   refreshData: () => void;
 }
 
-import { Box, Button, Checkbox, Input, Text } from "@chakra-ui/react";
+import { Box, Button, Checkbox, Input, Stack, Text } from "@chakra-ui/react";
 import { CheckIcon, CloseIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -73,11 +73,9 @@ function TicketView({ ticket, refreshData }: Props) {
   return (
     <>
       {ticketState === "view" && (
-        <div>
+        <Stack direction="row">
           <Text py={1}> {ticket.name}</Text>
-          <Text py={1}>{ticket.price}</Text>
-          <Text py={1}>{ticket.discount}%</Text>
-          <Text py={1}>{ticket.finalprice}</Text>
+
           <button
             className="icon-button"
             onClick={() => setTicketState("edit")}
@@ -89,7 +87,7 @@ function TicketView({ ticket, refreshData }: Props) {
           <button onClick={() => deleteTicket(ticket.id)}>
             <DeleteIcon />
           </button>
-        </div>
+        </Stack>
       )}
       {ticketState === "edit" && (
         <div>
@@ -111,7 +109,10 @@ function TicketView({ ticket, refreshData }: Props) {
                   defaultValue={ticket.price}
                   {...register("ticketPrice")}
                 ></Input>
-                <Checkbox {...register("ticketOffer")}>Offer</Checkbox>
+
+                <Checkbox spacing="1rem" {...register("ticketOffer")}>
+                  Offer
+                </Checkbox>
               </div>
               <Button type="submit" role="submit">
                 <CheckIcon name="Check" />

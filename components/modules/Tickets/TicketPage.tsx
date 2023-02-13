@@ -40,8 +40,8 @@ function TicketPage({ tickets }: Props) {
           fontSize={{ base: "sm", sm: "md" }}
         >
           Choose your plan tailored to your need.
-          <Text fontSize={{ base: "sm", sm: "md" }} as="b">
-            No ticket expiration!
+          <Text fontSize={{ base: "sm", sm: "md" }} as="b" ml={4}>
+            Tickets valid for 6 months
           </Text>
         </Text>
 

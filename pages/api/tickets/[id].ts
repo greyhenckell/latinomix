@@ -8,10 +8,9 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const ticketId = req.query.id as string;
-  console.log(ticketId);
-
+  console.log("tt", req.body);
   if (req.method === "PUT") {
-    const { name, description, price } = JSON.parse(req.body);
+    const { name, description, price, offer } = JSON.parse(req.body);
 
     const result = await prisma.ticket.update({
       where: { id: ticketId },
@@ -19,6 +18,7 @@ export default async function handler(
         name,
         description,
         price,
+        offer,
       },
     });
 
