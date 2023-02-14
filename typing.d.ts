@@ -1,8 +1,20 @@
 export interface Journal {
   id: string;
   day: string;
-  detailservice: json[];
-  services: string;
+  services: [Service];
+}
+
+export interface Service {
+  id: string;
+  name: string;
+  place: string;
+  address: string;
+  start_time: string;
+  end_time: string;
+  dance_type: string;
+  description: string;
+  duration: string;
+  keys: string;
 }
 
 export interface Provider {

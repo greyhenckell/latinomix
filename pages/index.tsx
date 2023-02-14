@@ -13,7 +13,11 @@ interface Props {
 }
 
 export const getServerSideProps = async () => {
-  const journals = await prisma.workDay.findMany();
+  const journals = await prisma.danceDay.findMany({
+    include: {
+      services: true,
+    },
+  });
 
   return {
     props: {

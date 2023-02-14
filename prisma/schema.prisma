@@ -11,20 +11,27 @@ datasource db {
 }
 
 
-model WorkDay {
+model DanceDay {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   day String @unique
-  services String?
-  detailservice Json[]
+  services Service[]
+  @@map("danceDays")
 }
 
-type detailservice {
+model Service {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   place String
   address String
   start_time String
-  end_time String
-  dance_type String
+  end_time String?
+  dance_type String?
+  description String?
+  duration String?
+  keys String?
+  danceDayId String @db.ObjectId
+  danceDay DanceDay @relation(fields: [danceDayId], references: [id])
+  @@map("services")
 }
 
 model Ticket {

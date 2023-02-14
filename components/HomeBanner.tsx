@@ -49,7 +49,7 @@ function HomeBanner({ journals }: Props) {
           spacing={6}
         >
           <chakra.h1
-            fontSize={25}
+            fontSize={22}
             fontFamily={"Work Sans"}
             fontWeight={"bold"}
             color="gray.700"
@@ -57,15 +57,18 @@ function HomeBanner({ journals }: Props) {
             Looking for Fun,Powerful,Energetic Dance? come to...
           </chakra.h1>
 
-          <chakra.h3
-            fontFamily={"Work Sans"}
-            fontWeight={"bold"}
-            fontSize={40}
+          <Text
+            bgGradient="linear(to-r, #7928CA, #FF0080)"
+            bgClip="text"
+            //fontFamily={"Work Sans"}
+            //fontWeight={"bold"}
+            fontSize="6xl"
             textTransform={"uppercase"}
-            color={"blue.200"}
+
+            //color={"blue.200"}
           >
             latinomix
-          </chakra.h3>
+          </Text>
 
           <Text
             color={"white"}

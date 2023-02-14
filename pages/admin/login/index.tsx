@@ -6,7 +6,7 @@ import { useSession, getSession, signOut } from "next-auth/react";
 
 import Unauth from "components/Unauth";
 import TicketEdit from "components/modules/Tickets/TicketEdit";
-import { Ticket, User } from "typing";
+import { Journal, Ticket, User } from "typing";
 
 import prisma from "../../../lib/prisma";
 import { useRouter } from "next/router";
@@ -19,6 +19,7 @@ import ServiceEdit from "components/modules/Services/ServiceEdit";
 
 interface TicketProps {
   tickets: Ticket[];
+  journals: Journal[];
 }
 
 const Links = [
@@ -28,15 +29,20 @@ const Links = [
 ];
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const tickets = await prisma.ticket.findMany();
+  const [journals, tickets] = await Promise.all([
+    prisma.danceDay.findMany(),
+    prisma.ticket.findMany(),
+  ]);
+
   return {
     props: {
-      tickets,
+      journals: journals,
+      tickets: tickets,
     },
   };
 };
 
-function Login({ tickets }: TicketProps) {
+function Login({ tickets, journals }: TicketProps) {
   const { data: session, status } = useSession();
 
   const router = useRouter();
@@ -68,7 +74,7 @@ function Login({ tickets }: TicketProps) {
         </Box>
         <Box id="services">
           <ServiceEdit
-            tickets={tickets}
+            journals={journals}
             refreshData={refreshData}
           ></ServiceEdit>
         </Box>

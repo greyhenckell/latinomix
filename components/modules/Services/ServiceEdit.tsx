@@ -10,20 +10,32 @@ import {
   VStack,
   StackDivider,
   Checkbox,
+  Select,
 } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 
-import { Ticket } from "typing";
+import { Journal, Ticket } from "typing";
 //import TicketsList from "./TicketsList";
 
 import { useForm } from "react-hook-form";
+import ServiceView from "./ServiceView";
+import ServiceList from "./ServiceList";
 
 interface Props {
-  tickets: Ticket[];
+  journals: Journal[];
   refreshData: () => void;
 }
 
-function ServiceEdit({ tickets, refreshData }: Props) {
+function ServiceEdit({ journals, refreshData }: Props) {
+  const mydays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
   const {
     register,
     handleSubmit,
@@ -33,19 +45,11 @@ function ServiceEdit({ tickets, refreshData }: Props) {
 
   //submit ticket
   const onSubmit = async (data: any) => {
-    console.log(data);
     try {
       const body = {
-        name: data.ticketName,
-        description: data.ticketDescription,
-        price: parseFloat(data.ticketPrice),
-        discount: parseFloat(data.ticketDiscount),
-        finalprice:
-          parseFloat(data.ticketPrice) *
-          (1 - parseFloat(data.ticketDiscount) / 100),
-        offer: data.ticketOffer,
+        day: data.servDay,
       };
-      await fetch("/api/tickets", {
+      await fetch("/api/services", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -65,35 +69,20 @@ function ServiceEdit({ tickets, refreshData }: Props) {
         spacing={4}
         divider={<StackDivider borderColor="black" />}
       >
-        <Box id="add_ticket" width="md">
+        <Box id="add_service" width="md">
           <Text fontSize="md" as="b" p={2}>
             New Services
           </Text>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={2}>
-              <Input
-                placeholder="name"
-                type="text"
-                {...register("ticketName", { required: true })}
-              />
-              <Input
-                placeholder="description"
-                type="text"
-                {...register("ticketDescription")}
-              />
-              <Input
-                placeholder="price"
-                type="number"
-                {...register("ticketPrice", { required: true })}
-              />
-              <Input
-                placeholder="discount"
-                type="number"
-                {...register("ticketDiscount", { required: true })}
-              />
-              <Checkbox {...register("ticketOffer", { required: true })}>
-                Offer
-              </Checkbox>
+              <Select
+                placeholder="Select Day"
+                {...register("servDay", { required: true })}
+              >
+                {mydays.map((day) => (
+                  <option key={day}>{day}</option>
+                ))}
+              </Select>
             </Stack>
             <Flex py={2}>
               <Button
@@ -110,6 +99,12 @@ function ServiceEdit({ tickets, refreshData }: Props) {
               </Button>
             </Flex>
           </form>
+        </Box>
+        <Box id="viewbox" p={8} width="md">
+          <ServiceList
+            journals={journals}
+            refreshData={refreshData}
+          ></ServiceList>
         </Box>
       </VStack>
     </>

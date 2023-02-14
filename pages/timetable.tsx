@@ -9,8 +9,6 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-import { FiArrowLeftCircle } from "react-icons/fi";
-
 import AdultsSchedule from "components/AdultsSchedule";
 import Header from "components/Header";
 import KidsSchedule from "components/KidsSchedule";
@@ -28,7 +26,11 @@ interface Props {
 
 export const getServerSideProps = async () => {
   const [journals, tickets] = await Promise.all([
-    prisma.workDay.findMany(),
+    prisma.danceDay.findMany({
+      include: {
+        services: true,
+      },
+    }),
     prisma.ticket.findMany(),
   ]);
 
@@ -83,8 +85,17 @@ function Timetable({ journals, tickets }: Props) {
 
         <Divider orientation="horizontal" p={2} />
 
-        <Box p={4}>
+        <Box
+          borderRadius="2xl"
+          p={4}
+          bgGradient={[
+            "linear(to-tr, teal.500, red.100)",
+            "linear(to-t, blue.200, teal.500)",
+            "linear(to-b, orange.100, purple.300)",
+          ]}
+        >
           <AdultsSchedule journals={journals}></AdultsSchedule>
+
           {/* add kids component*/}
           <Divider orientation="horizontal" />
           <KidsSchedule></KidsSchedule>

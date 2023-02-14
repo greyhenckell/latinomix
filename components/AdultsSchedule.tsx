@@ -19,6 +19,7 @@ function PriceWrapper({ children }: { children: ReactNode }) {
   return (
     <Box
       mb={4}
+      width="100%"
       shadow="base"
       borderWidth="1px"
       alignSelf={{ base: "center", lg: "flex-start" }}
@@ -35,6 +36,7 @@ interface Props {
 }
 
 function AdultsSchedule({ journals }: Props) {
+  console.log(journals);
   return (
     <Box>
       <Stack
@@ -45,7 +47,7 @@ function AdultsSchedule({ journals }: Props) {
         py={10}
       >
         {journals.map((item) => (
-          <PriceWrapper key={item.id}>
+          <PriceWrapper key={item.day}>
             <Box
               py={4}
               px={6}
@@ -61,32 +63,42 @@ function AdultsSchedule({ journals }: Props) {
               >
                 {item.day}
               </Text>
-              {item.detailservice.map((serv) => (
+              {item.services.map((serv) => (
                 <Stack
-                  key={serv.name}
+                  key={serv.start_time}
                   py={2}
                   align={"flex-start'"}
                   justify={"center"}
                 >
                   <Text
+                    color={"white"}
                     py={2}
-                    fontSize={"2xl"}
-                    fontWeight={600}
-                    bgGradient={"linear(to-b, whiteAlpha.900, transparent)"}
+                    fontSize={"xl"}
+                    fontWeight={400}
+                    //bgGradient={"linear(to-b, whiteAlpha.300, transparent)"}
                   >
                     {serv.name}
                   </Text>
 
                   <Text
-                    color={"green.200"}
+                    color={"white"}
                     fontWeight={600}
                     fontSize={"1xl"}
-                    bgGradient={"linear(to-b, blackAlpha.900, transparent)"}
+                    //bgGradient={"linear(to-b, blackAlpha.900, transparent)"}
                   >
-                    {serv.start} -- {serv.end}
+                    {serv.start_time} -- {serv.end_time}
                   </Text>
-                  <VStack bg={"gray.50"} py={2} borderBottomRadius={"xl"}>
-                    <List textAlign="start" px={2} fontSize={"sm"}>
+                  <VStack
+                    bgGradient={"linear(to-b, gray.100, transparent)"}
+                    py={2}
+                    borderBottomRadius={"xl"}
+                  >
+                    <List
+                      textAlign="start"
+                      px={2}
+                      fontSize={"sm"}
+                      fontWeight="bold"
+                    >
                       <ListItem>
                         <ListIcon as={FaHome} color="green.500" />
                         {serv.place}
