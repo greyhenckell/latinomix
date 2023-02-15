@@ -1,17 +1,42 @@
-import { Container, Flex, Box, StackDivider, VStack } from "@chakra-ui/react";
-import About from "components/About";
+import { Box, StackDivider, VStack } from "@chakra-ui/react";
 
 import Header from "components/Header";
 import HomeBanner from "components/HomeBanner";
+import prisma from "lib/prisma";
 
 import Head from "next/head";
 import React from "react";
+import { Journal } from "typing";
 
-const Home = () => {
+interface Props {
+  journals: Journal[];
+}
+
+export const getServerSideProps = async () => {
+  const journals = await prisma.danceDay.findMany({
+    include: {
+      services: true,
+    },
+  });
+
+  return {
+    props: {
+      journals: journals,
+    },
+  };
+};
+
+const Links = [
+  { name: "News", path: "/news" },
+  { name: "Schedule&Prices", path: "/timetable" },
+  { name: "About Us", path: "/about" },
+];
+
+const Home = ({ journals }: Props) => {
   return (
     <>
       <Head>
-        <title>Classes | LatinoMixTanssi | Espoo</title>
+        <title>LatinoMixTanssi-Espoo</title>
         <meta
           name="keywords"
           content="dance | espoo | latinomix | latin style"
@@ -39,8 +64,8 @@ const Home = () => {
         //bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
       >
         <Box>
-          <Header></Header>
-          <HomeBanner></HomeBanner>
+          <Header Links={Links}></Header>
+          <HomeBanner journals={journals} />
         </Box>
       </VStack>
     </>

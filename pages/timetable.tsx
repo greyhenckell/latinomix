@@ -2,162 +2,107 @@ import React from "react";
 
 import {
   Box,
-  Text,
-  List,
-  chakra,
-  ListItem,
   Icon,
-  Heading,
-  Link,
+  IconProps,
   VStack,
-  Grid,
-  Container,
-  Flex,
-  GridItem,
-  Image,
   Divider,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 
-import { FiArrowLeftCircle } from "react-icons/fi";
+import AdultsSchedule from "components/AdultsSchedule";
+import Header from "components/Header";
+import KidsSchedule from "components/KidsSchedule";
+import { Journal, Ticket } from "typing";
+import TicketPage from "components/modules/Tickets/TicketPage";
 
-interface PriceItemProps {
-  type: string;
-  label: string;
-  price: number;
-  offer: boolean;
+import prisma from "lib/prisma";
+
+import { useRouter } from "next/router";
+
+interface Props {
+  journals: Journal[];
+  tickets: Ticket[];
 }
 
-const PRICE_ITEMS: Array<PriceItemProps> = [
-  {
-    type: "Single",
-    label: "T1",
-    price: 15.0,
-    offer: false,
-  },
-  {
-    type: "Casual - x10",
-    label: "T10",
-    price: 120.0,
-    offer: true,
-  },
-];
+export const getServerSideProps = async () => {
+  const [journals, tickets] = await Promise.all([
+    prisma.danceDay.findMany({
+      include: {
+        services: true,
+      },
+    }),
+    prisma.ticket.findMany(),
+  ]);
 
-const PriceItemTier = ({
-  type,
-  label,
-  price,
-  offer = false,
-}: PriceItemProps) => {
-  const colorTextLight = offer ? "white" : "black";
-  const bgColorLight = offer ? "orange.600" : "gray.200";
-  const discount = offer ? "(SALE)" : "";
-  const FontWeight = offer ? 700 : 400;
+  return {
+    props: {
+      journals: journals,
+      tickets: tickets,
+    },
+  };
+};
 
+export const Blur = (props: IconProps) => {
   return (
-    <ListItem maxW={"200px"} p={2}>
-      {label} ({type})
-      <Text
-        color={colorTextLight}
-        bgColor={bgColorLight}
-        fontSize={"sm"}
-        fontWeight={FontWeight}
-        rounded={"full"}
-      >
-        € {price}
-        {".00"} {discount}
-      </Text>
-    </ListItem>
+    <Icon
+      width={useBreakpointValue({ base: "100%", md: "40vw", lg: "30vw" })}
+      zIndex={useBreakpointValue({ base: -1, md: -1, lg: 0 })}
+      height="1270px"
+      viewBox="0 0 728 360"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <circle cx="71" cy="61" r="111" fill="#F56565" />
+      <circle cx="244" cy="106" r="139" fill="#ED64A6" />
+      <circle cy="291" r="139" fill="#ED64A6" />
+      <circle cx="80.5" cy="189.5" r="101.5" fill="#ED8936" />
+      <circle cx="196.5" cy="317.5" r="101.5" fill="#ECC94B" />
+      <circle cx="70.5" cy="458.5" r="101.5" fill="#48BB78" />
+      <circle cx="426.5" cy="-0.5" r="101.5" fill="#4299E1" />
+    </Icon>
   );
 };
 
-import AdultsSchedule from "components/AdultsSchedule";
-import KidsSchedule from "components/KidsSchedule";
+function Timetable({ journals, tickets }: Props) {
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
-function timetable() {
   return (
-    <>
-      <Box p={4}>
-        <Link href="/" color="orange.400" fontSize={15} alignItems="center">
-          <Icon as={FiArrowLeftCircle} w={6} h={6} mr={2} />
-          HomePage
-        </Link>
-      </Box>
-      <Box
-        as={Container}
-        maxW="7xl"
-        p={4}
-        bgGradient={"linear(to-b, blackAlpha.400, transparent 50%)"}
-      >
-        <Grid
-          templateColumns={{
-            base: "repeat(1, 1fr)",
-            sm: "repeat(2, 1fr)",
-            md: "repeat(2, 1fr)",
-          }}
-          gap={4}
-        >
-          <GridItem colSpan={1}>
-            <VStack alignItems="flex-start" spacing="20px">
-              <chakra.h2 fontSize="3xl" fontWeight="700">
-                LatinoMix - schedule 2022/2023
-              </chakra.h2>
-              <Heading mt={1} as="h1" size="sm" color="green.500">
-                Prices
-              </Heading>
-              <List>
-                {PRICE_ITEMS.map((pitem) => (
-                  <PriceItemTier
-                    key={pitem.type}
-                    type={pitem.type}
-                    label={pitem.label}
-                    price={pitem.price}
-                    offer={pitem.offer}
-                  ></PriceItemTier>
-                ))}
-              </List>
-              <Heading mt={2} as="h1" size="sm" color="green.500">
-                Payment Methods:
-              </Heading>
-              <List>
-                <ListItem color={"gray.400"}>Cash: on-site</ListItem>
-                <ListItem color={"orange.500"}>
-                  MobilePay: +358 44 3732360
-                </ListItem>
-                <ListItem color={"orange.500"}>ref: LM name </ListItem>
-              </List>
-            </VStack>
-          </GridItem>
-          <GridItem>
-            <Flex align="center" p={2}>
-              <Box objectFit="cover" alignContent="center">
-                <Image
-                  src="imgs/lm_timetable.jpeg"
-                  boxSize="300px"
-                  //borderRadius="50%"
-                ></Image>
-              </Box>
-            </Flex>
-          </GridItem>
-        </Grid>
-        <Divider mt={12} mb={12} />
-        <Grid
-          templateColumns={{
-            base: "repeat(1, 1fr)",
-            sm: "repeat(2, 1fr)",
-            md: "repeat(4, 1fr)",
-          }}
-          gap={{ base: "8", sm: "12", md: "16" }}
-        ></Grid>
-      </Box>
+    <div>
+      <Header Links={[{ name: "homepage", path: "/" }]}></Header>
+      <VStack py={6}>
+        <TicketPage tickets={tickets}></TicketPage>
 
-      <Box p={4}>
-        <AdultsSchedule></AdultsSchedule>
-        {/* add kids component*/}
-        <Divider orientation="horizontal" />
-        <KidsSchedule></KidsSchedule>
-      </Box>
-    </>
+        <Blur
+          position={"absolute"}
+          top={10}
+          left={-70}
+          style={{ filter: "blur(70px)" }}
+        />
+
+        <Divider orientation="horizontal" p={2} />
+
+        <Box
+          borderRadius="2xl"
+          p={4}
+          bgGradient={[
+            "linear(to-tr, teal.500, red.100)",
+            "linear(to-t, blue.200, teal.500)",
+            "linear(to-b, orange.100, purple.300)",
+          ]}
+        >
+          <AdultsSchedule journals={journals}></AdultsSchedule>
+
+          {/* add kids component*/}
+          <Divider orientation="horizontal" />
+          <KidsSchedule></KidsSchedule>
+        </Box>
+      </VStack>
+    </div>
   );
 }
 
-export default timetable;
+export default Timetable;
