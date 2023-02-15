@@ -65,7 +65,7 @@ function Login({ tickets, journals }: TicketProps) {
 
   if (session) {
     const name = session.user?.name || null;
-    if (name === "grey") {
+    if (name === "franckzinho") {
       //console.log("valid user");
       const imgProfile = session.user?.image || undefined;
       return (
