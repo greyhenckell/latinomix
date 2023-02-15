@@ -11,7 +11,7 @@ import { Journal, Ticket, User } from "typing";
 import prisma from "../../../lib/prisma";
 import { useRouter } from "next/router";
 
-import { useColorModeValue, Link, Stack, Box } from "@chakra-ui/react";
+import { Text, Stack, Box } from "@chakra-ui/react";
 
 import { ReactNode } from "react";
 import Header from "components/Header";
@@ -65,21 +65,33 @@ function Login({ tickets, journals }: TicketProps) {
 
   if (session) {
     const name = session.user?.name || null;
-    const imgProfile = session.user?.image || undefined;
-    return (
-      <Stack>
-        <Header Links={Links}></Header>
-        <Box id="tickets">
-          <TicketEdit tickets={tickets} refreshData={refreshData} />
-        </Box>
-        <Box id="services">
-          <ServiceEdit
-            journals={journals}
-            refreshData={refreshData}
-          ></ServiceEdit>
-        </Box>
-      </Stack>
-    );
+    if (name === "grey") {
+      //console.log("valid user");
+      const imgProfile = session.user?.image || undefined;
+      return (
+        <Stack>
+          <Header Links={Links}></Header>
+          <Box>
+            <button
+              onClick={() => signOut()}
+              type="button"
+              className="btn btn-primary"
+            >
+              Sign Out
+            </button>
+          </Box>
+          <Box id="tickets">
+            <TicketEdit tickets={tickets} refreshData={refreshData} />
+          </Box>
+          <Box id="services">
+            <ServiceEdit
+              journals={journals}
+              refreshData={refreshData}
+            ></ServiceEdit>
+          </Box>
+        </Stack>
+      );
+    }
   }
 }
 
