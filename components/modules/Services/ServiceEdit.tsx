@@ -28,14 +28,15 @@ interface Props {
 
 function ServiceEdit({ journals, refreshData }: Props) {
   const mydays = [
-    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
+    "Sunday",
   ];
+
   const {
     register,
     handleSubmit,

@@ -36,7 +36,19 @@ interface Props {
 }
 
 function AdultsSchedule({ journals }: Props) {
-  console.log(journals);
+  //console.log(journals);
+  const sorter = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  journals.sort((a, b) => sorter.indexOf(a.day) - sorter.indexOf(b.day));
+
   return (
     <Box>
       <Stack
@@ -73,7 +85,7 @@ function AdultsSchedule({ journals }: Props) {
                   <Text
                     color={"white"}
                     py={2}
-                    fontSize={"xl"}
+                    fontSize={"2xl"}
                     fontWeight={400}
                     //bgGradient={"linear(to-b, whiteAlpha.300, transparent)"}
                   >
@@ -89,14 +101,15 @@ function AdultsSchedule({ journals }: Props) {
                     {serv.start_time} -- {serv.end_time}
                   </Text>
                   <VStack
-                    bgGradient={"linear(to-b, gray.100, transparent)"}
+                    bgGradient={"linear(to-t, gray.100, transparent)"}
                     py={2}
-                    borderBottomRadius={"xl"}
+                    borderBottomRadius={"2xl"}
+                    borderBottomColor={"black"}
                   >
                     <List
                       textAlign="start"
-                      px={2}
-                      fontSize={"sm"}
+                      px={1}
+                      fontSize={"16px"}
                       fontWeight="bold"
                     >
                       <ListItem>

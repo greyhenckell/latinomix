@@ -1,3 +1,4 @@
+import { InfoIcon } from "@chakra-ui/icons";
 import {
   Heading,
   Icon,
@@ -6,6 +7,7 @@ import {
   Text,
   Stack,
   Box,
+  Flex,
 } from "@chakra-ui/react";
 import React from "react";
 import { Ticket } from "typing";
@@ -48,6 +50,16 @@ function TicketPage({ tickets }: Props) {
         {tickets.map((ticket) => (
           <CardPrice key={ticket.id} ticket={ticket}></CardPrice>
         ))}
+
+        <Flex mt={5} color={"gray"}>
+          <Text as="span" fontSize={{ base: "sm", sm: "md" }}>
+            <InfoIcon />
+            Payment method{" :"}
+            <Text ml={2} as="b">
+              Mobilepay:+358 44 3732360
+            </Text>
+          </Text>
+        </Flex>
       </VStack>
     </>
   );

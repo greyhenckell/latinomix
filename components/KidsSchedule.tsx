@@ -87,15 +87,19 @@ function KidsSchedule() {
                 align={"flex-start'"}
                 justify={"center"}
               >
-                <Text p={2} fontSize={"1xl"} fontWeight={600}>
+                <Text color="white" p={2} fontSize={"xl"} fontWeight={300}>
                   {serv.service}
                 </Text>
 
-                <Text color={"gray.500"}>{serv.time}</Text>
+                <Text color={"white"}>{serv.time}</Text>
               </Stack>
             ))}
           </Box>
-          <VStack bg={"gray.50"} py={4} borderBottomRadius={"xl"}>
+          <VStack
+            bgGradient={"linear(to-b, gray.100, transparent)"}
+            py={4}
+            borderBottomRadius={"xl"}
+          >
             <List spacing={3} textAlign="start" px={12}>
               <ListItem>
                 <ListIcon as={FaHome} color="green.500" />
