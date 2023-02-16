@@ -55,7 +55,7 @@ function Header({ Links }: LinkProps) {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={"center"}>
+          <HStack spacing={4} alignItems={"center"}>
             <Box>
               <Heading
                 ml="4"
@@ -68,7 +68,7 @@ function Header({ Links }: LinkProps) {
             </Box>
             <HStack
               as={"nav"}
-              spacing={4}
+              spacing={2}
               display={{ base: "none", md: "flex" }}
             >
               {Links.map((link) => (

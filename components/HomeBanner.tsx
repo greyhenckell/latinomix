@@ -1,9 +1,6 @@
 import {
   Button,
   useBreakpointValue,
-  Box,
-  Heading,
-  Image,
   Link,
   Stack,
   Text,
@@ -33,7 +30,6 @@ function HomeBanner({ journals }: Props) {
       backgroundImage={"url(imgs/bgimage.jpeg)"}
       backgroundSize={"cover"}
       backgroundPosition={"center center"}
-
       //h={"100vh"}
     >
       <VStack

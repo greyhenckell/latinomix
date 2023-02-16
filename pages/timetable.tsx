@@ -85,20 +85,12 @@ function Timetable({ journals, tickets }: Props) {
 
         <Divider orientation="horizontal" p={2} />
 
-        <Box
-          borderRadius="2xl"
-          p={4}
-          bgGradient={[
-            "linear(to-tr, teal.500, red.100)",
-            "linear(to-t, blue.200, teal.500)",
-            "linear(to-b, orange.100, purple.300)",
-          ]}
-        >
+        <Box w="full">
           <AdultsSchedule journals={journals}></AdultsSchedule>
 
           {/* add kids component*/}
           <Divider orientation="horizontal" />
-          <KidsSchedule></KidsSchedule>
+          {/*<KidsSchedule></KidsSchedule>*/}
         </Box>
       </VStack>
     </div>
