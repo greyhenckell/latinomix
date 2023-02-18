@@ -1,7 +1,16 @@
-import { Box, StackDivider, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Stack,
+  StackDivider,
+  VStack,
+  Image,
+  Divider,
+} from "@chakra-ui/react";
+import AdultsSchedule from "components/AdultsSchedule";
 
 import Header from "components/Header";
 import HomeBanner from "components/HomeBanner";
+import HomePage from "components/HomePage";
 import prisma from "lib/prisma";
 
 import Head from "next/head";
@@ -55,17 +64,20 @@ const Home = ({ journals }: Props) => {
       </Head>
 
       <VStack
-        w="full"
+        //w="full"
         id="vstack"
         divider={<StackDivider borderColor="gray.200" />}
-        spacing={6}
+        spacing={2}
         align="stretch"
-        p={4}
+        //p={1}
         //bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
       >
         <Box>
           <Header Links={Links}></Header>
-          <HomeBanner journals={journals} />
+          {/*<HomeBanner journals={journals} />*/}
+          <HomePage journals={journals}></HomePage>
+
+          <AdultsSchedule journals={journals} />
         </Box>
       </VStack>
     </>

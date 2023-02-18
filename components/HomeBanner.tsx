@@ -1,9 +1,6 @@
 import {
   Button,
   useBreakpointValue,
-  Box,
-  Heading,
-  Image,
   Link,
   Stack,
   Text,
@@ -21,6 +18,7 @@ interface Props {
 }
 
 function HomeBanner({ journals }: Props) {
+  console.log("hola");
   return (
     <Flex
       w="full"
@@ -33,7 +31,6 @@ function HomeBanner({ journals }: Props) {
       backgroundImage={"url(imgs/bgimage.jpeg)"}
       backgroundSize={"cover"}
       backgroundPosition={"center center"}
-
       //h={"100vh"}
     >
       <VStack
@@ -58,7 +55,7 @@ function HomeBanner({ journals }: Props) {
           </chakra.h1>
 
           <Text
-            bgGradient="linear(to-r, #7928CA, #FF0080)"
+            bgGradient="linear(to-b, #FFF5F5, #FF0080)"
             bgClip="text"
             //fontFamily={"Work Sans"}
             //fontWeight={"bold"}
@@ -67,7 +64,7 @@ function HomeBanner({ journals }: Props) {
 
             //color={"blue.200"}
           >
-            latinomix
+            latinomixMix
           </Text>
 
           <Text
