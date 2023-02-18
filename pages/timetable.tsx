@@ -7,6 +7,7 @@ import {
   VStack,
   Divider,
   useBreakpointValue,
+  Stack,
 } from "@chakra-ui/react";
 
 import AdultsSchedule from "components/AdultsSchedule";
@@ -73,26 +74,17 @@ function Timetable({ journals, tickets }: Props) {
   return (
     <div>
       <Header Links={[{ name: "homepage", path: "/" }]}></Header>
-      <VStack py={6}>
+      <Box py={6}>
         <TicketPage tickets={tickets}></TicketPage>
+      </Box>
 
-        <Blur
-          position={"absolute"}
-          top={10}
-          left={-70}
-          style={{ filter: "blur(70px)" }}
-        />
+      <Box>
+        <AdultsSchedule journals={journals}></AdultsSchedule>
 
-        <Divider orientation="horizontal" p={2} />
-
-        <Box w="full">
-          <AdultsSchedule journals={journals}></AdultsSchedule>
-
-          {/* add kids component*/}
-          <Divider orientation="horizontal" />
-          {/*<KidsSchedule></KidsSchedule>*/}
-        </Box>
-      </VStack>
+        {/* add kids component*/}
+        <Divider orientation="horizontal" />
+        {/*<KidsSchedule></KidsSchedule>*/}
+      </Box>
     </div>
   );
 }

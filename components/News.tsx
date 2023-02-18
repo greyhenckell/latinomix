@@ -73,7 +73,7 @@ const Feature = ({ text, icon, iconBg }: FeatureProps) => {
 
 export default function SplitWithImage() {
   return (
-    <Container maxW={"5xl"} py={12} id="news">
+    <Container maxW={"5xl"} py={2} id="news">
       {NEWS_ITEMS.map((newsitem) => (
         <SimpleGrid
           key={newsitem.id}

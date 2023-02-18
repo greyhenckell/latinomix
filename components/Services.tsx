@@ -193,12 +193,9 @@ export default function GridBlurredBackdrop() {
           fontWeight={"medium"}
           color={useColorModeValue("gray.500", "gray.400")}
         >
-          See why over{" "}
-          <chakra.strong color={useColorModeValue("gray.700", "gray.50")}>
-            5+
-          </chakra.strong>{" "}
-          dance styles in Latinomix, to make their dancers happiest and enjoy
-          the moment!
+          Check why over <chakra.strong color="gray.700">5</chakra.strong> dance
+          styles in <chakra.strong color="gray.700">LatinoMix</chakra.strong>{" "}
+          makes their dancers happiest and enjoy the moment!
         </chakra.h2>
       </Box>
       <SimpleGrid

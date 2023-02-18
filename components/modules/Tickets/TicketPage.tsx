@@ -20,7 +20,7 @@ interface Props {
 function TicketPage({ tickets }: Props) {
   return (
     <>
-      <VStack spacing={2}>
+      <VStack width={"100%"} spacing={2}>
         <Heading
           pt={4}
           color={"gray.800"}
@@ -46,21 +46,27 @@ function TicketPage({ tickets }: Props) {
             Tickets valid for 6 months
           </Text>
         </Text>
-
+      </VStack>
+      <Stack
+        direction={{ base: "column", md: "row", lg: "row" }}
+        textAlign="center"
+        justify="center"
+        spacing={{ base: 4, lg: 10 }}
+        py={5}
+      >
         {tickets.map((ticket) => (
           <CardPrice key={ticket.id} ticket={ticket}></CardPrice>
         ))}
-
-        <Flex mt={5} color={"gray"}>
-          <Text as="span" fontSize={{ base: "sm", sm: "md" }}>
-            <InfoIcon />
-            Payment method{" :"}
-            <Text ml={2} as="b">
-              Mobilepay:+358 44 3732360
-            </Text>
+      </Stack>
+      <Flex mt={5} justifyContent="center" color={"gray"}>
+        <Text as="span" fontSize={{ base: "sm", sm: "md" }}>
+          <InfoIcon />
+          Payment method{" :"}
+          <Text ml={2} as="b">
+            Mobilepay:+358 44 3732360
           </Text>
-        </Flex>
-      </VStack>
+        </Text>
+      </Flex>
     </>
   );
 }

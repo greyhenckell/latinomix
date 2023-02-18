@@ -53,11 +53,11 @@ function AdultsSchedule({ journals }: Props) {
     <Box
       mt={2}
       px={2}
-      w={"full"}
-      h={"full"}
+      //w={"full"}
+      //h={"full"}
       backgroundImage={
         //"url(https://images.unsplash.com/photo-1600267175161-cfaa711b4a81?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)"
-        "linear-gradient(rgba(255, 255, 255, 0.415),rgba(0, 0, 0, 0.201))  ,url(imgs/lm_timetable.jpeg)"
+        "linear-gradient(rgba(255, 255, 255, 0.401),rgba(0, 0, 0, 0.201))  ,url(imgs/lm_timetable.jpeg)"
       }
       backgroundSize={"cover"}
       backgroundPosition={"center center"}
