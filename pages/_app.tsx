@@ -5,6 +5,8 @@ import { AppProps } from "next/app";
 
 import { SessionProvider } from "next-auth/react";
 
+import "slick-carousel/slick/slick.css";
+
 import Footer from "components/Footer";
 
 import { useEffect } from "react";

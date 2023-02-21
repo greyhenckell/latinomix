@@ -1,12 +1,12 @@
 import React from "react";
-
+import Image from "next/image";
 import {
   Badge,
+  Box,
   Button,
   Center,
   Flex,
   Heading,
-  Image,
   Link,
   Stack,
   Text,
@@ -30,15 +30,18 @@ function About() {
             padding={4}
           >
             {" "}
-            <Flex flex={1} bg="blue.200">
+            <Box height={100} flex={1} bg="blue.200">
               {" "}
               <Image
                 alt="about latinomix"
                 objectFit="cover"
-                boxSize="100%"
-                src={"imgs/about.jpeg"}
+                width={700}
+                height={700}
+                layout="responsive"
+                objectPosition={"center"}
+                src="/v1677013821/latinomix/49725_pdaose.jpg"
               />{" "}
-            </Flex>{" "}
+            </Box>{" "}
             <Stack
               flex={1}
               flexDirection="column"

@@ -45,7 +45,8 @@ const testimonials = [
     role: "bacherlor parties | company-wellness | customize",
     content:
       "Book me when you want ,send me a direct message by any social network",
-    avatar: "imgs/lm_kids.jpg",
+    avatar:
+      "https://res.cloudinary.com/dgkcfmvwf/image/upload/v1677013823/latinomix/8468beec-e618-468c-a8b2-86e8b38ceba7_qctlva.jpg",
   },
   {
     name: "LatinoMix- Kids",
