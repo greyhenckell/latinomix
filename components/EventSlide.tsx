@@ -13,6 +13,8 @@ import {
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 
+import "slick-carousel/slick/slick.css";
+
 // Settings for the slider
 const settings = {
   dots: true,
@@ -66,7 +68,7 @@ function EventSlide() {
       <link
         rel="stylesheet"
         type="text/css"
-        charSet="UTF-8"
+        //charSet="UTF-8"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
       />
       <link
