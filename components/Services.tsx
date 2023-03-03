@@ -41,10 +41,10 @@ const testimonials = [
     avatar: "imgs/lm_pari.jpg",
   },
   {
-    name: "Private Class",
-    role: "bacherlor parties | company-wellness | customize",
+    name: "Dance Shows",
+    role: "Birthdays | PartyShows | Liikunta | DanceShow Schools and Company's",
     content:
-      "Book me when you want ,send me a direct message by any social network",
+      "Reserve a wellness day (TYHY Päivä) with a lot of energy for everyday life. Send me a message latinomixtanssi@gmail.com | @latinomixtanssi",
     avatar:
       "https://res.cloudinary.com/dgkcfmvwf/image/upload/v1677013823/latinomix/8468beec-e618-468c-a8b2-86e8b38ceba7_qctlva.jpg",
   },

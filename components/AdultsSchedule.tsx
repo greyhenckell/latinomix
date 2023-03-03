@@ -57,7 +57,7 @@ function AdultsSchedule({ journals }: Props) {
       //h={"full"}
       backgroundImage={
         //"url(https://images.unsplash.com/photo-1600267175161-cfaa711b4a81?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)"
-        "linear-gradient(rgba(255, 255, 255, 0.401),rgba(0, 0, 0, 0.201))  ,url(imgs/lm_timetable.jpeg)"
+        "linear-gradient(rgba(255, 255, 255, 0.691),rgba(255, 255, 255, 0.221))  ,url(imgs/lm_timetable.jpeg)"
       }
       backgroundSize={"cover"}
       backgroundPosition={"center center"}
@@ -78,68 +78,71 @@ function AdultsSchedule({ journals }: Props) {
             >
               <Text
                 p={2}
-                color={"green.500"}
+                color={"green.600"}
                 rounded={"full"}
                 fontSize={"sm"}
                 fontWeight={500}
-                bg={"green.50"}
+                bg={"green.100"}
               >
                 {item.day}
               </Text>
-              {item.services.map((serv) => (
-                <Stack
-                  key={serv.start_time}
-                  py={2}
-                  align={"flex-start'"}
-                  justify={"center"}
-                >
-                  <Text
-                    color={"black"}
-                    py={2}
-                    fontSize={"2xl"}
-                    fontWeight={400}
-                    //bgGradient={"linear(to-b, whiteAlpha.300, transparent)"}
-                  >
-                    {serv.name}
-                  </Text>
-
-                  <Text
-                    color={"white"}
-                    fontWeight={600}
-                    fontSize={"1xl"}
-                    bgGradient={"linear(to-b, blackAlpha.900, transparent)"}
-                  >
-                    {serv.start_time} -- {serv.end_time}
-                  </Text>
-                  <VStack
-                    bgGradient={"linear(to-t, gray.100, transparent)"}
-                    py={2}
-                    borderBottomRadius={"2xl"}
-                    borderBottomColor={"black"}
-                  >
-                    <List
-                      textAlign="start"
-                      px={1}
-                      fontSize={"16px"}
-                      fontWeight="bold"
+              {item.services.map(
+                (serv) =>
+                  serv.dance_type === "adults" && (
+                    <Stack
+                      key={serv.start_time}
+                      py={2}
+                      align={"flex-start'"}
+                      justify={"center"}
                     >
-                      <ListItem>
-                        <ListIcon as={FaHome} color="green.500" />
-                        {serv.place}
-                      </ListItem>
-                      <ListItem>
-                        <ListIcon as={MdPlace} color="green.500" />
-                        {serv.address}
-                      </ListItem>
-                    </List>
-                    {/*<Box w="80%" pt={7}>
+                      <Text
+                        color={"black"}
+                        py={2}
+                        fontSize={"xl"}
+                        fontWeight={600}
+                        //bgGradient={"linear(to-b, whiteAlpha.300, transparent)"}
+                      >
+                        {serv.name}
+                      </Text>
+
+                      <Text
+                        color={"white"}
+                        fontWeight={600}
+                        fontSize={"1xl"}
+                        bgGradient={"linear(to-b, blackAlpha.900, transparent)"}
+                      >
+                        {serv.start_time} -- {serv.end_time}
+                      </Text>
+                      <VStack
+                        bgGradient={"linear(to-t, gray.100, transparent)"}
+                        py={2}
+                        borderBottomRadius={"2xl"}
+                        borderBottomColor={"black"}
+                      >
+                        <List
+                          textAlign="start"
+                          px={1}
+                          fontSize={"16px"}
+                          fontWeight="bold"
+                        >
+                          <ListItem>
+                            <ListIcon as={FaHome} color="green.500" />
+                            {serv.place}
+                          </ListItem>
+                          <ListItem>
+                            <ListIcon as={MdPlace} color="green.500" />
+                            {serv.address}
+                          </ListItem>
+                        </List>
+                        {/*<Box w="80%" pt={7}>
                 <Button w="full" colorScheme="red" variant="outline">
                   Join!
                 </Button>
               </Box>*/}
-                  </VStack>
-                </Stack>
-              ))}
+                      </VStack>
+                    </Stack>
+                  )
+              )}
             </Box>
           </PriceWrapper>
         ))}
