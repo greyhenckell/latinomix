@@ -57,6 +57,19 @@ const NAV_ITEMS: Array<NavItem> = [
       },
     ],
   },
+  {
+    day: "Thursday",
+    city: "Espoo",
+    place: "Espoo International School",
+    address: "Lillhemtintie 1, 02250 Espoo",
+    services: [
+      {
+        service: "LatinoMix-Kids",
+
+        time: "14:15-15:00",
+      },
+    ],
+  },
 ];
 
 function KidsSchedule() {
@@ -87,11 +100,11 @@ function KidsSchedule() {
                 align={"flex-start'"}
                 justify={"center"}
               >
-                <Text color="white" p={2} fontSize={"xl"} fontWeight={300}>
+                <Text color="black" p={2} fontSize={"xl"} fontWeight={300}>
                   {serv.service}
                 </Text>
 
-                <Text color={"white"}>{serv.time}</Text>
+                <Text color={"black"}>{serv.time}</Text>
               </Stack>
             ))}
           </Box>

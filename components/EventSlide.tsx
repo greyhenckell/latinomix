@@ -52,7 +52,7 @@ function EventSlide() {
     },
     {
       title: "Private Services as:",
-      text: "Personal Dance class, Birthdays, shows, couple class, We make your party full of joy. Contact me and get a offer!!",
+      text: "Personal Dance class, Birthdays, shows, couple class, We make your party full of joy. Contact me latinomixtanssi@gmail.com and get a offer!!",
       image: "/v1677013821/latinomix/45601_rxbzjv.jpg",
     },
   ];
@@ -144,7 +144,7 @@ function EventSlide() {
                 </Heading>
 
                 <Text
-                  bgGradient={"linear(to-b, blackAlpha.900, transparent)"}
+                  bgGradient={"linear(to-r, blackAlpha.900, transparent)"}
                   fontSize={{ base: "md", lg: "lg" }}
                   color="white"
                 >
