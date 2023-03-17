@@ -58,13 +58,14 @@ function TicketPage({ tickets }: Props) {
           <CardPrice key={ticket.id} ticket={ticket}></CardPrice>
         ))}
       </Stack>
-      <Flex mt={5} justifyContent="center" color={"gray"}>
+      <Flex mt={5} py={2} justifyContent="center" color={"gray"}>
         <Text as="span" fontSize={{ base: "sm", sm: "md" }}>
           <InfoIcon />
-          Payment method{" :"}
-          <Text ml={2} as="b">
-            Mobilepay:+358 44 3732360
+          {"  "}Payment methods{" :"}
+          <Text ml={2} my={1} as="b">
+            € cash on site or
           </Text>
+          <Text ml={2}>Mobilepay:+358 44 3732360</Text>
         </Text>
       </Flex>
     </>
