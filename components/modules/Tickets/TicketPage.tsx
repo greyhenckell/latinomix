@@ -41,10 +41,7 @@ function TicketPage({ tickets }: Props) {
           color={"gray.500"}
           fontSize={{ base: "sm", sm: "md" }}
         >
-          Choose your plan tailored to your need.
-          <Text fontSize={{ base: "sm", sm: "md" }} as="b" ml={4}>
-            Tickets valid for 6 months
-          </Text>
+          Choose the best plan for you:
         </Text>
       </VStack>
       <Stack
@@ -62,10 +59,12 @@ function TicketPage({ tickets }: Props) {
         <Text as="span" fontSize={{ base: "sm", sm: "md" }}>
           <InfoIcon />
           {"  "}Payment methods{" :"}
-          <Text ml={2} my={1} as="b">
-            € cash on site or
+          <Text ml={2} my={1}>
+            € Cash
           </Text>
-          <Text ml={2}>Mobilepay:+358 44 3732360</Text>
+          <Text ml={2} as="b">
+            Mobilepay:+358 44 3732360
+          </Text>
         </Text>
       </Flex>
     </>
