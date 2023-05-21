@@ -55,18 +55,15 @@ export const Blur = (props: IconProps) => {
 };
 
 const PackageTier = ({ ticket }: Props) => {
-  const colorTextLight = ticket.offer ? "white" : "purple.600";
   const bgColorLight = ticket.offer
     ? "linear(red.100 0%, orange.100 25%, yellow.100 50%)"
     : "gray.300";
-  const boderWidthLight = ticket.offer ? "2px" : "0.5px";
-  const borderColor = ticket.offer ? "gray.500" : "gray.200";
 
   //original price
   const originalPrice = ticket.offer ? `${ticket.price}` : "";
 
-  const colorTextDark = ticket.offer ? "white" : "purple.500";
-  const bgColorDark = ticket.offer ? "purple.400" : "gray.300";
+  //valid term
+  const expiredText = ticket.offer ? "3 months valid" : "1 day valid";
 
   return (
     <Box
@@ -133,6 +130,11 @@ const PackageTier = ({ ticket }: Props) => {
           <ListItem>
             <ListIcon as={FaCheckCircle} color="green.500" />
             {ticket.description}
+            {expiredText}
+          </ListItem>
+          <ListItem>
+            <ListIcon as={FaCheckCircle} color="green.500" />
+            <span>{expiredText}</span>
           </ListItem>
         </List>
         <Box w="80%" pt={7}>
