@@ -26,6 +26,10 @@
     "redefine": "^0.2.1",
     "slick-carousel": "^1.8.1"
   },
+  "engines": {
+    "npm": ">=9.5.1",
+    "node": ">=18.16.0"
+  },
   "devDependencies": {
     "@types/next-auth": "^3.15.0",
     "@types/react": "^18.0.17",
