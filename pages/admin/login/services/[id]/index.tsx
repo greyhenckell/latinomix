@@ -7,6 +7,8 @@ import services from "pages/api/services";
 import React from "react";
 import { Journal } from "typing";
 
+import { useRouter } from "next/router";
+
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   if (!params?.id) {
     return {
@@ -35,6 +37,11 @@ interface Props {
 }
 
 function index({ dayselected }: Props) {
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
+
   console.log("dayselect", dayselected);
   return (
     <Stack>
@@ -44,6 +51,7 @@ function index({ dayselected }: Props) {
         currentday={dayselected.day}
         dayId={dayselected.id}
         services={dayselected.services}
+        refreshData={refreshData}
       />
     </Stack>
   );

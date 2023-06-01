@@ -41,7 +41,7 @@ function TicketPage({ tickets }: Props) {
           color={"gray.500"}
           fontSize={{ base: "sm", sm: "md" }}
         >
-          Choose the best plan for you:
+          Choose the best for you:
         </Text>
       </VStack>
       <Stack

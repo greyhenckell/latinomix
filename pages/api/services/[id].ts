@@ -24,7 +24,7 @@ export default async function handler(
     res.json(result);
   }
   if (req.method === "DELETE") {
-    const result = await prisma.danceDay.delete({
+    const result = await prisma.service.delete({
       where: { id: serviceId },
     });
 

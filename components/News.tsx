@@ -46,7 +46,7 @@ const NEWS_ITEMS: Array<NewsItem> = [
     place: "Café Merenneito",
     address: "Matinlahdenranta 3, 02230 Espoo",
     price: "15€ or lippu",
-    dresscode: "",
+    dresscode: "check schedule in the homepage",
     class: "LatinoMix-Dance",
     description: "summer",
     img: "imgs/summer.jpeg",

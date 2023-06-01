@@ -1,4 +1,4 @@
-import { AddIcon } from "@chakra-ui/icons";
+import { AddIcon, DeleteIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -13,21 +13,45 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Service } from "typing";
 
+import { useState, useEffect } from "react";
+
 interface Props {
   currentday: String;
   dayId: String;
   services: Service[];
+  refreshData: () => void;
 }
 
-function AddService({ currentday, dayId, services }: Props) {
+function AddService({ currentday, dayId, services, refreshData }: Props) {
+  const [serviceState, setServiceState] = useState<"view" | "edit">("view");
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
+    setFocus,
   } = useForm();
 
+  useEffect(() => {
+    setFocus("servName");
+  }, [setFocus, serviceState]);
+
   //submit serice detail
+  async function deleteService(id: string) {
+    try {
+      fetch(`/api/services/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "DELETE",
+      }).then(() => {
+        refreshData();
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const onSubmit = async (data: any) => {
     try {
@@ -131,18 +155,25 @@ function AddService({ currentday, dayId, services }: Props) {
           </form>
         </Box>
       </VStack>
-      <Stack>
-        {services.map((service) => (
-          <Box
-            key={service.id}
-            borderColor="black"
-            borderWidth="2px"
-            width="40%"
-          >
-            <Text>{service.name}</Text>
-          </Box>
-        ))}
-      </Stack>
+      {serviceState === "view" && (
+        <Stack>
+          {services.map((service) => (
+            <Box
+              key={service.id}
+              borderColor="black"
+              borderWidth="2px"
+              width="40%"
+            >
+              <Text>
+                {service.name}- {service.place}
+              </Text>
+              <button onClick={() => deleteService(service.id)}>
+                <DeleteIcon />
+              </button>
+            </Box>
+          ))}
+        </Stack>
+      )}
     </>
   );
 }
