@@ -6,16 +6,8 @@ interface Props {
   refreshData: () => void;
 }
 
-import {
-  Box,
-  Button,
-  Checkbox,
-  Input,
-  Link,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
-import { CheckIcon, CloseIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { Link, Stack, Text } from "@chakra-ui/react";
+import { EditIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -66,21 +58,6 @@ function ServiceView({ danceday, refreshData }: Props) {
     reset();
   };
 
-  async function deleteService(id: string) {
-    try {
-      fetch(`/api/services/${id}`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "DELETE",
-      }).then(() => {
-        refreshData();
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   return (
     <>
       {serviceState === "view" && (
@@ -93,10 +70,6 @@ function ServiceView({ danceday, refreshData }: Props) {
             <Link href={`/admin/login/services/${danceday.id}`}>
               <EditIcon name="Edit" />{" "}
             </Link>
-          </button>
-
-          <button onClick={() => deleteService(danceday.id)}>
-            <DeleteIcon />
           </button>
         </Stack>
       )}

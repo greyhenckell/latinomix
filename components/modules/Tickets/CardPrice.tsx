@@ -63,7 +63,7 @@ const PackageTier = ({ ticket }: Props) => {
   const originalPrice = ticket.offer ? `${ticket.price}` : "";
 
   //valid term
-  const expiredText = ticket.offer ? "3 months valid" : "1 day valid";
+  //const expiredText = ticket.offer ? `${ticket.price}` : "1 day valid";
 
   return (
     <Box
@@ -129,12 +129,11 @@ const PackageTier = ({ ticket }: Props) => {
         <List spacing={3} textAlign="start" px={12}>
           <ListItem>
             <ListIcon as={FaCheckCircle} color="green.500" />
-            {ticket.description}
-            {expiredText}
+            {ticket.description.split("-")[0]}
           </ListItem>
           <ListItem>
             <ListIcon as={FaCheckCircle} color="green.500" />
-            <span>{expiredText}</span>
+            <span>{ticket.description.split("-")[1]}</span>
           </ListItem>
         </List>
         <Box w="80%" pt={7}>
