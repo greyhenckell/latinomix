@@ -40,16 +40,16 @@ interface NewsItem {
 const NEWS_ITEMS: Array<NewsItem> = [
   {
     id: 1,
-    day: "Thursdays/Sundays 18:00",
+    day: "Tue-Thu-Sun",
     city: "Espoo",
-    event_name: "Summer Classes-Start 1.6",
-    place: "Café Merenneito",
-    address: "Matinlahdenranta 3, 02230 Espoo",
+    event_name: "Autumn/Winter classes 23-24",
+    place: "Palvelukeskus ja Pirtii",
+    address: "",
     price: "15€ or lippu",
     dresscode: "check schedule in the homepage",
     class: "LatinoMix-Dance",
-    description: "summer",
-    img: "imgs/summer.jpeg",
+    description: "Autumn/Winter",
+    img: "imgs/newseason.jpeg",
   },
 ];
 
