@@ -5,8 +5,11 @@ import {
   Link,
   Text,
   VStack,
+  Image,
   useBreakpointValue,
   chakra,
+  Box,
+  AspectRatio,
 } from "@chakra-ui/react";
 import { Journal } from "typing";
 
@@ -18,29 +21,25 @@ interface Props {
 
 export default function WithBackgroundImage({ journals }: Props) {
   return (
-    <Flex
+    <Box
       id="bgphoto"
-      w={"100%"}
-      h={"85vh"}
-      backgroundImage={
-        //"url(https://images.unsplash.com/photo-1600267175161-cfaa711b4a81?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)"
-        "linear-gradient(to top,rgba(255, 255, 255, 0.155),rgba(0, 0, 0, 0.25)), url(imgs/bg2.jpeg)"
-      }
-      backgroundSize={"cover"}
-      backgroundPosition={"center center"}
+      backgroundImage={"imgs/bgImage.jpg"}
+      backgroundSize="cover"
+      backgroundPosition="center"
     >
-      <VStack
-        w={"full"}
-        justify={"top"}
-        px={useBreakpointValue({ base: 4, md: 6 })}
-        bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
+      <Flex
+        minHeight="100vh"
+        align="center"
+        justify="center"
+        direction="column"
+        backgroundColor="rgba(0, 0, 0, 0.3)"
       >
-        <Stack maxW={"6xl"} align={"flex-start"} spacing={9}>
+        <VStack spacing={4}>
           <chakra.h1
-            mt={2}
+            p={4}
             fontSize={24}
             fontFamily={"Odin Rounded"}
-            //fontWeight={"bold"}
+            fontWeight={"bold"}
             color="gray.100"
           >
             Looking for Fun,Powerful,Energetic Dance? come to...
@@ -48,12 +47,14 @@ export default function WithBackgroundImage({ journals }: Props) {
 
           <Text
             as="em"
-            bgGradient="linear(to-r, #FFF5F5, #FF0080)"
+            bgGradient="linear(to-l, #FFF5F5, #FF0080)"
             bgClip="text"
             fontFamily={"Georgia"}
-            //fontWeight={"bold"}
+            fontWeight={"bold"}
             fontSize="6xl"
             textTransform={"uppercase"}
+            px={2}
+            mt={6}
           >
             latinomix
           </Text>
@@ -82,8 +83,8 @@ export default function WithBackgroundImage({ journals }: Props) {
               </Button>
             </Link>
           </Stack>
-        </Stack>
-      </VStack>
-    </Flex>
+        </VStack>
+      </Flex>
+    </Box>
   );
 }

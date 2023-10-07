@@ -46,7 +46,7 @@ function Header({ Links }: LinkProps) {
 
   return (
     <>
-      <Box bg={"gray.100"} px={4}>
+      <Box bg={"gray.100"} px={4} w="full">
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
