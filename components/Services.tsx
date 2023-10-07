@@ -53,9 +53,9 @@ const testimonials = [
     role: "kids | easy coreos | 45min",
     content:
       " The latest Finnish hits\
-      also find their place in dance classes. There are also rhythmic\
-      exercises in play through games and games, so that Latin rhythms\
-      become familiar. It is good to have comfortable, elastic\
+      also Latin dances as salsa,bachata, merengue and others. Latin movements will be \
+      introduced in a fun way, even easy spanish terminilogies related to dance.\
+      It is good to have comfortable, elastic\
       sportswear and slippers or indoor shoes that allow you to\
       workout for an hour. Of course, you can also dance barefoot",
     avatar: "imgs/lm_kids.jpg",
@@ -185,7 +185,7 @@ export default function GridBlurredBackdrop() {
           fontWeight={"bold"}
           color={useColorModeValue("gray.700", "gray.50")}
         >
-          Check our main Services
+          Ready to Dance !!
         </chakra.h1>
         <chakra.h2
           margin={"auto"}
