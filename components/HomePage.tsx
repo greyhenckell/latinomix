@@ -13,13 +13,14 @@ import {
 } from "@chakra-ui/react";
 import { Journal } from "typing";
 
-import AdultsSchedule from "components/AdultsSchedule";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   journals: Journal[];
 }
 
 export default function WithBackgroundImage({ journals }: Props) {
+  const { t } = useTranslation();
   return (
     <Box
       id="bgphoto"
@@ -42,7 +43,7 @@ export default function WithBackgroundImage({ journals }: Props) {
             fontWeight={"bold"}
             color="gray.100"
           >
-            Looking for Fun,Powerful,Energetic Dance? come to...
+            {t("homepage.welcome")}
           </chakra.h1>
 
           <Text
@@ -69,7 +70,7 @@ export default function WithBackgroundImage({ journals }: Props) {
                 color={"white"}
                 _hover={{ bg: "blue.500" }}
               >
-                more info!
+                {t("homepage.info")}
               </Button>
             </Link>
             <Link href="/news">
@@ -79,7 +80,7 @@ export default function WithBackgroundImage({ journals }: Props) {
                 color={"black"}
                 _hover={{ bg: "whiteAlpha.500" }}
               >
-                news!
+                {t("homepage.news")}
               </Button>
             </Link>
           </Stack>

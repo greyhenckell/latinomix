@@ -14,6 +14,9 @@ import { IconButton } from "@chakra-ui/button";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
+
 interface Ilink {
   name: string;
   path: string;
@@ -38,9 +41,17 @@ const NavLink = ({ children, path }: { children: ReactNode; path: string }) => (
   </Link>
 );
 
-function Header({ Links }: LinkProps) {
+function Header() {
+  const Links = [
+    { name: "news", path: "/news" },
+    { name: "schedule", path: "/timetable" },
+    { name: "about", path: "/about" },
+  ];
+
   const linkColor = "gray.600";
   const linkHoverColor = "gray.800";
+
+  const { t } = useTranslation();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -58,7 +69,7 @@ function Header({ Links }: LinkProps) {
           <HStack spacing={4} alignItems={"center"}>
             <Box>
               <Heading
-                ml="4"
+                ml="1"
                 size="auto"
                 fontWeight="semibold"
                 color="cyan.400"
@@ -66,19 +77,19 @@ function Header({ Links }: LinkProps) {
                 LatinoMix
               </Heading>
             </Box>
+
             <HStack
               as={"nav"}
-              spacing={2}
+              spacing={1}
               display={{ base: "none", md: "flex" }}
             >
-              {Links.map((link) => (
-                <NavLink key={link.name} path={link.path}>
-                  {link.name}
-                </NavLink>
-              ))}
+              <NavLink path="/news">{t("header.news")}</NavLink>
+              <NavLink path="/timetable">{t("header.schedule")}</NavLink>
+              <NavLink path="/about">{t("header.about")}</NavLink>
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
+            <LanguageSwitcher />
             <Link href="https://www.instagram.com/latinomixtanssi/" isExternal>
               <IconButton
                 aria-label="instagram"
@@ -91,14 +102,14 @@ function Header({ Links }: LinkProps) {
             >
               <IconButton
                 aria-label="facebook"
-                ml={2}
+                ml={0.2}
                 icon={<FaFacebook />}
               ></IconButton>
             </Link>
             <Link href="https://www.youtube.com/channel/UCdvuh0Dm3VGkN8TqX94JD-w">
               <IconButton
                 aria-label="youtube"
-                ml={2}
+                ml={0.1}
                 icon={<FaYoutube />}
               ></IconButton>
             </Link>
@@ -106,8 +117,8 @@ function Header({ Links }: LinkProps) {
         </Flex>
 
         {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
+          <Box pb={2} display={{ md: "none" }}>
+            <Stack as={"nav"} spacing={2}>
               {Links.map((link) => (
                 <NavLink key={link.name} path={link.path}>
                   {link.name}

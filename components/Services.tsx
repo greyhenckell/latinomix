@@ -162,12 +162,6 @@ export default function GridBlurredBackdrop() {
       direction={"column"}
       width={"full"}
     >
-      <Box p={4}>
-        <Link href="/" color="orange.400" fontSize={15} alignItems="center">
-          <Icon as={FiArrowLeftCircle} w={6} h={6} mr={2} />
-          HomePage
-        </Link>
-      </Box>
       <Box width={{ base: "full", sm: "lg", lg: "xl" }} margin={"auto"}>
         <chakra.h3
           fontFamily={"Work Sans"}

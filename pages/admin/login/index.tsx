@@ -70,7 +70,6 @@ function Login({ tickets, journals }: TicketProps) {
       const imgProfile = session.user?.image || undefined;
       return (
         <Stack>
-          <Header Links={Links}></Header>
           <Box>
             <button
               onClick={() => signOut()}

@@ -11,7 +11,6 @@ module.exports = {
     dirs: ["components", "modules"],
   },
   images: {
-    loader: "cloudinary",
-    path: "https://res.cloudinary.com/dgkcfmvwf/image/upload",
+    domains: ["res.cloudinary.com"],
   },
 };

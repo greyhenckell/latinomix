@@ -1,0 +1,21 @@
+{
+  "header": {
+    "news": "Uutiset",
+    "about": "Meistä",
+    "schedule": "Aikataulu/Hinnat"
+  },
+  "homepage": {
+    "welcome": "Etsitkö hauskaa, voimakasta, energistä tanssia? tule...",
+    "info": "Lisätietoja",
+    "news": "Tapahtumat!"
+  },
+  "schedule": {
+    "Monday": "Maanantai",
+    "Tuesday": "Tiistai",
+    "Wednesday": "Keskiviikko",
+    "Thursday": "Torstai",
+    "Friday": "Perjantai",
+    "Saturday": "Lauantai",
+    "Sunday": "Sunnuntai"
+  }
+}

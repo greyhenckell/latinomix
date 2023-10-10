@@ -10,6 +10,8 @@ import {
   ListIcon,
 } from "@chakra-ui/react";
 
+import { useTranslation } from "react-i18next";
+
 import { FaHome } from "react-icons/fa";
 import { MdPlace } from "react-icons/md";
 
@@ -36,6 +38,7 @@ interface Props {
 }
 
 function AdultsSchedule({ journals }: Props) {
+  const { t } = useTranslation();
   //console.log(journals);
   const sorter = [
     "Monday",
@@ -84,7 +87,7 @@ function AdultsSchedule({ journals }: Props) {
                 fontWeight={500}
                 bg={"green.100"}
               >
-                {item.day}
+                {t(`schedule.${item.day}`)}
               </Text>
               {item.services.map(
                 (serv) =>

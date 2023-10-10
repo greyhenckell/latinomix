@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import {
   Badge,
   Box,
@@ -9,10 +8,20 @@ import {
   Heading,
   Link,
   Stack,
+  Image,
   Text,
 } from "@chakra-ui/react";
 
+import { getCloudinaryImageUrl } from "../utils";
+
+const ImageCloud = ({ src }: { src: string | null }) => {
+  return <>{src ? <Image src={src} alt="" /> : <p>loading image...</p>}</>;
+};
+
 function About() {
+  const imageTag = getCloudinaryImageUrl("latinomix/IMG_2819_ri0xw1");
+  console.log(imageTag);
+
   return (
     <>
       <Stack p={4}>
@@ -32,15 +41,7 @@ function About() {
             {" "}
             <Box height={100} flex={1} bg="blue.200">
               {" "}
-              <Image
-                alt="about latinomix"
-                objectFit="cover"
-                width={700}
-                height={700}
-                layout="responsive"
-                objectPosition={"center"}
-                src="/v1677013821/latinomix/49725_pdaose.jpg"
-              />{" "}
+              <ImageCloud src={imageTag} />{" "}
             </Box>{" "}
             <Stack
               flex={1}

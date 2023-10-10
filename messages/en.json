@@ -1,0 +1,21 @@
+{
+  "header": {
+    "news": "News",
+    "about": "About",
+    "schedule": "Schedule&Prices"
+  },
+  "homepage": {
+    "welcome": "Looking for Fun,Powerful,Energetic Dance? come to...",
+    "info": "more info!",
+    "news": "news!"
+  },
+  "schedule": {
+    "Monday": "Monday",
+    "Tuesday": "Tuesday",
+    "Wednesday": "Wednesday",
+    "Thursday": "Thursday",
+    "Friday": "Friday",
+    "Saturday": "Saturday",
+    "Sunday": "Sunday"
+  }
+}
