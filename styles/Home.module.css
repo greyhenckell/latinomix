@@ -2,6 +2,13 @@
   padding: 0 2rem;
 }
 
+.active {
+  /* Add your active link styling here, e.g., changing color or background */
+  font-weight: bold;
+  background-color: #0f0909;
+  color: #b5b0b0;
+}
+
 .main {
   min-height: 100vh;
   padding: 4rem 0;

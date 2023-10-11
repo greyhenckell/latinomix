@@ -13,6 +13,26 @@ import {
 // Here we have used react-icons package for the icons
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 
+import { getCloudinaryImageUrl } from "../utils";
+
+const ImageCloud = ({ src }: { src: string | null }) => {
+  return (
+    <>
+      {src ? (
+        <Image
+          src={src}
+          alt=""
+          fill={true}
+          priority
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+      ) : (
+        <p>loading image...</p>
+      )}
+    </>
+  );
+};
+
 import "slick-carousel/slick/slick.css";
 
 // Settings for the slider
@@ -42,18 +62,17 @@ function EventSlide() {
     {
       title: "LatinoMix - WellNess",
       text: "Energy for everyday life. A class is guaranteed to resfresh the minds of your rutine.",
-      image:
-        "/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1677014791/latinomix/DSC02503_z7vwfk.jpg",
+      image: getCloudinaryImageUrl("latinomix/22694_mvf84b"),
     },
     {
       title: "LatinoMix - Tyhy Päivä",
       text: "Energetic dance class, suitable for all ages, fun to enjoy it together taking you to the depth of Latinoamerica rhythms.",
-      image: "/v1677013826/latinomix/IMG_4210_bxldfz.heic",
+      image: getCloudinaryImageUrl("latinomix/lm_kids_hq2zmv"),
     },
     {
       title: "Private Services as:",
       text: "Personal Dance class, Birthdays, shows, couple class, We make your party full of joy. Contact me latinomixtanssi@gmail.com and get a offer!!",
-      image: "/v1677013821/latinomix/45601_rxbzjv.jpg",
+      image: getCloudinaryImageUrl("latinomix/lipulaiva"),
     },
   ];
 
@@ -114,16 +133,7 @@ function EventSlide() {
             //backgroundRepeat="no-repeat"
             //backgroundSize="cover"
           >
-            <Image
-              src={card.image}
-              alt="wellness"
-              layout="fill"
-              //width={600}
-              //height={650}
-              objectFit="cover"
-              objectPosition={"center"}
-              priority
-            ></Image>
+            <ImageCloud src={card.image}></ImageCloud>
             {/* This is the block you need to change, to customize the caption */}
             <Container size="container.lg" height="600px" position="relative">
               <Stack

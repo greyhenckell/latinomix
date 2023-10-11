@@ -73,7 +73,6 @@ function Timetable({ journals, tickets }: Props) {
 
   return (
     <div>
-      <Header Links={[{ name: "homepage", path: "/" }]}></Header>
       <Box py={6}>
         <TicketPage tickets={tickets}></TicketPage>
       </Box>

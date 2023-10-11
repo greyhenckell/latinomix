@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import {
   Badge,
   Box,
@@ -9,10 +8,21 @@ import {
   Heading,
   Link,
   Stack,
+  Image,
   Text,
 } from "@chakra-ui/react";
 
+import { useTranslation } from "react-i18next";
+
+import { getCloudinaryImageUrl } from "../utils";
+
+const ImageCloud = ({ src }: { src: string | null }) => {
+  return <>{src ? <Image src={src} alt="" /> : <p>loading image...</p>}</>;
+};
+
 function About() {
+  const imageTag = getCloudinaryImageUrl("latinomix/IMG_2819_ri0xw1");
+  const { t } = useTranslation();
   return (
     <>
       <Stack p={4}>
@@ -32,15 +42,7 @@ function About() {
             {" "}
             <Box height={100} flex={1} bg="blue.200">
               {" "}
-              <Image
-                alt="about latinomix"
-                objectFit="cover"
-                width={700}
-                height={700}
-                layout="responsive"
-                objectPosition={"center"}
-                src="/v1677013821/latinomix/49725_pdaose.jpg"
-              />{" "}
+              <ImageCloud src={imageTag} />{" "}
             </Box>{" "}
             <Stack
               flex={1}
@@ -61,7 +63,7 @@ function About() {
               </Text>{" "}
               <Text textAlign={"center"} color={"gray.700"} px={3}>
                 {" "}
-                Dancer, musician, PM for work or{" "}
+                {t("about.title")}{" "}
                 <Link
                   href="https://www.instagram.com/latinomixtanssi/"
                   isExternal
@@ -69,9 +71,9 @@ function About() {
                   fontWeight={600}
                 >
                   {" "}
-                  Follow{" "}
+                  FollowMe{" "}
                 </Link>{" "}
-                me in your social networks{" "}
+                {t("about.social")}{" "}
               </Text>{" "}
               <Stack
                 align={"center"}
@@ -100,19 +102,16 @@ function About() {
               <Stack
                 width={"100%"}
                 mt={"2rem"}
-                direction={"row"}
                 padding={2}
-                justifyContent={"space-between"}
                 alignItems={"center"}
               >
                 {" "}
-                <Flex padding={2} alignItems={"center"}>
+                <Flex>
                   <Link
                     href="https://www.facebook.com/groups/1106771543020827"
                     isExternal
                   >
                     <Button
-                      flex={1}
                       fontSize={"sm"}
                       rounded={"full"}
                       _focus={{ bg: "gray.200" }}

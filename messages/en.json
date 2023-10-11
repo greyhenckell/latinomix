@@ -1,0 +1,39 @@
+{
+  "header": {
+    "news": "News",
+    "about": "About",
+    "schedule": "Schedule&Prices"
+  },
+  "homepage": {
+    "welcome": "Looking for Fun,Powerful,Energetic Dance? come to...",
+    "info": "more info!",
+    "news": "news!"
+  },
+  "schedule": {
+    "Monday": "Monday",
+    "Tuesday": "Tuesday",
+    "Wednesday": "Wednesday",
+    "Thursday": "Thursday",
+    "Friday": "Friday",
+    "Saturday": "Saturday",
+    "Sunday": "Sunday"
+  },
+  "services": {
+    "title": "Ready to Dance !!",
+    "titleDesc": "Check why over 5 dance styles in LatinoMix makes their dancers happiest and enjoy the moment!",
+    "fitness": "With Latinomix dance classes, you can enjoy the Latin rhythms, have fun and stay fit! During the dance classes you will learn about different Latin dances (e.g., salsa, samba, bachata, merengue) in short steps. A class can have least 2 to 3 styles and thus teach a variety of different Latin dances, with a good feeling",
+    "easy": "basic steps will be practiced, e.g. salsa, merengue, bachata, reggaeton, samba and chachacha focus on the  coreo-steps and flow. We start from the very beginning and do a lot of repetitions in a great mood and energy,welcome to have fun",
+    "couple": "Salsa and Bachata in couple, easy quick and fun way to learn, from very beginners to up,or improve your dance style",
+    "shows": "Reserve a wellness day (TYHY Päivä) with a lot of energy for everyday life. Send me a message latinomixtanssi@gmail.com | @latinomixtanssi",
+    "kids": "The latest Finnish hits also Latin dances as salsa,bachata, merengue and others. Latin movements will be introduced in a fun way, even easy spanish terminilogies related to dance.It is good to have comfortable, elastic sportswear and slippers or indoor shoes that allow you to workout for an hour. Of course, you can also dance barefoot"
+  },
+  "about": {
+    "title": "Dancer,Musician",
+    "social": "in your social network"
+  },
+  "ticket": {
+    "title": "Ready to Dance",
+    "desc": "Choose the best one for you",
+    "payInfo": "Payment methods"
+  }
+}

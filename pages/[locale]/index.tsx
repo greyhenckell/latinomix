@@ -1,15 +1,6 @@
-import {
-  Box,
-  Stack,
-  StackDivider,
-  VStack,
-  Image,
-  Divider,
-} from "@chakra-ui/react";
+import { Box, StackDivider, VStack, Flex } from "@chakra-ui/react";
 import AdultsSchedule from "components/AdultsSchedule";
 
-import Header from "components/Header";
-import HomeBanner from "components/HomeBanner";
 import HomePage from "components/HomePage";
 import prisma from "lib/prisma";
 
@@ -34,12 +25,6 @@ export const getServerSideProps = async () => {
     },
   };
 };
-
-const Links = [
-  { name: "News", path: "/news" },
-  { name: "Schedule&Prices", path: "/timetable" },
-  { name: "About Us", path: "/about" },
-];
 
 const Home = ({ journals }: Props) => {
   return (
@@ -69,12 +54,8 @@ const Home = ({ journals }: Props) => {
         divider={<StackDivider borderColor="gray.200" />}
         spacing={2}
         align="stretch"
-        //p={1}
-        //bgGradient={"linear(to-r, blackAlpha.600, transparent)"}
       >
         <Box>
-          <Header Links={Links}></Header>
-          {/*<HomeBanner journals={journals} />*/}
           <HomePage journals={journals}></HomePage>
 
           <AdultsSchedule journals={journals} />

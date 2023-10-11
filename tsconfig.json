@@ -23,7 +23,8 @@
     "**/*.ts",
     "lib/prisma.js",
     "**/*.tsx",
-    "/modules/**/*.tsx"
+    "/modules/**/*.tsx",
+    ".env.local"
   ],
   "exclude": ["node_modules"]
 }
