@@ -17,5 +17,23 @@
     "Friday": "Perjantai",
     "Saturday": "Lauantai",
     "Sunday": "Sunnuntai"
+  },
+  "services": {
+    "title": "Valmiina tanssimaan !!",
+    "titleDesc": "Tarkista, miksi yli 5 tanssityyliä LatinoMixissä tekee tanssijoista onnellisimpia ja auttaa nauttimaan hetkestä!",
+    "fitness": "Latinomix-tanssitunneilla voit nauttia latinalaisten rytmeistä, pitää hauskaa ja pysyä kunnossa! Tanssitunneilla opit eri latinalaisia tansseja (kuten salsa, samba, bachata, merengue) lyhyissä jaksoissa. Yhdellä tunnilla voi olla vähintään 2-3 eri tyyliä ja siten opit monipuolisesti erilaisia latinalaisia tansseja, hyvällä fiiliksellä.",
+    "easy": "Harjoitellaan perusaskelia, kuten salsa, merengue, bachata, reggaeton, samba ja chachacha, keskittyen coreo-askeliin ja virtaukseen. Aloittamme aivan alusta ja teemme paljon toistoja hyvässä tunnelmassa ja energisesti. Tervetuloa pitämään hauskaa!",
+    "couple": "Salsa ja Bachata parina, helppo, nopea ja hauska tapa oppia, aivan alusta alkaen tai parantaa tanssityyliäsi.",
+    "shows": "Varaa hyvinvointipäivä (TYHY-päivä) täynnä energiaa arjen keskelle. Lähetä viesti osoitteeseen latinomixtanssi@gmail.com | @latinomixtanssi",
+    "kids": "Uusimmat suomalaiset hittikappaleet sekä latinalaiset tanssit, kuten salsa, bachata, merengue ja muut. Latinalaiset liikkeet esitellään hauskalla tavalla, mukaan lukien helppoa espanjankielistä sanastoa tanssiin liittyen. On hyvä pukeutua mukavasti ja joustavasti urheiluvaatteisiin sekä käyttää tossuja tai sisäkenkiä, jotka mahdollistavat tunnin mittaisen harjoittelun. Tietenkin voit myös tanssia paljain jaloin"
+  },
+  "about": {
+    "title": "Tanssija,Muusikko",
+    "social": "Seuraa minua sosiaalisessa verkostossasi"
+  },
+  "ticket": {
+    "title": "Valmiina tanssimaan",
+    "desc": "Valitse paras sinulle",
+    "payInfo": "maksutavat"
   }
 }

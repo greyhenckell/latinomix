@@ -9,55 +9,38 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-import { FiArrowLeftCircle } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 
 const testimonials = [
   {
     name: "Fitness Class",
     role: "fitness| variety| coreo| energetic |  60min",
-    content:
-      "In Latinomix dance classes, you can enjoy the Latin rhythms, have fun \
-      and stay fit! During the dance classes you will learn \
-      about different Latin dances (e.g., salsa, samba, \
-        bachata, merengue) in short steps. A class can have least 2 to 3 styles \
-       and thus teach a variety of different Latin dances, with a good feeling",
+    content: "fitness",
     avatar: "imgs/lm_fitness.jpeg",
   },
   {
     name: "EasyDance Class",
     role: "coreo| low intensity| focus",
-    content:
-      "In the class, basic steps are practiced, e.g. salsa, merengue, bachata, reggaeton, samba and chachacha \
-      focus on the  coreo-steps and flow. We start from the very beginning and do a lot of repetitions in a great mood and energy ,\
-      welcome to have fun",
+    content: "easy",
     avatar: "imgs/lm_easydance.jpeg",
   },
   {
     name: "Couple Class",
     role: "Bachata| Salsa| beginner",
-    content:
-      "Salsa and Bachata in couple, easy quick and fun way to learn, from very beginners to up, \
-      or improve your dance style ",
+    content: "couple",
     avatar: "imgs/lm_pari.jpg",
   },
   {
     name: "Dance Shows",
     role: "Birthdays | PartyShows | Liikunta | DanceShow Schools and Company's",
-    content:
-      "Reserve a wellness day (TYHY Päivä) with a lot of energy for everyday life. Send me a message latinomixtanssi@gmail.com | @latinomixtanssi",
+    content: "shows",
     avatar:
       "https://res.cloudinary.com/dgkcfmvwf/image/upload/v1677013823/latinomix/8468beec-e618-468c-a8b2-86e8b38ceba7_qctlva.jpg",
   },
   {
     name: "LatinoMix- Kids",
     role: "kids | easy coreos | 45min",
-    content:
-      " The latest Finnish hits\
-      also Latin dances as salsa,bachata, merengue and others. Latin movements will be \
-      introduced in a fun way, even easy spanish terminilogies related to dance.\
-      It is good to have comfortable, elastic\
-      sportswear and slippers or indoor shoes that allow you to\
-      workout for an hour. Of course, you can also dance barefoot",
+    content: "kids",
     avatar: "imgs/lm_kids.jpg",
   },
 ];
@@ -79,6 +62,7 @@ interface TestimonialCardProps {
 
 function TestimonialCard(props: TestimonialCardProps) {
   const { name, role, content, avatar, index } = props;
+  const { t } = useTranslation();
   return (
     <Flex
       boxShadow={"lg"}
@@ -127,7 +111,7 @@ function TestimonialCard(props: TestimonialCardProps) {
           fontSize={"15px"}
           pb={4}
         >
-          {content}
+          {t(`services.${content}`)}
         </chakra.p>
         <chakra.p fontFamily={"Work Sans"} fontWeight={"bold"} fontSize={18}>
           {name}
@@ -154,6 +138,7 @@ function TestimonialCard(props: TestimonialCardProps) {
 }
 
 export default function GridBlurredBackdrop() {
+  const { t } = useTranslation();
   return (
     <Flex
       textAlign={"center"}
@@ -179,7 +164,7 @@ export default function GridBlurredBackdrop() {
           fontWeight={"bold"}
           color={useColorModeValue("gray.700", "gray.50")}
         >
-          Ready to Dance !!
+          {t("services.title")}
         </chakra.h1>
         <chakra.h2
           margin={"auto"}
@@ -188,9 +173,7 @@ export default function GridBlurredBackdrop() {
           fontWeight={"medium"}
           color={useColorModeValue("gray.500", "gray.400")}
         >
-          Check why over <chakra.strong color="gray.700">5</chakra.strong> dance
-          styles in <chakra.strong color="gray.700">LatinoMix</chakra.strong>{" "}
-          makes their dancers happiest and enjoy the moment!
+          {t("services.titleDesc")}
         </chakra.h2>
       </Box>
       <SimpleGrid

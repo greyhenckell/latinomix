@@ -13,11 +13,14 @@ import React from "react";
 import { Ticket } from "typing";
 import CardPrice from "./CardPrice";
 
+import { useTranslation } from "react-i18next";
+
 interface Props {
   tickets: Ticket[];
 }
 
 function TicketPage({ tickets }: Props) {
+  const { t } = useTranslation();
   return (
     <>
       <VStack width={"100%"} spacing={2}>
@@ -27,7 +30,7 @@ function TicketPage({ tickets }: Props) {
           lineHeight={1.1}
           fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
         >
-          Ready to Dance ?
+          {t("ticket.title")} ?
           <Text
             as={"span"}
             bgGradient="linear(to-r, red.400,pink.400)"
@@ -41,7 +44,7 @@ function TicketPage({ tickets }: Props) {
           color={"gray.500"}
           fontSize={{ base: "sm", sm: "md" }}
         >
-          Choose the best for you:
+          {t("ticket.desc")}:
         </Text>
       </VStack>
       <Stack
@@ -58,7 +61,9 @@ function TicketPage({ tickets }: Props) {
       <Flex mt={5} py={2} justifyContent="center" color={"gray"}>
         <Text as="span" fontSize={{ base: "sm", sm: "md" }}>
           <InfoIcon />
-          {"  "}Payment methods{" :"}
+          {"  "}
+          {t("ticket.payInfo")}
+          {" :"}
           <Text ml={2} my={1}>
             € Cash
           </Text>
