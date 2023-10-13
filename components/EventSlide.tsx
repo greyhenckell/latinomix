@@ -22,12 +22,9 @@ const ImageCloud = ({ src }: { src: string | null }) => {
         <Image
           src={src}
           alt=""
-          layout="fill"
+          fill={true}
           priority
-          style={{
-            objectFit: "cover",
-            //objectPosition: "center",
-          }}
+          style={{ objectFit: "cover", objectPosition: "center" }}
         />
       ) : (
         <p>loading image...</p>
@@ -70,7 +67,7 @@ function EventSlide() {
     {
       title: "LatinoMix - Tyhy Päivä",
       text: "Energetic dance class, suitable for all ages, fun to enjoy it together taking you to the depth of Latinoamerica rhythms.",
-      image: getCloudinaryImageUrl("latinomix/lm_fitness_ok32ax"),
+      image: getCloudinaryImageUrl("latinomix/lm_kids_hq2zmv"),
     },
     {
       title: "Private Services as:",
@@ -130,9 +127,11 @@ function EventSlide() {
           <Box
             id="boxbox"
             key={index}
-            width={"80%"}
+            height={"lg"}
             position="relative"
-            paddingTop={useBreakpointValue({ base: 0, md: 0, lg: 50 })}
+            //backgroundPosition="center"
+            //backgroundRepeat="no-repeat"
+            //backgroundSize="cover"
           >
             <ImageCloud src={card.image}></ImageCloud>
             {/* This is the block you need to change, to customize the caption */}
