@@ -17,7 +17,15 @@ import { useTranslation } from "react-i18next";
 import { getCloudinaryImageUrl } from "../utils";
 
 const ImageCloud = ({ src }: { src: string | null }) => {
-  return <>{src ? <Image src={src} alt="" /> : <p>loading image...</p>}</>;
+  return (
+    <>
+      {src ? (
+        <Image src={src} alt="" minWidth={"full"} height={"full"} />
+      ) : (
+        <p>loading image...</p>
+      )}
+    </>
+  );
 };
 
 function About() {
@@ -25,14 +33,15 @@ function About() {
   const { t } = useTranslation();
   return (
     <>
-      <Stack p={4} ml={4} width={"full"}>
+      <Stack p={4} ml={4} w={"full"}>
         <Center>
           {" "}
           <Stack
             id="about"
             borderWidth="1px"
             borderRadius="lg"
-            w={{ sm: "100%", md: "540px" }}
+            minWidth={"400px"}
+            w={{ sm: "auto", md: "auto" }}
             height={{ sm: "476px", md: "20rem" }}
             direction={{ base: "column", md: "row" }}
             bg={"white"}
@@ -40,7 +49,7 @@ function About() {
             padding={4}
           >
             {" "}
-            <Box height={100} flex={1} bg="blue.200">
+            <Box flex={1} bg="blue.500">
               {" "}
               <ImageCloud src={imageTag} />{" "}
             </Box>{" "}

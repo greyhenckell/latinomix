@@ -89,9 +89,9 @@ function TicketEdit({ tickets, refreshData }: Props) {
               <Input
                 placeholder="discount"
                 type="number"
-                {...register("ticketDiscount", { required: true })}
+                {...register("ticketDiscount", { required: false })}
               />
-              <Checkbox {...register("ticketOffer", { required: true })}>
+              <Checkbox {...register("ticketOffer", { required: false })}>
                 Offer
               </Checkbox>
             </Stack>

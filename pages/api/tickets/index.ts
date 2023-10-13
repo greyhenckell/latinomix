@@ -7,12 +7,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const ticket = req.body;
-
+  console.log("--", ticket);
   if (req.method === "POST") {
     const result = await prisma.ticket.create({
-      data: {
-        ...ticket,
-      },
+      data: ticket,
     });
 
     return res.status(200).json(result);

@@ -91,7 +91,7 @@ export default function SplitWithImage() {
       event_name: "Happy Thursdays",
       place: "Matinkylan Pirtii",
       address: "",
-      price: "20€ or (1+1/2)lippu",
+      price: "20€ or 1+1/2 ticket",
       dresscode: "your favorite",
       class: "LatinoMix-Easy&Dance",
       description: "90min class",

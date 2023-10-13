@@ -48,6 +48,7 @@ function TicketView({ ticket, refreshData }: Props) {
     setFocus("ticketDescription");
     setFocus("ticketPrice");
     setFocus("ticketOffer");
+    setFocus("ticketDiscount");
   }, [setFocus, ticketState]);
 
   const cancelEdit = () => {
@@ -108,6 +109,11 @@ function TicketView({ ticket, refreshData }: Props) {
                   type="text"
                   defaultValue={ticket.price}
                   {...register("ticketPrice")}
+                ></Input>
+                <Input
+                  type="text"
+                  defaultValue={ticket.discount}
+                  {...register("ticketDiscount")}
                 ></Input>
 
                 <Checkbox spacing="1rem" {...register("ticketOffer")}>
