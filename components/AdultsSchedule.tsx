@@ -138,7 +138,7 @@ function AdultsSchedule({ journals }: Props) {
                           </ListItem>
                           <ListItem>
                             <ListIcon as={FaRegClock} color="green.500" />
-                            {serv.duration}min
+                            {serv.duration}
                           </ListItem>
                         </List>
                       </VStack>

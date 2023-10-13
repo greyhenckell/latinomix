@@ -22,9 +22,12 @@ const ImageCloud = ({ src }: { src: string | null }) => {
         <Image
           src={src}
           alt=""
-          fill={true}
+          layout="fill"
           priority
-          style={{ objectFit: "cover", objectPosition: "center" }}
+          style={{
+            objectFit: "cover",
+            //objectPosition: "center",
+          }}
         />
       ) : (
         <p>loading image...</p>
@@ -127,11 +130,9 @@ function EventSlide() {
           <Box
             id="boxbox"
             key={index}
-            height={"lg"}
+            width={"80%"}
             position="relative"
-            //backgroundPosition="center"
-            //backgroundRepeat="no-repeat"
-            //backgroundSize="cover"
+            paddingTop={useBreakpointValue({ base: 0, md: 0, lg: 50 })}
           >
             <ImageCloud src={card.image}></ImageCloud>
             {/* This is the block you need to change, to customize the caption */}
