@@ -25,7 +25,7 @@ function About() {
   const { t } = useTranslation();
   return (
     <>
-      <Stack p={4}>
+      <Stack p={4} ml={4} width={"full"}>
         <Center>
           {" "}
           <Stack
@@ -49,7 +49,7 @@ function About() {
               flexDirection="column"
               justifyContent="center"
               alignItems="center"
-              p={1}
+              p={4}
               pt={2}
             >
               {" "}
@@ -61,9 +61,15 @@ function About() {
                 {" "}
                 @latinomixtanssi{" "}
               </Text>{" "}
-              <Text textAlign={"center"} color={"gray.700"} px={3}>
+              <Text fontWeight={300} color={"gray.500"} size="sm" mb={4}>
                 {" "}
-                {t("about.title")}{" "}
+                latinomixtanssi@gmail.com{" "}
+              </Text>
+              <Text fontWeight={200} color={"gray.500"} size="sm" mb={2}>
+                {" "}
+                {t("about.title")}
+              </Text>
+              <Text textAlign={"center"} color={"gray.700"} px={3}>
                 <Link
                   href="https://www.instagram.com/latinomixtanssi/"
                   isExternal
@@ -82,21 +88,21 @@ function About() {
                 mt={6}
               >
                 {" "}
-                <Badge px={2} py={1} bg={"gray.50"} fontWeight={"400"}>
+                <Badge px={1} py={1} bg={"gray.50"} fontWeight={"400"}>
                   {" "}
-                  #Salsa{" "}
+                  #Salsa #Bachata{" "}
                 </Badge>{" "}
-                <Badge px={2} py={1} bg={"gray.50"} fontWeight={"400"}>
-                  {" "}
-                  #Bachata{" "}
-                </Badge>{" "}
-                <Badge px={2} py={1} bg={"gray.50"} fontWeight={"400"}>
+                <Badge px={1} py={1} bg={"gray.50"} fontWeight={"400"}>
                   {" "}
                   #Merengue{" "}
                 </Badge>{" "}
-                <Badge px={2} py={1} bg={"gray.50"} fontWeight={"400"}>
+                <Badge px={1} py={1} bg={"gray.50"} fontWeight={"400"}>
                   {" "}
-                  #Samba and +{" "}
+                  #Samba +{" "}
+                </Badge>{" "}
+                <Badge px={1} py={1} bg={"gray.50"} fontWeight={"200"}>
+                  {" "}
+                  #show&Events{" "}
                 </Badge>{" "}
               </Stack>{" "}
               <Stack
@@ -108,7 +114,7 @@ function About() {
                 {" "}
                 <Flex>
                   <Link
-                    href="https://www.facebook.com/groups/1106771543020827"
+                    href="https://www.facebook.com/Latinomixtanssi.fi"
                     isExternal
                   >
                     <Button

@@ -67,7 +67,7 @@ function EventSlide() {
     {
       title: "LatinoMix - Tyhy Päivä",
       text: "Energetic dance class, suitable for all ages, fun to enjoy it together taking you to the depth of Latinoamerica rhythms.",
-      image: getCloudinaryImageUrl("latinomix/lm_kids_hq2zmv"),
+      image: getCloudinaryImageUrl("latinomix/lm_fitness_ok32ax"),
     },
     {
       title: "Private Services as:",

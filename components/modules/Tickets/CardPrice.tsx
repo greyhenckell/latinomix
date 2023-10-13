@@ -2,9 +2,6 @@ import React from "react";
 
 import {
   Box,
-  Center,
-  useColorModeValue,
-  Heading,
   Text,
   Stack,
   useBreakpointValue,
@@ -135,6 +132,12 @@ const PackageTier = ({ ticket }: Props) => {
             <ListIcon as={FaCheckCircle} color="green.500" />
             <span>{ticket.description.split("-")[1]}</span>
           </ListItem>
+          {ticket.offer && (
+            <ListItem>
+              <ListIcon as={FaCheckCircle} color="green.500" />
+              <span>{ticket.description.split("-")[2]}</span>
+            </ListItem>
+          )}
         </List>
         <Box w="80%" pt={7}>
           <Button w="full" colorScheme="blue" variant="outline">

@@ -92,7 +92,8 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
               messages={pageProps.message}
             >
               <Flex
-                w={"100%"}
+                id="flexscroll"
+                minWidth={"100%"}
                 backgroundColor={
                   isScrolled ? "rgba(0, 0, 0, 0.9)" : "transparent"
                 }

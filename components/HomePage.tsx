@@ -27,6 +27,7 @@ export default function WithBackgroundImage({ journals }: Props) {
       backgroundImage={"imgs/bgImage.jpg"}
       backgroundSize="cover"
       backgroundPosition="center"
+      w={"100%"}
     >
       <Flex
         minHeight="100vh"

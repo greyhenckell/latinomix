@@ -55,7 +55,7 @@ const Home = ({ journals }: Props) => {
         spacing={2}
         align="stretch"
       >
-        <Box>
+        <Box w="full">
           <HomePage journals={journals}></HomePage>
 
           <AdultsSchedule journals={journals} />

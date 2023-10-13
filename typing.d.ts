@@ -1,7 +1,7 @@
 export interface Journal {
   id: string;
   day: string;
-  services: [Service];
+  services: Service[];
 }
 
 export interface Service {

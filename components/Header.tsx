@@ -57,7 +57,7 @@ function Header() {
 
   return (
     <>
-      <Box bg={"gray.100"} px={4} w="full">
+      <Box id="boxHeader" bg={"gray.100"} px={4} w="full">
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -67,15 +67,8 @@ function Header() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={4} alignItems={"center"}>
-            <Box>
-              <Heading
-                ml="1"
-                size="auto"
-                fontWeight="semibold"
-                color="cyan.400"
-              >
-                LatinoMix
-              </Heading>
+            <Box ml="1" fontWeight="semibold" color="cyan.400">
+              <Link href="/">LatinoMix</Link>
             </Box>
 
             <HStack
