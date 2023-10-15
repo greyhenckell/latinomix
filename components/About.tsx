@@ -18,13 +18,7 @@ import { getCloudinaryImageUrl } from "../utils";
 
 const ImageCloud = ({ src }: { src: string | null }) => {
   return (
-    <>
-      {src ? (
-        <Image src={src} alt="" minWidth={"full"} height={"full"} />
-      ) : (
-        <p>loading image...</p>
-      )}
-    </>
+    <>{src ? <Image src={src} alt="" w={"sm"} /> : <p>loading image...</p>}</>
   );
 };
 
@@ -33,114 +27,64 @@ function About() {
   const { t } = useTranslation();
   return (
     <>
-      <Stack p={4} ml={4} w={"full"}>
-        <Center>
-          {" "}
-          <Stack
-            id="about"
-            borderWidth="1px"
-            borderRadius="lg"
-            minWidth={"400px"}
-            w={{ sm: "auto", md: "auto" }}
-            height={{ sm: "476px", md: "20rem" }}
-            direction={{ base: "column", md: "row" }}
-            bg={"white"}
-            boxShadow={"2xl"}
-            padding={4}
-          >
-            {" "}
-            <Box flex={1} bg="blue.500">
-              {" "}
-              <ImageCloud src={imageTag} />{" "}
-            </Box>{" "}
-            <Stack
-              flex={1}
-              flexDirection="column"
-              justifyContent="center"
-              alignItems="center"
-              p={4}
-              pt={2}
-            >
-              {" "}
-              <Heading fontSize={"2xl"} fontFamily={"body"}>
-                {" "}
-                Jorge Pacheco{" "}
-              </Heading>{" "}
-              <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
-                {" "}
-                @latinomixtanssi{" "}
-              </Text>{" "}
-              <Text fontWeight={300} color={"gray.500"} size="sm" mb={4}>
-                {" "}
-                latinomixtanssi@gmail.com{" "}
-              </Text>
-              <Text fontWeight={200} color={"gray.500"} size="sm" mb={2}>
-                {" "}
-                {t("about.title")}
-              </Text>
-              <Text textAlign={"center"} color={"gray.700"} px={3}>
-                <Link
-                  href="https://www.instagram.com/latinomixtanssi/"
-                  isExternal
-                  color={"blue.200"}
-                  fontWeight={600}
+      <Box m={2}>
+        <Stack id="stack-img_title" alignItems={"center"}>
+          <Box w={"sm"} p={1}>
+            <ImageCloud src={imageTag} />
+          </Box>
+          <Stack alignItems="center">
+            <Heading fontSize={"2xl"} fontFamily={"body"}>
+              Jorge Pacheco
+            </Heading>
+            <Text fontWeight={200} color={"gray.500"} size="sm" mb={2}>
+              {t("about.title")}
+            </Text>
+            <Text fontWeight={600} color={"gray.500"} size="sm" mb={4}>
+              @latinomixtanssi
+            </Text>
+            <Text fontWeight={300} color={"gray.500"} size="sm" mb={4}>
+              latinomixtanssi@gmail.com
+            </Text>
+          </Stack>
+          <Box>
+            <Stack alignItems="center" direction={"column"}>
+              <Badge
+                variant="solid"
+                fontSize={"0.55em"}
+                px={1}
+                py={1}
+                bg={"purple.400"}
+              >
+                #Salsa #Bachata #Merengue #Samba
+              </Badge>
+
+              <Badge
+                variant="solid"
+                fontSize={"0.55em"}
+                px={1}
+                py={1}
+                bg={"purple.400"}
+              >
+                #show&Events #CoupleDance
+              </Badge>
+              <Link
+                href="https://www.facebook.com/Latinomixtanssi.fi"
+                isExternal
+              >
+                <Button
+                  my={4}
+                  fontSize={"sm"}
+                  rounded={"full"}
+                  _focus={{ bg: "gray.400" }}
                 >
                   {" "}
-                  FollowMe{" "}
-                </Link>{" "}
-                {t("about.social")}{" "}
-              </Text>{" "}
-              <Stack
-                align={"center"}
-                justify={"center"}
-                direction={"row"}
-                mt={6}
-              >
-                {" "}
-                <Badge px={1} py={1} bg={"gray.50"} fontWeight={"400"}>
-                  {" "}
-                  #Salsa #Bachata{" "}
-                </Badge>{" "}
-                <Badge px={1} py={1} bg={"gray.50"} fontWeight={"400"}>
-                  {" "}
-                  #Merengue{" "}
-                </Badge>{" "}
-                <Badge px={1} py={1} bg={"gray.50"} fontWeight={"400"}>
-                  {" "}
-                  #Samba +{" "}
-                </Badge>{" "}
-                <Badge px={1} py={1} bg={"gray.50"} fontWeight={"200"}>
-                  {" "}
-                  #show&Events{" "}
-                </Badge>{" "}
-              </Stack>{" "}
-              <Stack
-                width={"100%"}
-                mt={"2rem"}
-                padding={2}
-                alignItems={"center"}
-              >
-                {" "}
-                <Flex>
-                  <Link
-                    href="https://www.facebook.com/Latinomixtanssi.fi"
-                    isExternal
-                  >
-                    <Button
-                      fontSize={"sm"}
-                      rounded={"full"}
-                      _focus={{ bg: "gray.200" }}
-                    >
-                      {" "}
-                      Contact me{" "}
-                    </Button>
-                  </Link>{" "}
-                </Flex>
-              </Stack>{" "}
-            </Stack>{" "}
-          </Stack>{" "}
-        </Center>
-      </Stack>
+                  Contact me{" "}
+                </Button>
+              </Link>
+            </Stack>
+          </Box>
+        </Stack>
+      </Box>
     </>
   );
 }

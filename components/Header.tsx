@@ -114,7 +114,7 @@ function Header() {
             <Stack as={"nav"} spacing={2}>
               {Links.map((link) => (
                 <NavLink key={link.name} path={link.path}>
-                  {link.name}
+                  {t(`header.${link.name}`)}
                 </NavLink>
               ))}
             </Stack>
