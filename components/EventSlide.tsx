@@ -15,24 +15,6 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 
 import { getCloudinaryImageUrl } from "../utils";
 
-const ImageCloud = ({ src }: { src: string | null }) => {
-  return (
-    <>
-      {src ? (
-        <Image
-          src={src}
-          alt=""
-          fill={true}
-          priority
-          style={{ objectFit: "cover", objectPosition: "center" }}
-        />
-      ) : (
-        <p>loading image...</p>
-      )}
-    </>
-  );
-};
-
 import "slick-carousel/slick/slick.css";
 
 // Settings for the slider
@@ -67,10 +49,10 @@ function EventSlide() {
     {
       title: "LatinoMix - Tyhy Päivä",
       text: "Energetic dance class, suitable for all ages, fun to enjoy it together taking you to the depth of Latinoamerica rhythms.",
-      image: getCloudinaryImageUrl("latinomix/lm_kids_hq2zmv"),
+      image: getCloudinaryImageUrl("latinomix/lm_easydance_ull9ae"),
     },
     {
-      title: "Private Services as:",
+      title: "LatinoMix- Shows and Events",
       text: "Personal Dance class, Birthdays, shows, couple class, We make your party full of joy. Contact me latinomixtanssi@gmail.com and get a offer!!",
       image: getCloudinaryImageUrl("latinomix/lipulaiva"),
     },
@@ -79,7 +61,7 @@ function EventSlide() {
   return (
     <Box
       position={"relative"}
-      height={"600px"}
+      height={"800px"}
       width={"full"}
       overflow={"hidden"}
     >
@@ -98,6 +80,7 @@ function EventSlide() {
       {/* Left Icon */}
       <IconButton
         aria-label="left-arrow"
+        bgColor={"gray.900"}
         variant="ghost"
         position="absolute"
         left={side}
@@ -106,11 +89,12 @@ function EventSlide() {
         zIndex={2}
         onClick={() => slider?.slickPrev()}
       >
-        <BiLeftArrowAlt size="40px" />
+        <BiLeftArrowAlt size="40px" color="white" />
       </IconButton>
       {/* Right Icon */}
       <IconButton
         aria-label="right-arrow"
+        bgColor={"gray.900"}
         variant="ghost"
         position="absolute"
         right={side}
@@ -119,7 +103,7 @@ function EventSlide() {
         zIndex={2}
         onClick={() => slider?.slickNext()}
       >
-        <BiRightArrowAlt size="40px" />
+        <BiRightArrowAlt size="40px" color="white" />
       </IconButton>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
@@ -127,22 +111,23 @@ function EventSlide() {
           <Box
             id="boxbox"
             key={index}
-            height={"lg"}
+            height={"4.5xl"}
             position="relative"
-            //backgroundPosition="center"
-            //backgroundRepeat="no-repeat"
-            //backgroundSize="cover"
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="cover"
+            backgroundImage={card.image ? card.image : ""}
+            py={40}
           >
-            <ImageCloud src={card.image}></ImageCloud>
             {/* This is the block you need to change, to customize the caption */}
             <Container size="container.lg" height="600px" position="relative">
               <Stack
                 id="desc"
                 spacing={2}
                 w={"full"}
-                maxW={"lg"}
+                maxW={"xl"}
                 position="absolute"
-                top="60%"
+                top="50%"
                 transform="translate(0, -50%)"
               >
                 <Heading

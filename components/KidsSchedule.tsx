@@ -60,7 +60,7 @@ const NAV_ITEMS: Array<NavItem> = [
   {
     day: "Thursday",
     city: "Espoo",
-    place: "Espoo International School",
+    place: "Espoo International School - Opinmäki",
     address: "Lillhemtintie 1, 02250 Espoo",
     services: [
       {

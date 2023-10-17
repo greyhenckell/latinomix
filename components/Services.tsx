@@ -65,10 +65,10 @@ function TestimonialCard(props: TestimonialCardProps) {
   const { t } = useTranslation();
   return (
     <Flex
-      boxShadow={"lg"}
+      boxShadow={"xl"}
       maxW={"640px"}
       direction={{ base: "column-reverse", md: "row" }}
-      width={"full"}
+      //width={"full"}
       rounded={"xl"}
       p={10}
       justifyContent={"space-between"}
@@ -78,7 +78,7 @@ function TestimonialCard(props: TestimonialCardProps) {
         content: '""',
         position: "absolute",
         height: "21px",
-        width: "29px",
+        width: "40px",
         left: "35px",
         top: "-10px",
         backgroundSize: "cover",
@@ -143,9 +143,9 @@ export default function GridBlurredBackdrop() {
     <Flex
       textAlign={"center"}
       pt={10}
-      justifyContent={"center"}
+      //justifyContent={"center"}
       direction={"column"}
-      width={"full"}
+      //width={"full"}
     >
       <Box width={{ base: "full", sm: "lg", lg: "xl" }} margin={"auto"}>
         <chakra.h3
@@ -159,7 +159,8 @@ export default function GridBlurredBackdrop() {
         </chakra.h3>
         <chakra.h1
           py={5}
-          fontSize={48}
+          ml={2}
+          fontSize={45}
           fontFamily={"Work Sans"}
           fontWeight={"bold"}
           color={useColorModeValue("gray.700", "gray.50")}
@@ -178,7 +179,7 @@ export default function GridBlurredBackdrop() {
       </Box>
       <SimpleGrid
         columns={{ base: 1, xl: 2 }}
-        spacing={"20"}
+        spacing={"10"}
         mt={16}
         mx={"auto"}
       >

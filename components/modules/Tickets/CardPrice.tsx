@@ -2,9 +2,6 @@ import React from "react";
 
 import {
   Box,
-  Center,
-  useColorModeValue,
-  Heading,
   Text,
   Stack,
   useBreakpointValue,
@@ -127,14 +124,12 @@ const PackageTier = ({ ticket }: Props) => {
       </Box>
       <VStack bg="gray.90" py={4} borderBottomRadius={"xl"}>
         <List spacing={3} textAlign="start" px={12}>
-          <ListItem>
-            <ListIcon as={FaCheckCircle} color="green.500" />
-            {ticket.description.split("-")[0]}
-          </ListItem>
-          <ListItem>
-            <ListIcon as={FaCheckCircle} color="green.500" />
-            <span>{ticket.description.split("-")[1]}</span>
-          </ListItem>
+          {ticket.description.split("-").map((ticketDesc) => (
+            <ListItem key={ticketDesc}>
+              <ListIcon as={FaCheckCircle} color="green.500" />
+              {ticketDesc}
+            </ListItem>
+          ))}
         </List>
         <Box w="80%" pt={7}>
           <Button w="full" colorScheme="blue" variant="outline">

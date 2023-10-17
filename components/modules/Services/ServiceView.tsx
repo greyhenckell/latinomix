@@ -1,44 +1,58 @@
 import React from "react";
-import { Journal, Ticket } from "typing";
+import { Journal, Ticket, Service } from "typing";
 
 interface Props {
   danceday: Journal;
   refreshData: () => void;
 }
 
-import { Link, Stack, Text } from "@chakra-ui/react";
-import { EditIcon } from "@chakra-ui/icons";
+import {
+  Box,
+  Button,
+  Checkbox,
+  Flex,
+  Input,
+  Link,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { useEffect } from "react";
 
 import { useForm } from "react-hook-form";
-import AddService from "./AddService";
 
 function ServiceView({ danceday, refreshData }: Props) {
-  //console.log("view", danceday);
+  //console.log("EDIT", danceday);
   const [serviceState, setServiceState] = useState<"view" | "edit">("view");
+  const [editingServiceId, setEditingServiceId] = useState("");
 
-  const editService = async (data: any) => {
-    {
-      /*try {
+  const filterServiceId = danceday.services.find(
+    (item) => item.id === editingServiceId
+  );
+
+  const editService = async (itemData: any) => {
+    try {
       const body = {
-        name: data.ticketName,
-        description: data.ticketDescription,
-        price: parseFloat(data.ticketPrice),
-        offer: data.ticketOffer,
+        name: itemData.serviceName,
+        place: itemData.servicePlace,
+        address: itemData.serviceAddress,
+        start_time: itemData.serviceStartTime,
+        end_time: itemData.serviceEndTime,
+        dance_type: itemData.serviceDanceType,
+        duration: itemData.serviceDuration,
       };
-      await fetch(`/api/services/${journals.id}`, {
+
+      await fetch(`/api/services/${filterServiceId?.id}`, {
         method: "PUT",
         body: JSON.stringify(body),
       });
+
       refreshData();
       setServiceState("view");
     } catch (error) {
       console.log(error);
     }
-*/
-    }
-    //console.log(data);
   };
 
   const {
@@ -50,7 +64,13 @@ function ServiceView({ danceday, refreshData }: Props) {
   } = useForm();
 
   useEffect(() => {
-    setFocus("servDay");
+    setFocus("serviceName");
+    setFocus("servicePlace");
+    setFocus("serviceAddress");
+    setFocus("serviceStartTime");
+    setFocus("serviceEndTime");
+    setFocus("serviceDanceType");
+    setFocus("serviceDuration");
   }, [setFocus, serviceState]);
 
   const cancelEdit = () => {
@@ -61,19 +81,89 @@ function ServiceView({ danceday, refreshData }: Props) {
   return (
     <>
       {serviceState === "view" && (
-        <Stack direction="row">
-          <Text my={4}>{danceday.day}</Text>
-          <button
-          //className="icon-button"
-          //onClick={() => setServiceState("edit")}
-          >
-            <Link href={`/admin/login/services/${danceday.id}`}>
-              <EditIcon name="Edit" />{" "}
-            </Link>
-          </button>
+        <Stack direction="row" my={4}>
+          <Text my={6}>{danceday.day}</Text>
+          {danceday.services.map((serviceDay) => (
+            <Flex
+              //minWidth={"100px"}
+              w="auto"
+              key={serviceDay.id}
+              direction={"column"}
+              border={"1px"}
+              mx={6}
+            >
+              <Text>{serviceDay.name}</Text>
+              <Text>{serviceDay.place}</Text>
+              <Text>{serviceDay.start_time}</Text>
+              <button
+                className="icon-button"
+                onClick={() => {
+                  setEditingServiceId(serviceDay.id);
+                  setServiceState("edit");
+                }}
+              >
+                {" "}
+                <EditIcon name="Edit" />{" "}
+              </button>
+            </Flex>
+          ))}
         </Stack>
       )}
-      {/*{serviceState === "edit" && <div></div>}*/}
+      {serviceState === "edit" && (
+        <>
+          <Text>
+            Editing:{danceday.day}-{filterServiceId?.name}
+          </Text>
+          <form onSubmit={handleSubmit(editService)}>
+            <Box py={4}>
+              <Input
+                type="text"
+                defaultValue={filterServiceId?.name}
+                {...register("serviceName", { required: true })}
+              ></Input>
+              <p>Place:</p>
+              <Input
+                type="text"
+                defaultValue={filterServiceId?.place}
+                {...register("servicePlace", { required: true })}
+              ></Input>
+              <p>Adress:</p>
+              <Input
+                type="text"
+                defaultValue={filterServiceId?.address}
+                {...register("serviceAddress", { required: true })}
+              ></Input>
+              <Input
+                type="text"
+                defaultValue={filterServiceId?.start_time}
+                {...register("serviceStartTime", { required: true })}
+              ></Input>
+              <Input
+                type="text"
+                defaultValue={filterServiceId?.end_time}
+                {...register("serviceEndTime", { required: true })}
+              ></Input>
+              <p>DanceType:</p>
+              <Input
+                type="text"
+                defaultValue={filterServiceId?.dance_type}
+                {...register("serviceDanceType", { required: true })}
+              ></Input>
+              <Input
+                type="text"
+                defaultValue={filterServiceId?.duration}
+                {...register("serviceDuration", { required: false })}
+              ></Input>
+              <Button type="submit" role="submit">
+                <CheckIcon name="Check" />
+              </Button>
+              <Button px={4} className="icon-button" onClick={cancelEdit}>
+                <CloseIcon name="Cancel" />
+              </Button>
+            </Box>
+          </form>
+        </>
+      )}
     </>
   );
 }

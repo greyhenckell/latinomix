@@ -37,21 +37,19 @@ interface NewsItem {
   img: string;
 }
 
-const NEWS_ITEMS: Array<NewsItem> = [
-  {
-    id: 1,
-    day: "Tue-Thu-Sun",
-    city: "Espoo",
-    event_name: "Autumn/Winter classes 23-24",
-    place: "Palvelukeskus ja Pirtii",
-    address: "",
-    price: "15€ or lippu",
-    dresscode: "check schedule in the homepage",
-    class: "LatinoMix-Dance",
-    description: "Autumn/Winter",
-    img: "imgs/newseason.jpeg",
-  },
-];
+import { getCloudinaryImageUrl } from "../utils";
+
+const ImageCloud = ({ src }: { src: string | null }) => {
+  return (
+    <>
+      {src ? (
+        <Image src={src} alt="" rounded={"md"} style={{ objectFit: "cover" }} />
+      ) : (
+        <p>loading image...</p>
+      )}
+    </>
+  );
+};
 
 const Feature = ({ text, icon, iconBg }: FeatureProps) => {
   return (
@@ -72,6 +70,48 @@ const Feature = ({ text, icon, iconBg }: FeatureProps) => {
 };
 
 export default function SplitWithImage() {
+  const NEWS_ITEMS = [
+    {
+      id: 1,
+      day: "Tue-Thu-Sun",
+      city: "Espoo",
+      event_name: "Autumn/Winter classes 23-24",
+      place: "Palvelukeskus ja Pirtii",
+      address: "",
+      price: "15€ or lippu",
+      dresscode: "check schedule in the homepage",
+      class: "LatinoMix-Dance",
+      description: "Autumn/Winter",
+      img: getCloudinaryImageUrl("latinomix/mbuyyh5e5cia39mr2xea"),
+    },
+    {
+      id: 2,
+      day: "Thu",
+      city: "Espoo",
+      event_name: "Happy Thursdays",
+      place: "Matinkylan Pirtii",
+      address: "",
+      price: "20€ or 1+1/2 ticket",
+      dresscode: "your favorite",
+      class: "LatinoMix-Easy&Dance",
+      description: "90min class",
+      img: getCloudinaryImageUrl("latinomix/xojgkcoyp1raaxxikcnu"),
+    },
+    {
+      id: 3,
+      day: "Thu",
+      city: "Espoo",
+      event_name: "Lights Dance",
+      place: "Opinmäki Suurpelto",
+      address: "lillhemtintie 1",
+      price: "20€ Adults, 10€ kids(<10yo Free)",
+      dresscode: "your favorite costume",
+      class: "LatinoMix",
+      description: "costume party",
+      img: getCloudinaryImageUrl("latinomix/l9ilxuqmy9vmhnqdeyyr"),
+    },
+  ];
+
   return (
     <Container maxW={"5xl"} py={2} id="news">
       {NEWS_ITEMS.map((newsitem) => (
@@ -120,12 +160,7 @@ export default function SplitWithImage() {
             </Stack>
           </Stack>
           <Flex>
-            <Image
-              rounded={"md"}
-              alt={"feature image"}
-              src={newsitem.img}
-              objectFit={"cover"}
-            />
+            <ImageCloud src={newsitem.img} />
           </Flex>
         </SimpleGrid>
       ))}

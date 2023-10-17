@@ -1,19 +1,15 @@
 import React from "react";
-import { ReactElement } from "react";
+
 import { Box, ChakraProvider, Flex, theme } from "@chakra-ui/react";
 import { AppProps } from "next/app";
 
 import { SessionProvider } from "next-auth/react";
-
-import { NextIntlClientProvider } from "next-intl";
 
 import { IntlProvider } from "next-intl";
 
 // Import your i18n configuration (next-intl.config.js)
 import { I18nextProvider } from "react-i18next";
 import i18n from "../i18n";
-
-import { notFound } from "next/navigation";
 
 import "slick-carousel/slick/slick.css";
 
@@ -92,7 +88,8 @@ function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
               messages={pageProps.message}
             >
               <Flex
-                w={"100%"}
+                id="flexscroll"
+                minWidth={"100%"}
                 backgroundColor={
                   isScrolled ? "rgba(0, 0, 0, 0.9)" : "transparent"
                 }

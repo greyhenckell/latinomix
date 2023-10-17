@@ -14,6 +14,8 @@ import { IconButton } from "@chakra-ui/button";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 
+import { Image } from "@chakra-ui/react";
+
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -57,7 +59,7 @@ function Header() {
 
   return (
     <>
-      <Box bg={"gray.100"} px={4} w="full">
+      <Box id="boxHeader" bg={"gray.100"} px={4} w="full">
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -67,15 +69,18 @@ function Header() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={4} alignItems={"center"}>
-            <Box>
-              <Heading
-                ml="1"
-                size="auto"
-                fontWeight="semibold"
-                color="cyan.400"
-              >
-                LatinoMix
-              </Heading>
+            <Box ml="1" fontWeight="semibold">
+              <Link href="/">
+                <Image
+                  src="/imgs/logo.png"
+                  alt="latinomix"
+                  width="auto"
+                  height="auto"
+                  maxH="40px"
+                  objectFit={"cover"}
+                  borderRadius={"15%"}
+                />
+              </Link>
             </Box>
 
             <HStack
@@ -121,7 +126,7 @@ function Header() {
             <Stack as={"nav"} spacing={2}>
               {Links.map((link) => (
                 <NavLink key={link.name} path={link.path}>
-                  {link.name}
+                  {t(`header.${link.name}`)}
                 </NavLink>
               ))}
             </Stack>
