@@ -14,6 +14,8 @@ import { IconButton } from "@chakra-ui/button";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 
+import { Image } from "@chakra-ui/react";
+
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
 
@@ -67,8 +69,18 @@ function Header() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={4} alignItems={"center"}>
-            <Box ml="1" fontWeight="semibold" color="cyan.400">
-              <Link href="/">LatinoMix</Link>
+            <Box ml="1" fontWeight="semibold">
+              <Link href="/">
+                <Image
+                  src="/imgs/logo.png"
+                  alt="latinomix"
+                  width="auto"
+                  height="auto"
+                  maxH="40px"
+                  objectFit={"cover"}
+                  borderRadius={"15%"}
+                />
+              </Link>
             </Box>
 
             <HStack

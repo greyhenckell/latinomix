@@ -30,7 +30,7 @@ const Home = ({ journals }: Props) => {
   return (
     <>
       <Head>
-        <title>LatinoMixTanssi-Espoo</title>
+        <title>LatinoMixTanssi|Espoo|latin|tanssi</title>
         <meta
           name="keywords"
           content="dance | espoo | latinomix | latin style"
@@ -49,17 +49,14 @@ const Home = ({ journals }: Props) => {
       </Head>
 
       <VStack
-        //w="full"
         id="vstack"
-        divider={<StackDivider borderColor="gray.200" />}
+        divider={<StackDivider borderColor="gray.300" />}
         spacing={2}
         align="stretch"
       >
-        <Box w="full">
-          <HomePage journals={journals}></HomePage>
+        <HomePage journals={journals}></HomePage>
 
-          <AdultsSchedule journals={journals} />
-        </Box>
+        <AdultsSchedule journals={journals} />
       </VStack>
     </>
   );

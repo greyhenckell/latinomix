@@ -10,6 +10,7 @@ import {
   chakra,
   Box,
   AspectRatio,
+  Heading,
 } from "@chakra-ui/react";
 import { Journal } from "typing";
 
@@ -37,29 +38,30 @@ export default function WithBackgroundImage({ journals }: Props) {
         backgroundColor="rgba(0, 0, 0, 0.3)"
       >
         <VStack spacing={4}>
-          <chakra.h1
+          <Heading
+            as="h3"
             p={4}
-            fontSize={24}
+            fontSize={{ base: 18, md: 24 }}
             fontFamily={"Odin Rounded"}
             fontWeight={"bold"}
             color="gray.100"
           >
             {t("homepage.welcome")}
-          </chakra.h1>
+          </Heading>
 
-          <Text
-            as="em"
+          <Heading
+            as="h1"
             bgGradient="linear(to-l, #FFF5F5, #FF0080)"
-            bgClip="text"
-            fontFamily={"Georgia"}
-            fontWeight={"bold"}
-            fontSize="6xl"
+            bgClip={"text"}
+            fontFamily={"Didot"}
+            //fontWeight={"bold"}
+            fontSize={{ base: "6xl", md: "8xl" }}
             textTransform={"uppercase"}
             px={2}
             mt={6}
           >
             latinomix
-          </Text>
+          </Heading>
           <Stack
             direction={"row"}
             py={useBreakpointValue({ base: 60, md: 40, lg: 4 })}
