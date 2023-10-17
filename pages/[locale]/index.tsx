@@ -30,6 +30,7 @@ const Home = ({ journals }: Props) => {
   return (
     <>
       <Head>
+        <link rel="icon" href="/favicon.ico"></link>
         <title>LatinoMixTanssi|Espoo|latin|tanssi</title>
         <meta
           name="keywords"
