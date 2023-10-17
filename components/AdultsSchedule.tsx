@@ -12,7 +12,7 @@ import {
 
 import { useTranslation } from "react-i18next";
 
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaRegClock } from "react-icons/fa";
 import { MdPlace } from "react-icons/md";
 
 import { ReactNode } from "react";
@@ -136,12 +136,11 @@ function AdultsSchedule({ journals }: Props) {
                             <ListIcon as={MdPlace} color="green.500" />
                             {serv.address}
                           </ListItem>
+                          <ListItem>
+                            <ListIcon as={FaRegClock} color="green.500" />
+                            {serv.duration}
+                          </ListItem>
                         </List>
-                        {/*<Box w="80%" pt={7}>
-                <Button w="full" colorScheme="red" variant="outline">
-                  Join!
-                </Button>
-              </Box>*/}
                       </VStack>
                     </Stack>
                   )
