@@ -7,12 +7,13 @@ import {
   VStack,
   Image,
   useBreakpointValue,
-  chakra,
   Box,
-  AspectRatio,
   Heading,
+  IconButton,
 } from "@chakra-ui/react";
 import { Journal } from "typing";
+
+import { BsChevronDoubleDown } from "react-icons/bs";
 
 import { useTranslation } from "react-i18next";
 
@@ -29,15 +30,16 @@ export default function WithBackgroundImage({ journals }: Props) {
       backgroundSize="cover"
       backgroundPosition="center"
       w={"100%"}
+      //h={"80vh"}
     >
       <Flex
-        minHeight="100vh"
+        minHeight="85vh"
         align="center"
         justify="center"
         direction="column"
         backgroundColor="rgba(0, 0, 0, 0.3)"
       >
-        <VStack spacing={4}>
+        <VStack spacing={6}>
           <Heading
             as="h3"
             p={4}
@@ -63,8 +65,9 @@ export default function WithBackgroundImage({ journals }: Props) {
             latinomix
           </Heading>
           <Stack
+            id="testA"
             direction={"row"}
-            py={useBreakpointValue({ base: 60, md: 40, lg: 4 })}
+            py={useBreakpointValue({ base: 1, md: 2, lg: 4 })}
           >
             <Link href="/timetable">
               <Button
@@ -89,6 +92,13 @@ export default function WithBackgroundImage({ journals }: Props) {
           </Stack>
         </VStack>
       </Flex>
+      <Stack direction={"row"} bgColor={"blackAlpha.400"}>
+        <Link href="#schedule" px={2} w={16} bgColor={"pink.100"}>
+          <Heading as="h4" fontSize={40} color="pink.500">
+            {<BsChevronDoubleDown />}
+          </Heading>
+        </Link>
+      </Stack>
     </Box>
   );
 }
