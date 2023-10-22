@@ -37,3 +37,14 @@ export interface Ticket {
   finalprice: number;
   offer: boolean;
 }
+
+export interface News {
+  id: string;
+  event_name: String;
+  tagClass: string;
+  description: string;
+  place: string;
+  dressCode: string;
+  price: string;
+  imageName: string;
+}

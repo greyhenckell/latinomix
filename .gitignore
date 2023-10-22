@@ -30,6 +30,7 @@ yarn.lock
 javascript/**/migrations/
 typescript/**/migrations/
 prisma/**/migrations/
+prisma/migrations/*/*.sql
 misc/**/migrations/
 databases/**/migrations/
 experimental/**/*.db

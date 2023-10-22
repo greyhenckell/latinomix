@@ -2,24 +2,25 @@ import React from "react";
 
 import type { GetServerSideProps } from "next";
 
-import { useSession, getSession, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 import Unauth from "components/Unauth";
 import TicketEdit from "components/modules/Tickets/TicketEdit";
-import { Journal, Ticket, User } from "typing";
+import { Journal, Ticket, News } from "typing";
 
 import prisma from "../../../../lib/prisma";
 import { useRouter } from "next/router";
 
-import { Text, Stack, Box } from "@chakra-ui/react";
+import { Stack, Box } from "@chakra-ui/react";
 
-import { ReactNode } from "react";
-import Header from "components/Header";
 import ServiceEdit from "components/modules/Services/ServiceEdit";
+import NewsAdd from "components/modules/News/NewsAdd";
+import NewsView from "components/modules/News/NewsView";
 
 interface TicketProps {
   tickets: Ticket[];
   journals: Journal[];
+  news: News[];
 }
 
 const Links = [
@@ -29,24 +30,26 @@ const Links = [
 ];
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const [journals, tickets] = await Promise.all([
+  const [journals, tickets, news] = await Promise.all([
     prisma.danceDay.findMany({
       include: {
         services: true,
       },
     }),
     prisma.ticket.findMany(),
+    prisma.news.findMany(),
   ]);
 
   return {
     props: {
       journals: journals,
       tickets: tickets,
+      news: news,
     },
   };
 };
 
-function Login({ tickets, journals }: TicketProps) {
+function Login({ tickets, journals, news }: TicketProps) {
   const { data: session, status } = useSession();
 
   const router = useRouter();
@@ -91,6 +94,10 @@ function Login({ tickets, journals }: TicketProps) {
               journals={journals}
               refreshData={refreshData}
             ></ServiceEdit>
+          </Box>
+          <Box id="news" mx={4}>
+            <NewsAdd refreshData={refreshData}></NewsAdd>
+            <NewsView news={news} refreshData={refreshData}></NewsView>
           </Box>
         </Stack>
       );

@@ -1,7 +1,6 @@
 import {
   Container,
   SimpleGrid,
-  Image,
   Flex,
   Heading,
   Text,
@@ -14,8 +13,12 @@ import {
 import React, { ReactElement } from "react";
 
 import { FaHome } from "react-icons/fa";
-import { MdPlace } from "react-icons/md";
+
 import { BiCloset, BiEuro } from "react-icons/bi";
+
+import { News as NewsType } from "typing";
+
+import Image from "next/image";
 
 interface FeatureProps {
   text: string;
@@ -24,26 +27,28 @@ interface FeatureProps {
 }
 
 interface NewsItem {
-  id: number;
-  day: string;
-  city: string;
-  place: string;
-  event_name: String;
-  address: string;
-  price: string;
-  dresscode: string;
-  class: string;
-  description: string;
+  news: NewsType[];
+}
+
+interface IMGProps {
   img: string;
 }
 
 import { getCloudinaryImageUrl } from "../utils";
 
-const ImageCloud = ({ src }: { src: string | null }) => {
+const ImageCloud = ({ img }: IMGProps) => {
+  const imgUrl = getCloudinaryImageUrl(img);
+
   return (
     <>
-      {src ? (
-        <Image src={src} alt="" rounded={"md"} style={{ objectFit: "cover" }} />
+      {imgUrl ? (
+        <Image
+          src={imgUrl}
+          height={500}
+          width={500}
+          alt="latinomix events"
+          style={{ objectFit: "cover" }}
+        />
       ) : (
         <p>loading image...</p>
       )}
@@ -69,52 +74,10 @@ const Feature = ({ text, icon, iconBg }: FeatureProps) => {
   );
 };
 
-export default function SplitWithImage() {
-  const NEWS_ITEMS = [
-    {
-      id: 1,
-      day: "Tue-Thu-Sun",
-      city: "Espoo",
-      event_name: "Autumn/Winter classes 23-24",
-      place: "Palvelukeskus ja Pirtii",
-      address: "",
-      price: "15€ or lippu",
-      dresscode: "check schedule in the homepage",
-      class: "LatinoMix-Dance",
-      description: "Autumn/Winter",
-      img: getCloudinaryImageUrl("latinomix/mbuyyh5e5cia39mr2xea"),
-    },
-    {
-      id: 2,
-      day: "Thu",
-      city: "Espoo",
-      event_name: "Happy Thursdays",
-      place: "Matinkylan Pirtii",
-      address: "",
-      price: "20€ or 1+1/2 ticket",
-      dresscode: "your favorite",
-      class: "LatinoMix-Easy&Dance",
-      description: "90min class",
-      img: getCloudinaryImageUrl("latinomix/xojgkcoyp1raaxxikcnu"),
-    },
-    {
-      id: 3,
-      day: "Thu",
-      city: "Espoo",
-      event_name: "Lights Dance",
-      place: "Opinmäki Suurpelto",
-      address: "lillhemtintie 1",
-      price: "20€ Adults, 10€ kids(<10yo Free)",
-      dresscode: "your favorite costume",
-      class: "LatinoMix",
-      description: "costume party",
-      img: getCloudinaryImageUrl("latinomix/l9ilxuqmy9vmhnqdeyyr"),
-    },
-  ];
-
+export default function NewsComponent({ news }: NewsItem) {
   return (
     <Container maxW={"5xl"} py={2} id="news">
-      {NEWS_ITEMS.map((newsitem) => (
+      {news.map((newsitem) => (
         <SimpleGrid
           key={newsitem.id}
           columns={{ base: 1, md: 2 }}
@@ -132,7 +95,7 @@ export default function SplitWithImage() {
               alignSelf={"flex-start"}
               rounded={"md"}
             >
-              {newsitem.class}
+              {newsitem.tagClass}
             </Text>
             <Heading>{newsitem.event_name}</Heading>
             <Text color={"gray.500"} fontSize={"lg"}>
@@ -150,7 +113,7 @@ export default function SplitWithImage() {
               <Feature
                 icon={<Icon as={BiCloset} color={"green.500"} w={5} h={5} />}
                 iconBg={"green.100"}
-                text={newsitem.dresscode}
+                text={newsitem.dressCode}
               />
               <Feature
                 icon={<Icon as={BiEuro} color={"purple.500"} w={5} h={5} />}
@@ -160,7 +123,7 @@ export default function SplitWithImage() {
             </Stack>
           </Stack>
           <Flex>
-            <ImageCloud src={newsitem.img} />
+            <ImageCloud img={newsitem.imageName} />
           </Flex>
         </SimpleGrid>
       ))}
