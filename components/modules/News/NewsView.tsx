@@ -35,7 +35,7 @@ function NewsView({ news, refreshData }: Props) {
       {newsState === "view" && (
         <Box ml={4}>
           {news.map((itemNew) => (
-            <Stack id={itemNew.id} direction="row">
+            <Stack key={itemNew.id} direction="row">
               <Text> {itemNew.event_name}</Text>
               <button onClick={() => deleteItem(itemNew.id)}>
                 <DeleteIcon />
