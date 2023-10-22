@@ -1,4 +1,4 @@
-import { Box, StackDivider, VStack, Flex } from "@chakra-ui/react";
+import { StackDivider, VStack } from "@chakra-ui/react";
 import AdultsSchedule from "components/AdultsSchedule";
 
 import HomePage from "components/HomePage";
@@ -31,7 +31,7 @@ const Home = ({ journals }: Props) => {
     <>
       <Head>
         <link rel="icon" href="/favicon.ico"></link>
-        <title>LatinoMixTanssi|Espoo|latin|tanssi</title>
+        <title>LatinoMixTanssi|Espoo|latin tanssi</title>
         <meta
           name="keywords"
           content="dance | espoo | latinomix | latin style"
@@ -51,7 +51,7 @@ const Home = ({ journals }: Props) => {
 
       <VStack
         id="vstack"
-        divider={<StackDivider borderColor="gray.300" />}
+        divider={<StackDivider borderColor="gray.100" />}
         spacing={2}
         align="stretch"
       >

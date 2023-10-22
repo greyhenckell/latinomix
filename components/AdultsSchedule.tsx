@@ -54,6 +54,7 @@ function AdultsSchedule({ journals }: Props) {
 
   return (
     <Box
+      id="schedule"
       mt={2}
       px={2}
       //w={"full"}
