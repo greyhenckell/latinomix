@@ -68,7 +68,7 @@ function TicketPage({ tickets }: Props) {
             € Cash
           </Text>
           <Text ml={2} as="b">
-            Mobilepay:+358 44 3732360
+            Transfer: FI51 5702 3420 0318 45
           </Text>
         </Text>
       </Flex>
