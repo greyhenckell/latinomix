@@ -18,20 +18,27 @@ export default async function handler(
   }
 
   if (req.method === "GET") {
-    const { day }: any = req.query;
-    console.log("fetching: ", day);
-    const journals = await prisma.danceDay.findUnique({
+    const { id }: any = req.query;
+    console.log("fetching id: ", id);
+    const service = await prisma.service.findUnique({
       where: {
-        day: day,
+        id: id,
       },
       select: {
-        services: true,
+        name: true,
+        place: true,
+        address: true,
+        start_time: true,
+        end_time: true,
+        dance_type: true,
+        duration: true,
+        description: true,
       },
     });
-    if (journals) {
-      console.log(journals);
-      return res.json(journals);
+    if (service) {
+      console.log(service);
+      return res.json(service);
     }
-    console.log("not journals");
+    console.log("not service");
   }
 }

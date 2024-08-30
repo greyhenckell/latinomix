@@ -14,11 +14,13 @@ import {
 } from "@chakra-ui/react";
 import { AddIcon, CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
 
-import { Journal } from "typing";
+import { EditService } from "typing";
 
-import { showServices } from "lib/api";
+import { showServices, fetchService } from "lib/api";
 
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+
 import ServiceView from "./ServiceView";
 import ServiceList from "./ServiceList";
 
@@ -37,6 +39,16 @@ function ServiceDay() {
   const [serviceState, setServiceState] = useState<"view" | "edit">("view");
 
   const [data, setData] = useState({ services: [] });
+  const [dataServ, setDataServ] = useState<EditService>({
+    name: "",
+    place: "",
+    address: "",
+    start_time: "",
+    end_time: "",
+    dance_type: "",
+    duration: "",
+    description: "",
+  });
 
   const handleServices = async () => {
     try {
@@ -49,6 +61,17 @@ function ServiceDay() {
 
   const { services }: any = data;
 
+  const handleService = async (data: string) => {
+    try {
+      const responseServ = await fetchService(data);
+      setDataServ(responseServ);
+    } catch (err: any) {
+      console.log("error fetching service unique", err.message);
+    }
+  };
+
+  console.log("serv fetch unique: ", dataServ);
+
   const {
     register,
     handleSubmit,
@@ -56,6 +79,16 @@ function ServiceDay() {
     formState: { errors },
     setFocus,
   } = useForm();
+
+  useEffect(() => {
+    setFocus("name");
+    setFocus("place");
+    setFocus("address");
+    setFocus("start_time");
+    setFocus("end_time");
+    setFocus("dance_type");
+    setFocus("duration");
+  }, [setFocus, serviceState]);
 
   const cancelEdit = () => {
     setServiceState("view");
@@ -114,6 +147,7 @@ function ServiceDay() {
                   size={"sm"}
                   ml={6}
                   onClick={() => {
+                    handleService(index.id);
                     setServiceState("edit");
                   }}
                 >
@@ -126,15 +160,47 @@ function ServiceDay() {
 
         {serviceState === "edit" && (
           <div>
+            <Text fontSize="lg" as="b">
+              Editing... {dataServ.name}
+            </Text>
             <form>
               <Box py={4}>
                 <div>
                   <Input
                     type="text"
-                    //defaultValue={ticket.name}
-                    {...register("ticketName", { required: true })}
+                    defaultValue={dataServ.name}
+                    {...register("name", { required: true })}
                   ></Input>
-
+                  <Input
+                    type="text"
+                    defaultValue={dataServ.place}
+                    {...register("place", { required: true })}
+                  ></Input>
+                  <Input
+                    type="text"
+                    defaultValue={dataServ.address}
+                    {...register("address", { required: true })}
+                  ></Input>
+                  <Input
+                    type="text"
+                    defaultValue={dataServ.start_time}
+                    {...register("start_time", { required: true })}
+                  ></Input>
+                  <Input
+                    type="text"
+                    defaultValue={dataServ.end_time}
+                    {...register("end_time", { required: true })}
+                  ></Input>
+                  <Input
+                    type="text"
+                    defaultValue={dataServ.dance_type}
+                    {...register("dance_type", { required: true })}
+                  ></Input>
+                  <Input
+                    type="text"
+                    defaultValue={dataServ.duration}
+                    {...register("duration", { required: true })}
+                  ></Input>
                   <Checkbox spacing="1rem" {...register("activeServcice")}>
                     Active
                   </Checkbox>
