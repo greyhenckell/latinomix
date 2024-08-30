@@ -16,7 +16,7 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
+import { CheckIcon, CloseIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { useEffect } from "react";
 
@@ -54,6 +54,21 @@ function ServiceView({ danceday, refreshData }: Props) {
       console.log(error);
     }
   };
+
+  async function deleteItem(item: any) {
+    try {
+      fetch(`/api/services/${item}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "DELETE",
+      }).then(() => {
+        refreshData();
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const {
     register,
@@ -104,6 +119,9 @@ function ServiceView({ danceday, refreshData }: Props) {
               >
                 {" "}
                 <EditIcon name="Edit" />{" "}
+              </button>
+              <button onClick={() => deleteItem(serviceDay.id)}>
+                <DeleteIcon />
               </button>
             </Flex>
           ))}

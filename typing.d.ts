@@ -1,6 +1,4 @@
 export interface Journal {
-  id: string;
-  day: string;
   services: Service[];
 }
 
