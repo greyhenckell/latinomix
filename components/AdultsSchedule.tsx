@@ -74,8 +74,8 @@ function AdultsSchedule({ journals }: Props) {
         spacing={{ base: 4, lg: 10 }}
         py={10}
       >
-        {journals.map((item) => {
-          return (
+        {journals.map(
+          (item) =>
             item.services.length !== 0 && (
               <PriceWrapper key={item.day}>
                 <Box
@@ -155,8 +155,7 @@ function AdultsSchedule({ journals }: Props) {
                 </Box>
               </PriceWrapper>
             )
-          );
-        })}
+        )}
       </Stack>
     </Box>
   );
