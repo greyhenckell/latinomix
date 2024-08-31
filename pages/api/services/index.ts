@@ -8,10 +8,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    console.log("api", req.body);
-    const danceDay = req.body;
-    const result = await prisma.danceDay.create({
-      data: danceDay,
+    console.log("api creating service", req.body);
+    const serviceDay = req.body;
+    const result = await prisma.service.create({
+      data: serviceDay,
     });
 
     return res.status(200).json(result);
@@ -25,6 +25,7 @@ export default async function handler(
         id: id,
       },
       select: {
+        id: true,
         name: true,
         place: true,
         address: true,

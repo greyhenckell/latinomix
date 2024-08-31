@@ -17,7 +17,7 @@ model DanceDay {
   id String @id @default(auto()) @map("_id") @db.ObjectId
   day String @unique
   services Service[]
-  @@map("danceDays")
+  @@map("danceDay")
 }
 
 model Service {

@@ -9,22 +9,23 @@ import {
   Input,
   VStack,
   StackDivider,
-  Checkbox,
   Select,
 } from "@chakra-ui/react";
-import { AddIcon, CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
+
+import { Search2Icon } from "@chakra-ui/icons";
 
 import { EditService } from "typing";
 
-import { showServices, fetchService } from "lib/api";
-
-import { useForm } from "react-hook-form";
-import { useEffect } from "react";
+import { showServices } from "lib/api";
 
 import ServiceView from "./ServiceView";
-import ServiceList from "./ServiceList";
+import AddService from "./AddService";
 
-function ServiceDay() {
+interface Props {
+  refreshData: () => void;
+}
+
+function ServiceDay({ refreshData }: Props) {
   const mydays = [
     "Monday",
     "Tuesday",
@@ -39,7 +40,9 @@ function ServiceDay() {
   const [serviceState, setServiceState] = useState<"view" | "edit">("view");
 
   const [data, setData] = useState({ services: [] });
+
   const [dataServ, setDataServ] = useState<EditService>({
+    id: "",
     name: "",
     place: "",
     address: "",
@@ -47,7 +50,7 @@ function ServiceDay() {
     end_time: "",
     dance_type: "",
     duration: "",
-    description: "",
+    keys: "",
   });
 
   const handleServices = async () => {
@@ -59,41 +62,9 @@ function ServiceDay() {
     }
   };
 
-  const { services }: any = data;
+  const { services, id }: any = data;
 
-  const handleService = async (data: string) => {
-    try {
-      const responseServ = await fetchService(data);
-      setDataServ(responseServ);
-    } catch (err: any) {
-      console.log("error fetching service unique", err.message);
-    }
-  };
-
-  console.log("serv fetch unique: ", dataServ);
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-    setFocus,
-  } = useForm();
-
-  useEffect(() => {
-    setFocus("name");
-    setFocus("place");
-    setFocus("address");
-    setFocus("start_time");
-    setFocus("end_time");
-    setFocus("dance_type");
-    setFocus("duration");
-  }, [setFocus, serviceState]);
-
-  const cancelEdit = () => {
-    setServiceState("view");
-    reset();
-  };
+  console.log("fetch id ", id);
 
   return (
     <>
@@ -129,91 +100,30 @@ function ServiceDay() {
               variant={"solid"}
               colorScheme={"teal"}
               size={"sm"}
-              mr={4}
-              leftIcon={<AddIcon />}
+              mr={1}
+              leftIcon={<Search2Icon />}
             >
-              Show schedule
+              Show services
             </Button>
           </Flex>
+          {dayValue && data && (
+            <AddService
+              currentday={dayValue}
+              idDay={id}
+              refreshData={refreshData}
+            ></AddService>
+          )}
         </Box>
         {serviceState === "view" && dayValue && data && (
           <Box id="viewbox" p={2} width="auto">
-            {services.map((index: any) => (
-              <Stack key={index.id} direction="row" py={4} m={1}>
-                <Text>{index.name}</Text>
-                <Text>| {index.place}</Text>
-                <Text>| {index.start_time}</Text>
-                <Button
-                  size={"sm"}
-                  ml={6}
-                  onClick={() => {
-                    handleService(index.id);
-                    setServiceState("edit");
-                  }}
-                >
-                  <EditIcon name="Edit" />
-                </Button>
-              </Stack>
+            {services.map((service: any) => (
+              <ServiceView
+                key={service.id}
+                servUnique={service}
+                refreshData={refreshData}
+              />
             ))}
           </Box>
-        )}
-
-        {serviceState === "edit" && (
-          <div>
-            <Text fontSize="lg" as="b">
-              Editing... {dataServ.name}
-            </Text>
-            <form>
-              <Box py={4}>
-                <div>
-                  <Input
-                    type="text"
-                    defaultValue={dataServ.name}
-                    {...register("name", { required: true })}
-                  ></Input>
-                  <Input
-                    type="text"
-                    defaultValue={dataServ.place}
-                    {...register("place", { required: true })}
-                  ></Input>
-                  <Input
-                    type="text"
-                    defaultValue={dataServ.address}
-                    {...register("address", { required: true })}
-                  ></Input>
-                  <Input
-                    type="text"
-                    defaultValue={dataServ.start_time}
-                    {...register("start_time", { required: true })}
-                  ></Input>
-                  <Input
-                    type="text"
-                    defaultValue={dataServ.end_time}
-                    {...register("end_time", { required: true })}
-                  ></Input>
-                  <Input
-                    type="text"
-                    defaultValue={dataServ.dance_type}
-                    {...register("dance_type", { required: true })}
-                  ></Input>
-                  <Input
-                    type="text"
-                    defaultValue={dataServ.duration}
-                    {...register("duration", { required: true })}
-                  ></Input>
-                  <Checkbox spacing="1rem" {...register("activeServcice")}>
-                    Active
-                  </Checkbox>
-                </div>
-                <Button type="submit" role="submit">
-                  <CheckIcon name="Check" />
-                </Button>
-                <Button px={4} className="icon-button" onClick={cancelEdit}>
-                  <CloseIcon name="Cancel" />
-                </Button>
-              </Box>
-            </form>
-          </div>
         )}
       </VStack>
     </>

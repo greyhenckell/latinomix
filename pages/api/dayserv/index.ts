@@ -15,12 +15,18 @@ export default async function handler(
       },
       select: {
         services: true,
+        id: true,
       },
     });
     if (journals) {
       console.log(journals);
       return res.json(journals);
     }
-    console.log("not journals");
+    console.log("day not found - creating day");
+    await prisma.danceDay.create({
+      data: {
+        day: day,
+      },
+    });
   }
 }

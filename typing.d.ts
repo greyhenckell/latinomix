@@ -1,4 +1,6 @@
 export interface Journal {
+  id: string;
+  day: string;
   services: Service[];
 }
 
@@ -16,6 +18,7 @@ export interface Service {
 }
 
 export interface EditService {
+  id: string;
   name: string;
   place: string;
   address: string;
@@ -23,7 +26,7 @@ export interface EditService {
   end_time: string;
   dance_type: string;
   duration: string;
-  description: string;
+  keys: string;
 }
 
 export interface Provider {

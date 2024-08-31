@@ -90,7 +90,7 @@ function Login({ tickets, journals, news }: TicketProps) {
             <TicketEdit tickets={tickets} refreshData={refreshData} />
           </Box>
           <Box id="services">
-            <ServiceDay></ServiceDay>
+            <ServiceDay refreshData={refreshData}></ServiceDay>
           </Box>
           <Box id="news" mx={4}>
             <NewsAdd refreshData={refreshData}></NewsAdd>
