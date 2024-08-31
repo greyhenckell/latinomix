@@ -55,7 +55,7 @@ const Home = ({ journals }: Props) => {
         spacing={2}
         align="stretch"
       >
-        <HomePage journals={journals}></HomePage>
+        <HomePage></HomePage>
 
         <AdultsSchedule journals={journals} />
       </VStack>

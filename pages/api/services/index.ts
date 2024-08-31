@@ -7,21 +7,39 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const danceDay = req.body;
-  console.log("api", req.body);
   if (req.method === "POST") {
-    const result = await prisma.danceDay.create({
-      data: danceDay,
+    console.log("api creating service", req.body);
+    const serviceDay = req.body;
+    const result = await prisma.service.create({
+      data: serviceDay,
     });
 
     return res.status(200).json(result);
   }
 
   if (req.method === "GET") {
-    const journals = await prisma.danceDay.findMany();
-    if (journals) {
-      return res.json(journals);
+    const { id }: any = req.query;
+    console.log("fetching id: ", id);
+    const service = await prisma.service.findUnique({
+      where: {
+        id: id,
+      },
+      select: {
+        id: true,
+        name: true,
+        place: true,
+        address: true,
+        start_time: true,
+        end_time: true,
+        dance_type: true,
+        duration: true,
+        description: true,
+      },
+    });
+    if (service) {
+      console.log(service);
+      return res.json(service);
     }
-    console.log("not journals");
+    console.log("not service");
   }
 }

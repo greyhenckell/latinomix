@@ -13,7 +13,7 @@ import { useRouter } from "next/router";
 
 import { Stack, Box } from "@chakra-ui/react";
 
-import ServiceEdit from "components/modules/Services/ServiceEdit";
+import ServiceDay from "components/modules/Services/ServiceDay";
 import NewsAdd from "components/modules/News/NewsAdd";
 import NewsView from "components/modules/News/NewsView";
 
@@ -90,10 +90,7 @@ function Login({ tickets, journals, news }: TicketProps) {
             <TicketEdit tickets={tickets} refreshData={refreshData} />
           </Box>
           <Box id="services">
-            <ServiceEdit
-              journals={journals}
-              refreshData={refreshData}
-            ></ServiceEdit>
+            <ServiceDay refreshData={refreshData}></ServiceDay>
           </Box>
           <Box id="news" mx={4}>
             <NewsAdd refreshData={refreshData}></NewsAdd>

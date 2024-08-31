@@ -46,13 +46,7 @@ function index({ dayselected }: Props) {
   return (
     <Stack>
       <Link href="/admin/login">go to Admin</Link>
-      <div>Add new services to {dayselected.day}</div>
-      <AddService
-        currentday={dayselected.day}
-        dayId={dayselected.id}
-        services={dayselected.services}
-        refreshData={refreshData}
-      />
+      <div>Add new services to</div>
     </Stack>
   );
 }

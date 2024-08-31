@@ -1,8 +1,8 @@
 import React from "react";
-import { Journal, Ticket, Service } from "typing";
+import { Journal, Ticket, Service, EditService } from "typing";
 
 interface Props {
-  danceday: Journal;
+  servUnique: EditService;
   refreshData: () => void;
 }
 
@@ -16,34 +16,31 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
+import { CheckIcon, CloseIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { useEffect } from "react";
 
 import { useForm } from "react-hook-form";
 
-function ServiceView({ danceday, refreshData }: Props) {
+function ServiceView({ servUnique, refreshData }: Props) {
   //console.log("EDIT", danceday);
   const [serviceState, setServiceState] = useState<"view" | "edit">("view");
   const [editingServiceId, setEditingServiceId] = useState("");
 
-  const filterServiceId = danceday.services.find(
-    (item) => item.id === editingServiceId
-  );
-
   const editService = async (itemData: any) => {
     try {
       const body = {
-        name: itemData.serviceName,
+        /*name: itemData.serviceName,
         place: itemData.servicePlace,
         address: itemData.serviceAddress,
         start_time: itemData.serviceStartTime,
         end_time: itemData.serviceEndTime,
         dance_type: itemData.serviceDanceType,
-        duration: itemData.serviceDuration,
+        duration: itemData.serviceDuration,*/
+        ...itemData,
       };
 
-      await fetch(`/api/services/${filterServiceId?.id}`, {
+      await fetch(`/api/services/${servUnique.id}`, {
         method: "PUT",
         body: JSON.stringify(body),
       });
@@ -55,6 +52,21 @@ function ServiceView({ danceday, refreshData }: Props) {
     }
   };
 
+  async function deleteItem(item: any) {
+    try {
+      fetch(`/api/services/${servUnique.id}`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "DELETE",
+      }).then(() => {
+        refreshData();
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const {
     register,
     handleSubmit,
@@ -64,13 +76,14 @@ function ServiceView({ danceday, refreshData }: Props) {
   } = useForm();
 
   useEffect(() => {
-    setFocus("serviceName");
-    setFocus("servicePlace");
-    setFocus("serviceAddress");
-    setFocus("serviceStartTime");
-    setFocus("serviceEndTime");
-    setFocus("serviceDanceType");
-    setFocus("serviceDuration");
+    setFocus("name");
+    setFocus("place");
+    setFocus("address");
+    setFocus("start_time");
+    setFocus("end_time");
+    setFocus("dance_type");
+    setFocus("duration");
+    setFocus("keys");
   }, [setFocus, serviceState]);
 
   const cancelEdit = () => {
@@ -81,78 +94,66 @@ function ServiceView({ danceday, refreshData }: Props) {
   return (
     <>
       {serviceState === "view" && (
-        <Stack direction="row" my={4}>
-          <Text my={6}>{danceday.day}</Text>
-          {danceday.services.map((serviceDay) => (
-            <Flex
-              //minWidth={"100px"}
-              w="auto"
-              key={serviceDay.id}
-              direction={"column"}
-              border={"1px"}
-              mx={6}
-            >
-              <Text>{serviceDay.name}</Text>
-              <Text>{serviceDay.place}</Text>
-              <Text>{serviceDay.start_time}</Text>
-              <button
-                className="icon-button"
-                onClick={() => {
-                  setEditingServiceId(serviceDay.id);
-                  setServiceState("edit");
-                }}
-              >
-                {" "}
-                <EditIcon name="Edit" />{" "}
-              </button>
-            </Flex>
-          ))}
+        <Stack direction="row" my={2}>
+          <Text>{servUnique.name}</Text>
+          <Text>| {servUnique.place}</Text>
+          <Text>| {servUnique.start_time}</Text>
+          <Button size={"sm"} onClick={() => setServiceState("edit")}>
+            <EditIcon name="Edit" />
+          </Button>
+          <Button size={"sm"} onClick={() => deleteItem(servUnique.id)}>
+            <DeleteIcon />
+          </Button>
         </Stack>
       )}
       {serviceState === "edit" && (
         <>
-          <Text>
-            Editing:{danceday.day}-{filterServiceId?.name}
-          </Text>
           <form onSubmit={handleSubmit(editService)}>
             <Box py={4}>
+              <Text>Name:</Text>
               <Input
                 type="text"
-                defaultValue={filterServiceId?.name}
-                {...register("serviceName", { required: true })}
+                defaultValue={servUnique.name}
+                {...register("name", { required: true })}
               ></Input>
               <p>Place:</p>
               <Input
                 type="text"
-                defaultValue={filterServiceId?.place}
-                {...register("servicePlace", { required: true })}
+                defaultValue={servUnique.place}
+                {...register("place", { required: true })}
               ></Input>
               <p>Adress:</p>
               <Input
                 type="text"
-                defaultValue={filterServiceId?.address}
-                {...register("serviceAddress", { required: true })}
+                defaultValue={servUnique.address}
+                {...register("address", { required: true })}
+              ></Input>
+              <Text>Start time:</Text>
+              <Input
+                type="text"
+                defaultValue={servUnique.start_time}
+                {...register("start_time", { required: true })}
               ></Input>
               <Input
                 type="text"
-                defaultValue={filterServiceId?.start_time}
-                {...register("serviceStartTime", { required: true })}
-              ></Input>
-              <Input
-                type="text"
-                defaultValue={filterServiceId?.end_time}
-                {...register("serviceEndTime", { required: true })}
+                defaultValue={servUnique.end_time}
+                {...register("end_time", { required: true })}
               ></Input>
               <p>DanceType:</p>
               <Input
                 type="text"
-                defaultValue={filterServiceId?.dance_type}
-                {...register("serviceDanceType", { required: true })}
+                defaultValue={servUnique.dance_type}
+                {...register("dance_type", { required: true })}
               ></Input>
               <Input
                 type="text"
-                defaultValue={filterServiceId?.duration}
-                {...register("serviceDuration", { required: false })}
+                defaultValue={servUnique.duration}
+                {...register("duration", { required: false })}
+              ></Input>
+              <Input
+                type="text"
+                defaultValue={servUnique.keys}
+                {...register("keys", { required: false })}
               ></Input>
               <Button type="submit" role="submit">
                 <CheckIcon name="Check" />

@@ -17,6 +17,18 @@ export interface Service {
   keys: string;
 }
 
+export interface EditService {
+  id: string;
+  name: string;
+  place: string;
+  address: string;
+  start_time: string;
+  end_time: string;
+  dance_type: string;
+  duration: string;
+  keys: string;
+}
+
 export interface Provider {
   clientId: string;
   clientSecret: string;

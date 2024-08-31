@@ -21,7 +21,7 @@ interface Props {
   journals: Journal[];
 }
 
-export default function WithBackgroundImage({ journals }: Props) {
+export default function WithBackgroundImage() {
   const { t } = useTranslation();
   return (
     <Box

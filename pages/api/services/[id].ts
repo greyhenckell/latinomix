@@ -10,20 +10,13 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const serviceId = req.query.id as string;
-  console.log(req.body);
   //UPDATE
+  const serviceId = req.query.id as string;
   if (req.method === "PUT") {
-    console.log("UPDATE STAGE");
-    const mybody = req.body;
-
     const data = JSON.parse(req.body);
-    console.log({ data });
     const result = await prisma.service.update({
       where: { id: serviceId },
-      data: {
-        ...data,
-      },
+      data: data,
     });
 
     res.json(result);

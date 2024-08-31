@@ -25,7 +25,7 @@ const testimonials = [
     avatar: "imgs/lm_easydance.jpeg",
   },
   {
-    name: "Couple Class",
+    name: "Private / Couple Classes",
     role: "Bachata| Salsa| beginner",
     content: "couple",
     avatar: "imgs/lm_pari.jpg",
@@ -155,7 +155,7 @@ export default function GridBlurredBackdrop() {
           textTransform={"uppercase"}
           color={"purple.400"}
         >
-          LatinoMix love you
+          Vamos a Bailar - LatinoMix!
         </chakra.h3>
         <chakra.h1
           py={5}
