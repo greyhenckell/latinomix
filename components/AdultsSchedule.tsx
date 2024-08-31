@@ -95,7 +95,8 @@ function AdultsSchedule({ journals }: Props) {
                   </Text>
                   {item.services.map(
                     (serv) =>
-                      serv.dance_type === "adults" && (
+                      serv.dance_type === "adults" &&
+                      serv.keys === "active" && (
                         <Stack
                           key={serv.start_time}
                           py={2}
