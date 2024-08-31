@@ -64,8 +64,6 @@ function ServiceDay({ refreshData }: Props) {
 
   const { services, id }: any = data;
 
-  console.log("fetch id ", id);
-
   return (
     <>
       <VStack
