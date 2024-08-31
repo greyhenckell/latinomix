@@ -76,7 +76,7 @@ function AdultsSchedule({ journals }: Props) {
       >
         {journals.map(
           (item) =>
-            item.services.length !== 0 && (
+            Boolean(item.services.length) && (
               <PriceWrapper key={item.day}>
                 <Box
                   py={4}
@@ -95,8 +95,7 @@ function AdultsSchedule({ journals }: Props) {
                   </Text>
                   {item.services.map(
                     (serv) =>
-                      serv.dance_type === "adults" &&
-                      serv.keys === "active" && (
+                      serv.dance_type === "adults" && (
                         <Stack
                           key={serv.start_time}
                           py={2}
