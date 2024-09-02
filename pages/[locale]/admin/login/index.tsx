@@ -72,7 +72,10 @@ function Login({ tickets, journals, news }: TicketProps) {
 
   if (session) {
     const name = session.user?.name || null;
-    if (name === "franckzinho") {
+    if (
+      name === "franckzinho" ||
+      session.user?.email === "latinomixtanssi@gmail.com"
+    ) {
       //console.log("valid user");
       const imgProfile = session.user?.image || undefined;
       return (
