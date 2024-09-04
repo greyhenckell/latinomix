@@ -38,6 +38,13 @@ interface Props {
 }
 
 function AdultsSchedule({ journals }: Props) {
+  const adult_jornal = journals.map((item) => ({
+    ...item,
+    services: item.services.filter(
+      (serv) => serv.dance_type === "adults" && serv.keys === "active"
+    ),
+  }));
+
   const { t } = useTranslation();
   //const { id, day, services } = journals;
   const sorter = [
@@ -50,7 +57,7 @@ function AdultsSchedule({ journals }: Props) {
     "Sunday",
   ];
 
-  journals.sort((a, b) => sorter.indexOf(a.day) - sorter.indexOf(b.day));
+  adult_jornal.sort((a, b) => sorter.indexOf(a.day) - sorter.indexOf(b.day));
 
   return (
     <Box
@@ -74,7 +81,7 @@ function AdultsSchedule({ journals }: Props) {
         spacing={{ base: 4, lg: 10 }}
         py={10}
       >
-        {journals.map(
+        {adult_jornal.map(
           (item) =>
             Boolean(item.services.length) && (
               <PriceWrapper key={item.day}>
@@ -93,65 +100,59 @@ function AdultsSchedule({ journals }: Props) {
                   >
                     {t(`schedule.${item.day}`)}
                   </Text>
-                  {item.services.map(
-                    (serv) =>
-                      serv.keys === "active" &&
-                      serv.dance_type === "adults" && (
-                        <Stack
-                          key={serv.start_time}
-                          py={2}
-                          align={"flex-start'"}
-                          justify={"center"}
-                        >
-                          <Text
-                            color={"black"}
-                            py={2}
-                            fontSize={"xl"}
-                            fontWeight={600}
-                            //bgGradient={"linear(to-b, whiteAlpha.300, transparent)"}
-                          >
-                            {serv.name}
-                          </Text>
+                  {item.services.map((serv) => (
+                    <Stack
+                      key={serv.start_time}
+                      py={2}
+                      align={"flex-start'"}
+                      justify={"center"}
+                    >
+                      <Text
+                        color={"black"}
+                        py={2}
+                        fontSize={"xl"}
+                        fontWeight={600}
+                        //bgGradient={"linear(to-b, whiteAlpha.300, transparent)"}
+                      >
+                        {serv.name}
+                      </Text>
 
-                          <Text
-                            color={"white"}
-                            fontWeight={600}
-                            fontSize={"1xl"}
-                            bgGradient={
-                              "linear(to-b, blackAlpha.900, transparent)"
-                            }
-                          >
-                            {serv.start_time} -- {serv.end_time}
-                          </Text>
-                          <VStack
-                            bgGradient={"linear(to-t, gray.100, transparent)"}
-                            py={2}
-                            borderBottomRadius={"2xl"}
-                            borderBottomColor={"black"}
-                          >
-                            <List
-                              textAlign="start"
-                              px={1}
-                              fontSize={"16px"}
-                              fontWeight="bold"
-                            >
-                              <ListItem>
-                                <ListIcon as={FaHome} color="green.500" />
-                                {serv.place}
-                              </ListItem>
-                              <ListItem>
-                                <ListIcon as={MdPlace} color="green.500" />
-                                {serv.address}
-                              </ListItem>
-                              <ListItem>
-                                <ListIcon as={FaRegClock} color="green.500" />
-                                {serv.duration}
-                              </ListItem>
-                            </List>
-                          </VStack>
-                        </Stack>
-                      )
-                  )}
+                      <Text
+                        color={"white"}
+                        fontWeight={600}
+                        fontSize={"1xl"}
+                        bgGradient={"linear(to-b, blackAlpha.900, transparent)"}
+                      >
+                        {serv.start_time} -- {serv.end_time}
+                      </Text>
+                      <VStack
+                        bgGradient={"linear(to-t, gray.100, transparent)"}
+                        py={2}
+                        borderBottomRadius={"2xl"}
+                        borderBottomColor={"black"}
+                      >
+                        <List
+                          textAlign="start"
+                          px={1}
+                          fontSize={"16px"}
+                          fontWeight="bold"
+                        >
+                          <ListItem>
+                            <ListIcon as={FaHome} color="green.500" />
+                            {serv.place}
+                          </ListItem>
+                          <ListItem>
+                            <ListIcon as={MdPlace} color="green.500" />
+                            {serv.address}
+                          </ListItem>
+                          <ListItem>
+                            <ListIcon as={FaRegClock} color="green.500" />
+                            {serv.duration}
+                          </ListItem>
+                        </List>
+                      </VStack>
+                    </Stack>
+                  ))}
                 </Box>
               </PriceWrapper>
             )
