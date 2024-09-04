@@ -19,7 +19,7 @@ export default async function handler(
       },
     });
     if (journals) {
-      console.log(journals);
+      //console.log(journals);
       return res.json(journals);
     }
     console.log("day not found - creating day");
