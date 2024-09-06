@@ -35,12 +35,23 @@ interface Props {
 }
 
 function KidsSchedule({ journals }: Props) {
-  //console.log(journals);
+  const sorter = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
   const kids_jornal = journals.flatMap((item) =>
     item.services
       .filter((serv) => serv.dance_type === "kids")
       .map((serv) => ({ ...serv, day: item.day }))
   );
+
+  kids_jornal.sort((a, b) => sorter.indexOf(a.day) - sorter.indexOf(b.day));
 
   return (
     <Stack
