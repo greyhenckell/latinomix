@@ -51,11 +51,11 @@ function EventSlide() {
       text: "Energetic dance class, suitable for all ages, fun to enjoy it together taking you to the depth of Latinoamerica rhythms.",
       image: getCloudinaryImageUrl("latinomix/lm_easydance_ull9ae"),
     },
-    {
+    /*{
       title: "LatinoMix- Shows and Events",
       text: "Personal Dance class, Birthdays, shows, couple class, We make your party full of joy. Contact me latinomixtanssi@gmail.com and get a offer!!",
       image: getCloudinaryImageUrl("latinomix/lipulaiva"),
-    },
+    },*/
   ];
 
   return (
