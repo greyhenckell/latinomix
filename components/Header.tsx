@@ -10,7 +10,7 @@ import {
   HStack,
 } from "@chakra-ui/react";
 import React from "react";
-import { IconButton } from "@chakra-ui/button";
+import { IconButton } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 
