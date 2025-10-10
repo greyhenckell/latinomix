@@ -83,7 +83,7 @@ function Timetable({ journals, tickets }: Props) {
         {/* add kids component*/}
         <Divider orientation="horizontal" />
         {/*<KidsSchedule></KidsSchedule>*/}
-        <KidsSchedule></KidsSchedule>
+        <KidsSchedule journals={journals}></KidsSchedule>
       </Box>
     </div>
   );
