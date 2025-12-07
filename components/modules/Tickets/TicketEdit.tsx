@@ -40,9 +40,7 @@ function TicketEdit({ tickets, refreshData }: Props) {
         description: data.ticketDescription,
         price: parseFloat(data.ticketPrice),
         discount: parseFloat(data.ticketDiscount),
-        finalprice:
-          parseFloat(data.ticketPrice) *
-          (1 - parseFloat(data.ticketDiscount) / 100),
+        finalprice: data.ticketPrice - data.ticketDiscount,
         offer: data.ticketOffer,
       };
       await fetch("/api/tickets", {
