@@ -118,7 +118,7 @@ const PackageTier = ({ ticket }: Props) => {
           </Text>
           <Text fontSize="5xl" fontWeight="900">
             {" "}
-            {ticket.finalprice}
+            {ticket.offer ? 130 : ticket.finalprice}
           </Text>
         </HStack>
       </Box>
