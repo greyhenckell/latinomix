@@ -7,6 +7,7 @@ import {
   Icon,
   SimpleGrid,
   useColorModeValue,
+  Text,
 } from "@chakra-ui/react";
 
 import { useTranslation } from "react-i18next";
@@ -105,14 +106,15 @@ function TestimonialCard(props: TestimonialCardProps) {
         textAlign={"left"}
         justifyContent={"space-between"}
       >
-        <chakra.p
+        <Text
           fontFamily={"Inter"}
           fontWeight={"medium"}
           fontSize={"15px"}
+          whiteSpace="pre-line"
           pb={4}
         >
           {t(`services.${content}`)}
-        </chakra.p>
+        </Text>
         <chakra.p fontFamily={"Work Sans"} fontWeight={"bold"} fontSize={18}>
           {name}
           <chakra.span
